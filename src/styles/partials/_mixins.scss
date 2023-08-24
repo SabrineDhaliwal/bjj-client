@@ -1,0 +1,27 @@
+@use "./fonts" as *;
+@use './variables' as *;
+
+@mixin mobile {
+    @media screen and (min-width: $mobile-breakpoint) {
+        @content;
+    }
+}
+
+@mixin tablet {
+    @media screen and (min-width: $tablet-breakpoint) {
+      @content;
+    }
+  }
+
+
+@mixin desktop {
+    @media screen and (min-width: $desktop-breakpoint) {
+        @content;
+    }
+}
+
+@mixin form-fields{
+    line-height: 1.5rem;
+    border-radius: 0.5rem;
+    background-color: $secondary-neutral-shade;
+}
