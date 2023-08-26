@@ -1,4 +1,4 @@
-import react from 'react'
+
 import Button from '../Buttons/Buttons'
 
 function Navbar() {
