@@ -1,7 +1,7 @@
+import './Buttons.scss'
 
-
-function Button({ text, modifer }) {
-  return <button className={`btn btn${modifer}`}>{text}</button>;
+function Button({ text, modifer, type}) {
+  return <button className={`btn btn${modifer}`} type={type}>{text}</button>;
 }
 
 export default Button;
