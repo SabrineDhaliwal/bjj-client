@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-// import { useHistory } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 import Button from "../../components/Buttons/Buttons";
 import logo from "../../assets/logos/print.svg";
 import "./LoginPage.scss";
@@ -9,11 +9,15 @@ function LoginPage() {
   const [password, setPassword] = useState("");
   const [formErrors, setFormErrors] = useState({uername: "", password: ""});
   //   const [createAccount, setCreateAccount] = useState("createAccount");
+  const navigate = useNavigate();
 
-    // function handleCreateAccount(event) {
-    //     event.preventDefault
-    //   console.log("Clicked create account");
-    // }
+    function handleCreateAccount(event) {
+        console.log("handle Create Account", event)
+        console.log("Clicked create account");
+        event.preventDefault();
+        navigate('/createaccount')
+      }
+
 
     const isInputValid = () => {
         let errors = { username: "", password:"" };
@@ -40,7 +44,7 @@ function LoginPage() {
     console.log("username:", username);
     console.log("password", password);
 
-    //TODO add useNavigate if passes validation to homepage
+    //TODO add useNavigate if passes validation to landingPage
     //validation needs to check information in database users table
     // history.push("/CreateAccountPage")
     }else {
@@ -83,12 +87,12 @@ function LoginPage() {
         )}
 
           <div className="btn-container">
-          <Button text="Login" />
+          <Button text= "Login" />
           
             <Button
               text="Create an Account"
-              type="reset"
-            //   onClick={handleCreateAccount}
+              type="button"
+              onClick={(event) => handleCreateAccount}
               
             />
            
