@@ -25,6 +25,7 @@
     border-radius: 0.5rem;
     background-color: $primary-light;
     padding: 0.25rem 1 rem;
+    width:40vw;
     border-radius: $border-radius;
 
     &--error{
@@ -38,8 +39,13 @@
     font-weight: 400;
     padding-top:0.75rem;
     font-family: 'Roboto';
-    // margin:0.25rem;
+  
 
+}
 
-
+@mixin page-padding {
+    padding-top: 0.5rem;
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+    padding-bottom: 0.5rem;
 }

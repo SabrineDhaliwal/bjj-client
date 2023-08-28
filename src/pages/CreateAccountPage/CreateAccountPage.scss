@@ -1,2 +1,20 @@
 @use '../../styles/partials/mixins' as *;
 @use "../../styles/partials/variables" as *;
+
+.create-page{
+    background-color: $primary-neutral;
+    @include page-padding; 
+}
+.create-form{
+    &__wrapper{
+        background-color: $primary-neutral;
+        
+    }
+    &__input-set{
+        @include form-labels;
+        display:flex;
+        justify-content: space-between;
+        width:50vw;
+
+    }
+}
