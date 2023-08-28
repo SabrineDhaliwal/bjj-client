@@ -12,7 +12,7 @@ function App() {
     <Routes>
       <Route path='/' element = {<LoginPage />} />
       <Route path='/createaccount' element = {<CreateAccountPage/>} />
-      <Route path='/id' element = {<LandingPage/>}/>
+      <Route path='/:id' element = {<LandingPage/>}/>
     </Routes>
     </BrowserRouter>
   );

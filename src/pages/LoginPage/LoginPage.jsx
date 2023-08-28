@@ -7,7 +7,7 @@ import "./LoginPage.scss";
 function LoginPage() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [formErrors, setFormErrors] = useState({uername: "", password: ""});
+  const [formErrors, setFormErrors] = useState({username: "", password: ""});
   //   const [createAccount, setCreateAccount] = useState("createAccount");
   const navigate = useNavigate();
 
@@ -43,6 +43,7 @@ function LoginPage() {
     if (isInputValid() ) {
     console.log("username:", username);
     console.log("password", password);
+    navigate("/:id")
 
     //TODO add useNavigate if passes validation to landingPage
     //validation needs to check information in database users table
