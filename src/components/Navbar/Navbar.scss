@@ -1,0 +1,23 @@
+@use "../../styles/partials/mixins" as*;
+@use "../../styles/partials/variables" as *;
+
+.nav {
+    background-color: $primary-neutral;
+    margin:0;
+    @include page-padding;
+
+    &__wrapper{
+        display:flex;
+        justify-content: space-between;
+        align-items: center;
+        @include page-padding;
+
+    }
+
+    &__logo{
+        width:25vw;
+        height: auto;
+
+    }
+
+}

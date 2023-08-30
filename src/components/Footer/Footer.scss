@@ -1,0 +1,28 @@
+@use "../../styles/partials/mixins" as * ;
+@use "../../styles/partials/variables" as *; 
+
+.footer{
+    background-color: $primary-neutral;
+    @include page-padding;
+
+    &__wrapper{
+        display:flex;
+        justify-content: space-between;
+    }
+
+    &__logo{
+        width:25vw;
+        height: auto;
+        overflow: hidden;
+        white-space:nowrap;
+
+
+            &--img{
+                object-fit: contain;
+                max-width: 100%;
+                height: auto;
+            }
+        }
+       
+    
+}

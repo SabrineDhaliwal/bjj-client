@@ -4,10 +4,15 @@
 .create-page{
     background-color: $primary-neutral;
     @include page-padding; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 .create-form{
     &__wrapper{
-        background-color: $primary-neutral;
+        width:60vw;
+        display: flex;
+        flex-direction: column;
         
     }
     &__input-set{
@@ -17,4 +22,12 @@
         width:50vw;
 
     }
+    &__input{
+        @include form-fields;
+    }
+}
+.btn-container{
+    display:flex;
+    width:40vw;
+
 }

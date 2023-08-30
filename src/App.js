@@ -4,6 +4,7 @@ import LoginPage from "../src/pages/LoginPage/LoginPage"
 import Navbar from './components/Navbar/Navbar';
 import CreateAccountPage from './pages/CreateAccountPage/CreateAccountPage';
 import LandingPage from './pages/LandingPage/LandingPage';
+import Footer from './components/Footer/Footer';
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
       <Route path='/createaccount' element = {<CreateAccountPage/>} />
       <Route path='/:id' element = {<LandingPage/>}/>
     </Routes>
+    <Footer />
     </BrowserRouter>
   );
 }

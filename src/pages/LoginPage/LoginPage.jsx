@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom"
 import Button from "../../components/Buttons/Buttons";
-import logo from "../../assets/logos/print.svg";
+import logo from "../../assets/logos/vertical_fulllogo.png";
 import "./LoginPage.scss";
 
 function LoginPage() {
@@ -12,8 +12,7 @@ function LoginPage() {
   const navigate = useNavigate();
 
     function handleCreateAccount(event) {
-        console.log("handle Create Account", event)
-        console.log("Clicked create account");
+        // console.log("Clicked create account");
         event.preventDefault();
         navigate('/createaccount')
       }
@@ -93,7 +92,7 @@ function LoginPage() {
             <Button
               text="Create an Account"
               type="button"
-              onClick={(event) => handleCreateAccount}
+              clickHandler={ handleCreateAccount}
               
             />
            

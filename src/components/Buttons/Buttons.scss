@@ -5,8 +5,10 @@
     margin: 0.2rem;
     background-color: $secondary-dark-color-tint;
     line-height: 1.5rem;
-    font-weight: 400;
+    font-weight: 500;
 
-
+&__nav{
+    background-color: $secondary-dark-color-tint;
+}
 
 }
