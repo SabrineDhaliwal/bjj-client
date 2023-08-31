@@ -12,8 +12,8 @@ function App() {
     <Navbar />
     <Routes>
       <Route path='/' element = {<LoginPage />} />
-      <Route path='/createaccount' element = {<CreateAccountPage/>} />
-      <Route path='/:id' element = {<LandingPage/>}/>
+      <Route path='/useraccount' element = {<CreateAccountPage/>} />
+      <Route path='/useraccount/:id' element = {<LandingPage/>}/>
     </Routes>
     <Footer />
     </BrowserRouter>

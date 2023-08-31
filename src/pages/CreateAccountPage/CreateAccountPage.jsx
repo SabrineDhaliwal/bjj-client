@@ -2,22 +2,55 @@ import Button from "../../components/Buttons/Buttons";
 import "./CreateAccountPage.scss";
 import { useFormik } from "formik";
 import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import axios from "axios";
+
 
 function CreateAccountPage() {
+  const API_URL = process.env.REACT_APP_BASE_URL;
   const navigate = useNavigate();
+  const [belts, setBelts]=useState([]); //used for belts dropdown
+  const [clubs, setClubs]= useState([]); // used for clubs dropdown
+  
 
+  //loading belts on mount
+  useEffect(() => {
+    axios.get(`${API_URL}/utils/belts`)
+    .then((belts)=> {
+      setBelts(belts.data);
+    })
+    .catch((err)=> {
+      console.error(err);
+    });
+
+  }, [API_URL]);
+
+
+  // loading clubs on mount
+  useEffect(() => {
+    axios.get(`${API_URL}/utils/clubs`)
+    .then((clubs)=> {
+      setClubs(clubs.data);
+    })
+    .catch((err)=> {
+      console.error(err);
+    });
+
+  }, [API_URL]);
+
+  //form validations
   const validate = (values) => {
     const errors = {};
-    if (!values.firstName) {
-      errors.firstName = "Required Field";
-    } else if (values.firstName.length > 20) {
-      errors.firstName = "Name must be less than 20 characters";
+    if (!values.first_name) {
+      errors.first_name = "Required Field";
+    } else if (values.first_name.length > 20) {
+      errors.first_name = "Name must be less than 20 characters";
     }
 
-    if (!values.lastName) {
-      errors.lastName = "Required Field";
-    } else if (values.lastName.length > 20) {
-      errors.lastName = "Must be less than 20 characters";
+    if (!values.last_name) {
+      errors.last_name = "Required Field";
+    } else if (values.last_name.length > 20) {
+      errors.last_name = "Must be less than 20 characters";
     }
 
     if (!values.email) {
@@ -35,29 +68,48 @@ function CreateAccountPage() {
       errors.username = "Username too short";
     }
     // add validation that checks username against database of user
-
-    if (!values.belt) {
-      errors.belt = "Please select a belt";
+    if (!values.password){
+      errors.password = "Password required";
+    } else if (!/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%^*?&])[A-Za-z\d@$!%^*?&]{8,}$/.test(values.password)) {
+      errors.password = "Password must be at least 8 characters long and contain at least one uppercase letter, one lowercase letter, one digit, and one special character.";
     }
 
+    if (!values.confirmPassword) {
+      errors.confirmPassword = "Please confirm your password";
+    } else if (values.confirmPassword !== values.password) {
+      errors.confirmPassword = "Passwords do not match";
+    }
+
+    if (!values.belt_rank) {
+      errors.belt_rank = "Please select a belt";
+    }
     return errors;
+   
   };
 
   const formik = useFormik({
     initialValues: {
-      firstName: "",
-      lastName: "",
+      first_name: "",
+      last_name: "",
       email: "",
       username: "",
-      belt: "",
+      belt_rank: "",
       bio: "",
+      club_name: "",
+      password:"",
+      confirmPassword:""
+     
     },
 
+    //call validation
     validate,
 
     onSubmit: (values) => {
       console.log("onSubmit formik", values);
       // alert(JSON.stringify(values, null, 2));
+
+      //posting new user to database
+      
     },
   });
 
@@ -76,31 +128,31 @@ function CreateAccountPage() {
             <div className="create-form__input-set">
               <label className="create-form__label">First Name: </label>
               <input
-                id="firstName"
+                id="first_name"
                 type="text"
-                name="firstName"
+                name="first_name"
                 placeholder="Jane"
                 className="create-form__input"
                 onChange={formik.handleChange}
-                value={formik.values.firstName}
+                value={formik.values.first_name}
               />
-              {formik.errors.firstName ? (
-                <div>{formik.errors.firstName}</div>
+              {formik.errors.first_name ? (
+                <div>{formik.errors.first_name}</div>
               ) : null}
             </div>
             <div className="create-form__input-set">
               <label className="create-form__label">Last Name: </label>
               <input
-                id="lastName"
+                id="last_name"
                 type="text"
-                name="lastName"
+                name="last_name"
                 placeholder="Doe"
                 className="create-form__input"
                 onChange={formik.handleChange}
-                value={formik.values.lastName}
+                value={formik.values.last_name}
               />
-              {formik.errors.lastName ? (
-                <div>{formik.errors.lastName}</div>
+              {formik.errors.last_name ? (
+                <div>{formik.errors.last_name}</div>
               ) : null}
             </div>
 
@@ -119,7 +171,7 @@ function CreateAccountPage() {
             </div>
 
             <div className="create-form__input-set">
-              <label className="create-form__label">Pick a Username: </label>
+              <label className="create-form__label">Username: </label>
               <input
                 id="username"
                 type="text"
@@ -134,41 +186,74 @@ function CreateAccountPage() {
               ) : null}
             </div>
             <div className="create-form__input-set">
+              <label className="create-form__label">Password </label>
+              <input
+                id="password"
+                type="password"
+                name="password"
+                placeholder="Password"
+                className="create-form__input"
+                onChange={formik.handleChange}
+                value={formik.values.password}
+              />
+              {formik.errors.password ? (
+                <div>{formik.errors.password}</div>
+              ) : null}
+            </div>
+
+            <div className="create-form__input-set">
+              <label className="create-form__label">Confirm Password </label>
+              <input
+                id="confirmPassword"
+                type="password"
+                name="confirmPassword"
+                placeholder="Confirm Password"
+                className="create-form__input"
+                onChange={formik.handleChange}
+                value={formik.values.confirmPassword}
+              />
+              {formik.errors.confirmPassword ? (
+                <div>{formik.errors.confirmPassword}</div>
+              ) : null}
+            </div>
+
+            <div className="create-form__input-set">
               <label className="create-form__label">
                 What Belt Rank are you?
               </label>
               <select
-                id="belt"
-                name="belt"
+                id="belt_rank"
+                name="belt_rank"
                 className="create-form__input"
                 onChange={formik.handleChange}
-                value={formik.values.belt}
+                value={formik.values.belt_rank}
               >
                 {/* create table of belts in database */}
                 <option value="" disabled="disabled">
                   Select a Belt
                 </option>
-                <option value="white belt">White Belt</option>
-                <option value="white belt 1 stripe">
-                  White Belt: 1 stripe
-                </option>
-                <option value="blue belt">Blue Belt</option>
+                {belts.map((belt) => (
+                  <option value = {`${belt.belt_rank_id}, ${belt.belt_rank}`} key={belt.belt_rank_id}>{belt.belt_rank}</option>
+                ))}
               </select>
-              {formik.errors.belt ? <div>{formik.errors.belt}</div> : null}
+              {formik.errors.belt_rank ? <div>{formik.errors.belt_rank}</div> : null}
             </div>
 
             <div className="create-form__input-set">
               <label className="create-form__label">Where do you train?</label>
               <select
-                id="club"
-                name="club"
+                id="club_name"
+                name="club_name"
                 className="create-form__input"
                 onChange={formik.handleChange}
-                value={formik.values.club}
+                value={formik.values.club_name}
               >
-                <option>pick one</option>
+                <option>Select Club</option>
+                {clubs.map((club)=> (
+                  <option value={`${club.club_id},${club.club_name}`}key={club.club_id}>{club.club_name}</option>
+                ))}
               </select>
-              {formik.errors.club ? <div>{formik.errors.club}</div> : null}
+              {formik.errors.club_name ? <div>{formik.errors.club_name}</div> : null}
             </div>
 
             <div className="create-form__input-set">
