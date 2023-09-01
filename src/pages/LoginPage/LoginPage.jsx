@@ -14,7 +14,7 @@ function LoginPage() {
     function handleCreateAccount(event) {
         // console.log("Clicked create account");
         event.preventDefault();
-        navigate('/useraccount/:id')
+        navigate('/createaccount')
       }
 
 
@@ -42,7 +42,7 @@ function LoginPage() {
     if (isInputValid() ) {
     console.log("username:", username);
     console.log("password", password);
-    navigate("/useraccount/mainpage")
+    navigate("/userprofile/:id")
 
     //TODO add useNavigate if passes validation to landingPage
     //validation needs to check information in database users table

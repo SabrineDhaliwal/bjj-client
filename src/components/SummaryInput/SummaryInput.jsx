@@ -51,6 +51,30 @@ function SummaryInput() {
 
     },[API_URL])
 
+    const  validate = (values) => {
+      const errors ={}
+      if (!values.title){
+        errors.title ="Title is required";
+      }
+
+      if (!values.date){
+        errors.date = "Please select data you trained";
+      }
+
+      if (!values.tech){
+        errors.tech ="Please select technique";
+      }
+
+      if (!values.target){
+        errors.target ="Please select a target joint";
+      }
+
+      if (!values.position){
+        errors.position ="Please select a position"
+      }
+      return errors
+
+    }
   const formik = useFormik ({
     initialValues: {
       id: params.id, 
@@ -62,6 +86,8 @@ function SummaryInput() {
       summary:"",
       video:"",
     },
+
+    validate,
 
     onSubmit: (values) => {
       console.log("onSubmit formik", values);
@@ -75,7 +101,7 @@ function SummaryInput() {
       formData.append('tech', values.tech);
       formData.append('target', values.target);
       formData.append('title', values.title);
-      formData.append('id', 2); // TODO update to not be hard coded, maybe use a url param?
+      formData.append('id', params.id); // TODO update to not be hard coded, maybe use a url param?
 
       axios.post(`${API_URL}/summary`,formData, {
         headers: {
@@ -108,6 +134,9 @@ function SummaryInput() {
               value={formik.values.title}
               onChange={formik.handleChange}
             />
+            {formik.errors.title ? (
+                <div>{formik.errors.title}</div>
+              ) : null}
           </div>
 
           <div className="summary-form__input-set">
@@ -121,6 +150,9 @@ function SummaryInput() {
               value={formik.values.date}
               onChange={formik.handleChange}
             />
+            {formik.errors.date ? (
+              <div>{formik.errors.date}</div>
+            ): null}
           </div>
 
           <div className="summary-form__input-set">
@@ -132,7 +164,6 @@ function SummaryInput() {
               value={formik.values.tech}
               onChange={formik.handleChange}
             >
-        
               <option value="" disabled="disabled">
                 Select a Technique
               </option>
@@ -140,6 +171,9 @@ function SummaryInput() {
                   <option value = {`${tech.tech_id}, ${tech.tech_name}`} key={tech.tech_id}>{tech.tech_name}</option>
                 ))}
             </select>
+            {formik.errors.tech ? (
+          <div>{formik.errors.tech}</div>
+        ): null}
           </div>
 
           <div className="summary-form__input-set">
@@ -151,6 +185,7 @@ function SummaryInput() {
             value = {formik.values.target}
             onChange={formik.handleChange
             }>
+              
               <option value="" disabled="disabled">
                 Select a Target
               </option>
@@ -158,6 +193,9 @@ function SummaryInput() {
                 <option value = {`${target.target_id}, ${target.target_name}`} key={target.target_id}>{target.target_name}</option>
               ))}
             </select>
+            {formik.errors.target ? (
+          <div>{formik.errors.target}</div>
+        ): null}
           </div>
 
           <div className="summary-form__input-set">
@@ -168,6 +206,7 @@ function SummaryInput() {
             className="summary-form__input"
             value ={formik.values.position}
             onChange={formik.handleChange}>
+            
               <option value="" disabled="disabled">
                 Select a Position
               </option>
@@ -175,6 +214,9 @@ function SummaryInput() {
                 <option value = {`${position.position_id}, ${position.position_name}`}key ={position.position_id}>{position.position_name}</option>
               ))}
             </select>
+            {formik.errors.position? (
+          <div>{formik.errors.position}</div>
+        ): null}
           </div>
 
 
@@ -200,7 +242,6 @@ function SummaryInput() {
               type="file"
               name="video"
               accept="video/*"
-              // value = {formik.values.video}
               onChange={(e)=> formik.setFieldValue("video", e.currentTarget.files[0])}
             />
           </div>
