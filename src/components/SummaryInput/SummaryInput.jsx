@@ -101,7 +101,7 @@ function SummaryInput() {
       formData.append('tech', values.tech);
       formData.append('target', values.target);
       formData.append('title', values.title);
-      formData.append('id', params.id); // TODO update to not be hard coded, maybe use a url param?
+      formData.append('id', params.id); 
 
       axios.post(`${API_URL}/summary`,formData, {
         headers: {

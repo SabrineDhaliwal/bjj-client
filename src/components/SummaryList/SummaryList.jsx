@@ -1,6 +1,7 @@
 import "./SummaryList.scss";
 
 function SummaryList() {
+    
   return (
     <div className="summary-list">
       <div className="summary-list__left">img preview</div>
