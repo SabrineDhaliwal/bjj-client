@@ -106,16 +106,15 @@ function CreateAccountPage() {
 
     onSubmit: (values) => {
       console.log("onSubmit formik", values);
-      // alert(JSON.stringify(values, null, 2));
-
       //posting new user to database
+      navigate('/useraccount/:id')
       
     },
   });
 
   const handleCancelClick = () => {
     console.log("click");
-    navigate("/");
+    navigate("/login");
   };
   return (
     <div className="create-page">

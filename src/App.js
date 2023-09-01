@@ -3,7 +3,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import LoginPage from "../src/pages/LoginPage/LoginPage"
 import Navbar from './components/Navbar/Navbar';
 import CreateAccountPage from './pages/CreateAccountPage/CreateAccountPage';
-import LandingPage from './pages/LandingPage/LandingPage';
+import UserProfilePage from "./pages/UserProfilePage/UserProfilePage";
 import Footer from './components/Footer/Footer';
 
 function App() {
@@ -11,9 +11,9 @@ function App() {
     <BrowserRouter>
     <Navbar />
     <Routes>
-      <Route path='/' element = {<LoginPage />} />
+      <Route path='/login' element = {<LoginPage />} />
       <Route path='/useraccount' element = {<CreateAccountPage/>} />
-      <Route path='/useraccount/:id' element = {<LandingPage/>}/>
+      <Route path='/useraccount/:id' element = {<UserProfilePage/>}/>
     </Routes>
     <Footer />
     </BrowserRouter>
