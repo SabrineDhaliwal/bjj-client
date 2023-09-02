@@ -11,6 +11,7 @@ function LoginPage() {
   //   const [createAccount, setCreateAccount] = useState("createAccount");
   const navigate = useNavigate();
 
+  
     function handleCreateAccount(event) {
         // console.log("Clicked create account");
         event.preventDefault();
