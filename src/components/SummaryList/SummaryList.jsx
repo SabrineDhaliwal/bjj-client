@@ -3,22 +3,20 @@ import editbutton from "../../assets/icons/edit-50.png";
 import deletebutton from "../../assets/icons/delete.svg";
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 
-function SummaryList({handleEdit}) {
+function SummaryList() {
 
   const API_URL = process.env.REACT_APP_BASE_URL;
   const params = useParams();
-  console.log(params)
- 
-
+  const navigate = useNavigate();
   const [allSummaries, setAllSummaries] =useState([]);
 
   useEffect(()=>{
-console.log('allSummaries',allSummaries);
+
   }, [allSummaries]);
 
-
+//getting all summaries
   useEffect(() => {
     axios
     .get(`${API_URL}/summary/${params.id}`)
@@ -31,6 +29,7 @@ console.log('allSummaries',allSummaries);
 
   }, [params.id]);
 
+  //handle delete function
   const handleDelete =(event, idToDel) =>{
     alert("Are you sure you want to delete? This can not be undone")
 
@@ -41,9 +40,24 @@ console.log('allSummaries',allSummaries);
     })
     .catch((err)=> {
       console.error(err)
-    })
+    });
    } 
-   console.log(allSummaries);
+
+   //handle edit function 
+   const handleEdit =(event, idtoEdit)=> {
+    navigate("/edit")
+
+    // axios
+    // .put(`${API_URL}/summary${params.id}/${idtoEdit}`)
+    // .then((response)=> {
+    //   console.log("editresponse", response)
+    // })
+    // .catch((err)=> {
+    //   console.error(err, "error at edit in summary list")
+    // });
+
+
+   }
   return (
     <div className="summary-list">
         {allSummaries? ( 
