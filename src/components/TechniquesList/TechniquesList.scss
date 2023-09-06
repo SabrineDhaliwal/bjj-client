@@ -1,0 +1,8 @@
+@use '../../styles/partials/mixins' as*;
+@use '../../styles/partials/variables' as *;
+
+.list{
+    &__wrapper{
+        background-color: $primary-neutral;
+    }
+}

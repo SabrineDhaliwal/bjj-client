@@ -15,9 +15,25 @@
     }
 
     &__logo{
-        width:25vw;
+        width:30vw;
         height: auto;
 
+    }
+    &__link-container{
+        display:flex;
+        margin: 0 1rem
+    }
+
+    &__link{
+        text-decoration: none;
+        margin:0 0.5rem;
+        color: $secondary-dark-color-shade;
+    }
+
+    &__link:hover{
+        background-color: $secondary-dark-color-tint;
+        padding:0.5rem;
+        border-radius: 10px;
     }
 
 }

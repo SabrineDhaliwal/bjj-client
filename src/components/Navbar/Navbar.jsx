@@ -1,7 +1,7 @@
 import "./Navbar.scss";
 import Button from "../Buttons/Buttons";
 import logoHorizontal from "../../assets/logos/horizontal_fulllogo_nobuffer.png";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 function Navbar() {
   const navigate = useNavigate();
@@ -18,10 +18,11 @@ function Navbar() {
           src={logoHorizontal}
           alt="Roll & Reflect logo- horizontal"
         />
-        <div className="nav__btn-container">
-          <Button text="Home" clickHandler={handleHome}/>
-          {/* <Button text="Calendar" />
-          <Button text="Add Summary" /> */}
+        <div className="nav__link-container">
+          <Link to={'/'} className="nav__link"><p className="nav__link--text">Home</p> </Link>
+          <Link to={'/userprofile/1'} className="nav__link"><p className="nav__link--text">My Profile</p></Link>
+          <Link to={'/techs'} className="nav__link"><p className="nav__link--text">Techniques</p> </Link> 
+          <Link to={'/userprofile/1'} className="nav__link"><p className="nav__link--text">Positons</p></Link>
         </div>
       </div>
     </div>

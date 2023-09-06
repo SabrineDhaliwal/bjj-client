@@ -1,0 +1,45 @@
+@use "../../styles/partials/mixins" as*;
+@use "../../styles/partials/variables" as *;
+
+.summary{
+    background-color: $primary-neutral;
+    display:flex;
+    flex-direction: column;
+    @include page-padding;
+    
+    &__title{
+        font-weight: 600;
+        font-size: 2rem;
+        padding-bottom: 0.5rem;
+    }
+}
+
+.summary-form{
+    &__input-set{
+        margin:0.5rem 0;
+        display:flex;
+        justify-content: space-between;
+        width:100%;
+
+    }
+    &__input-set select{
+        line-height: 1.5rem;;
+    }
+
+    &__label{
+        padding-right: 0.25rem;
+        font-weight: 600;
+    }
+
+    &__input{
+        @include form-fields;
+        &--color{
+            background-color: $primary-neutral;
+        }
+    }
+&__btn-container{
+    display: flex;
+    justify-content: right;
+    padding-top:1rem;
+}
+}

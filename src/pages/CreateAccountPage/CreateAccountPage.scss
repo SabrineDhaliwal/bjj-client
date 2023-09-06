@@ -6,28 +6,47 @@
     @include page-padding; 
     display: flex;
     flex-direction: column;
+    // justify-content: center;
     align-items: center;
+
+    &__wrapper{
+        width:90vw;
+        display:flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+    }
 }
 .create-form{
     &__wrapper{
-        width:60vw;
+        width:80vw;
         display: flex;
         flex-direction: column;
+        justify-content: center;
+        align-items: center
         
     }
     &__input-set{
         @include form-labels;
         display:flex;
         justify-content: space-between;
-        width:50vw;
+        width:70vw;
 
     }
     &__input{
         @include form-fields;
+        &--color {
+            background-color: $primary-neutral;
+            padding-left: -2rem,
+        }
     }
 }
 .btn-container{
     display:flex;
-    width:40vw;
+    flex-direction: row;
 
+}
+.btn-main{
+    flex-grow: 2;
 }

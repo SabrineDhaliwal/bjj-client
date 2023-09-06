@@ -3,4 +3,27 @@
 
 .UPD{
     background-color: $primary-neutral;
+    display:flex;
+    @include page-padding;
+
+    &__img-block{
+        width:45vw;
+    }
+
+    &__image{
+        background-color: $secondary-dark-color-tint;
+        width:25rem;
+        height:auto;
+
+    }
+    &__details-block{
+        flex:1;
+    }
+    &__text{
+        font-weight: 600;
+        &--light{
+            font-weight: 400;
+        }
+    }
+
 }

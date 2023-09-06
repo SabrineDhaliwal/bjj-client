@@ -20,12 +20,13 @@ function App() {
     <BrowserRouter>
     <Navbar />
     <Routes>
-      <Route path='/' element = {<LoginPage />} />
+      <Route path='/'/>
+      <Route path='/login' element = {<LoginPage />} />
       <Route path='/createaccount' element = {<CreateAccountPage/>} />
       <Route path='/userprofile/:id' element = {<UserProfilePage/>}/>
       <Route path='/techs' element = {<TechniquesPage/>}/>
       <Route path ='techs/:id' element= {<TechniquesDetailsPage/>}/>
-      <Route path='/edit/:id' element ={<EditSummaryPage/>}/>
+      <Route path='/edit/:summaryid' element ={<EditSummaryPage/>}/>
       <Route path='/add' element = {<AddTechPage />}/>
     </Routes>
     <Footer />

@@ -1,3 +1,4 @@
+import "./TechniquesList.scss";
 import Button from "../Buttons/Buttons";
 
 import axios from "axios";
@@ -26,9 +27,11 @@ function TechniquesList() {
   }, [API_URL]);
 
   return (
-    <>
-      <h3> Select a technique below to learn more </h3>
-      <ul>
+
+    // classNames are written to be reusable styling sheet for future lists
+    <div className="list__wrapper">
+      <h3 className="list__title"> Select a technique below to learn more </h3>
+      <ul className="list__item">
         {/* rending list of all techniques in database */}
         {allTechs.map((singletech) => (
           <Link
@@ -44,8 +47,7 @@ function TechniquesList() {
         type="button"
         clickHandler={handleAddTechnique}
       />
-      {/* <button type="button" clickHandler={(event)=> {handleAddTechnique}}>tester</button> */}
-    </>
+    </div>
   );
 }
 export default TechniquesList;

@@ -107,15 +107,19 @@ function CreateAccountPage() {
     onSubmit: (values) => {
       console.log("onSubmit formik", values);
       //posting new user to database
-      navigate('/useraccount/:id')
+      navigate('/useraccount/1')
       
     },
   });
 
   const handleCancelClick = () => {
-    console.log("click");
-    navigate("/login");
+    // console.log("click");
+    navigate("/");
   };
+
+  const handleHaveAccount =()=> {
+    navigate("/login");
+  }
   return (
     <div className="create-page">
       <div className="create-page__wrapper">
@@ -279,19 +283,21 @@ function CreateAccountPage() {
                 name="image"
                 multiple
                 accept="image/*"
-                className="create-form__input"
+                className="create-form__input create-form__input--color"
                 onChange={formik.handleChange}
                 value={formik.values.image}
               />
             </div>
-          </div>
+          
           <div className="btn-container">
-            <Button text="Yes! create my account" type="submit" />
+            <Button text="Yes! create my account" type="submit" classname="btn__main" />
             <Button
               text="No, I'm not ready yet"
               type="reset"
               clickHandler={handleCancelClick}
             />
+            <Button text={"I already have an account"} type="button" clickHandler={handleHaveAccount}/> 
+            </div>
           </div>
         </form>
       </div>

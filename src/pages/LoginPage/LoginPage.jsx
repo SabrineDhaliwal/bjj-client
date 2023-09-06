@@ -41,13 +41,11 @@ function LoginPage() {
   function handleOnSubmit(event) {
     event.preventDefault();
     if (isInputValid() ) {
-    console.log("username:", username);
-    console.log("password", password);
-    navigate("/userprofile/:id")
+  
+    navigate("/userprofile/1")
 
     //TODO add useNavigate if passes validation to landingPage
     //validation needs to check information in database users table
-    // history.push("/CreateAccountPage")
     }else {
         console.log('Errors on form')
     }
