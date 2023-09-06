@@ -9,6 +9,7 @@ import EditSummaryPage from './pages/EditSummaryPage/EditSummaryPage';
 import AddTechPage from './pages/AddPage/AddPage';
 import TechniquesPage from './pages/TechniquesPage/TechniquesPage';
 import TechniquesDetailsPage from './pages/TechniquesDetailPage/TechniquesDetailPage';
+import LandingPage from './pages/LandingPage/LandingPage';
 
 
 
@@ -20,7 +21,7 @@ function App() {
     <BrowserRouter>
     <Navbar />
     <Routes>
-      <Route path='/'/>
+      <Route path='/' element={<LandingPage />}/>
       <Route path='/login' element = {<LoginPage />} />
       <Route path='/createaccount' element = {<CreateAccountPage/>} />
       <Route path='/userprofile/:id' element = {<UserProfilePage/>}/>

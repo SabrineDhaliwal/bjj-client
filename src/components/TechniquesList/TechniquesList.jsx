@@ -31,14 +31,17 @@ function TechniquesList() {
     // classNames are written to be reusable styling sheet for future lists
     <div className="list__wrapper">
       <h3 className="list__title"> Select a technique below to learn more </h3>
-      <ul className="list__item">
+      <ul className="list__list">
         {/* rending list of all techniques in database */}
-        {allTechs.map((singletech) => (
+        {allTechs
+        .slice()
+        .sort((a,b)=>a.tech_name.localeCompare(b.tech_name))
+        .map((singletech) => (
           <Link
             to={`/techs/${singletech.tech_id}`}
             key={`${singletech.tech_id}`}
           >
-            <div>{`${singletech.tech_name}`}</div>
+            <div className="list__item">{`${singletech.tech_name}`}</div>
           </Link>
         ))}
       </ul>

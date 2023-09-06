@@ -4,6 +4,7 @@
 .footer{
     background-color: $primary-neutral;
     @include page-padding;
+    width:100vw;
 
     &__wrapper{
         display:flex;

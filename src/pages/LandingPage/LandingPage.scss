@@ -1,0 +1,21 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+
+
+.page{
+    background-color: $primary-neutral;
+    @include page-padding;
+}
+.logo {
+  display: flex;
+  align-items: center;
+  width:100vw;
+  justify-content: center;
+  @include page-padding;
+
+ 
+ 
+  &__img{
+    width:50%
+  }
+}

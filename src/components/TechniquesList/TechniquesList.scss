@@ -4,5 +4,36 @@
 .list{
     &__wrapper{
         background-color: $primary-neutral;
+       
     }
+
+    &__title{
+        margin-top:0;
+        @include page-padding;
+        padding-top: 2rem;
+        font-size: 1.5rem;
+        font-weight: 400;
+    }
+    &__list{
+        display:flex;
+        flex-wrap: wrap;
+        flex-direction: column;
+        padding: 0.5rem;
+        height: 20rem;
+        a {
+            text-decoration: none;
+        }
+        
+    }
+    &__item{
+        padding:0.5rem; 
+        font-size: 1rem;
+        color: $primary-dark;
+        width:fit-content;
+        border-radius: 1rem;
+    }
+   &__item:hover{
+        background-color: $secondary-dark-color-tint;
+    
+   }
 }

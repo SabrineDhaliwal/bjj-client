@@ -5,7 +5,7 @@ function AddTechPage (){
 
     return(
         <>
-        <h1>Add to our Database</h1>
+       
         <AddTech />
         {/* <AddPosition/> */}
         </>

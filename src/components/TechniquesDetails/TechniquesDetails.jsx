@@ -1,6 +1,8 @@
+import "./TechniqueDetails.scss";
+import BackButton from "../../assets/icons/left-arrow.png"
 import axios from "axios";
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 
 function TechniquesDetails() {
   const params = useParams();
@@ -24,11 +26,18 @@ function TechniquesDetails() {
 
   return (
     <>
+    <div className="details">
+    <h3 className="details__header">The Details</h3>
       <div>
-        <p>{`${techById.tech_name}`}</p>
-        <p>{`${techById.type}`}</p>
-        <p>{`${techById.level}`}</p>
-        <p>{`${techById.description}`}</p>
+        <p className="details__subheader">Technique<span className="details__text"><br />{`${techById.tech_name}`}</span></p>
+        <p className="details__subheader">Target<span className="details__text"><br />{`${techById.type}`}</span></p>
+        <p className="details__subheader">Level<span className="details__text"><br />{`${techById.level}`}</span></p>
+        <p className="details__subheader">What is it?<span className="details__text"><br />{`${techById.description}`}</span></p>
+      </div>
+     <Link 
+     to='/techs'>
+     <img src={BackButton} alt='back-button'/>
+     </Link>
       </div>
     </>
   );

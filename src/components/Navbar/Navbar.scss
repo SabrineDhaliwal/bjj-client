@@ -5,6 +5,7 @@
     background-color: $primary-neutral;
     margin:0;
     @include page-padding;
+    width:100vw;
 
     &__wrapper{
         display:flex;

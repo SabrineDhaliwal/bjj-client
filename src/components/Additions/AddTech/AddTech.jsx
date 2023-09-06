@@ -1,3 +1,4 @@
+import "./AddTech.scss";
 import Button from "../../Buttons/Buttons";
 import { useFormik } from "formik";
 import axios from "axios";
@@ -39,7 +40,8 @@ function AddTech() {
     navigate("/techs");
   };
   return (
-    <>
+    <div className="add">
+      <h3>Add to our Database</h3>
       <form onSubmit={formik.handleSubmit}>
         <div className="add__input-wrapper">
           <div className="add__input-set">
@@ -102,7 +104,7 @@ function AddTech() {
           />
         </div>
       </form>
-    </>
+    </div>
   );
 }
 
