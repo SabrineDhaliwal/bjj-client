@@ -4,4 +4,31 @@
 .add{
     background-color: $primary-neutral;
     @include page-padding;
+    
+    &__input-wrapper{
+        width: 65vw;
+        display:flex;
+        flex-direction: column;
+        
+    }
+
+    &__input-set{
+        padding: 0.25rem 0;
+        display:flex;
+        justify-content: space-between;
+
+    }
+    &__label{
+        font-weight: 600;
+    }
+
+    &__input{
+        width:35vw;
+    }
+
+    &__textarea{
+        width:35vw;
+        height: 30vh;
+        resize: none;
+    }
 }

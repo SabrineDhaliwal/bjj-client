@@ -45,7 +45,7 @@ function AddTech() {
       <form onSubmit={formik.handleSubmit}>
         <div className="add__input-wrapper">
           <div className="add__input-set">
-            <label className="add__label">Technique Name</label>
+            <label className="add__label">Technique Name:</label>
             <input
               type="text"
               id="tech_name"
@@ -57,7 +57,7 @@ function AddTech() {
           </div>
 
           <div className="add__input-set">
-            <label className="add__label">Type</label>
+            <label className="add__label">Type:</label>
             <input
               type="text"
               id="type"
@@ -70,7 +70,7 @@ function AddTech() {
           </div>
 
           <div className="add__input-set">
-            <label className="add__label">Level</label>
+            <label className="add__label">Level:</label>
             <input
               type="text"
               id="level"
@@ -82,12 +82,12 @@ function AddTech() {
             />
           </div>
           <div className="add__input-set">
-            <label className="add__label"> Description</label>
+            <label className="add__label"> Description:</label>
             <textarea
               type="text"
               id="desciption"
               name="description"
-              className="add__input"
+              className="add__input, add__textarea"
               placeholder="Please describe the technique"
               value={formik.values.description}
               onChange={formik.handleChange}

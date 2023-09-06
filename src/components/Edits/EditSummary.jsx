@@ -1,13 +1,16 @@
+import "./EditSummary.scss";
 import Button from "../Buttons/Buttons";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { useFormik } from "formik";
-import { useState, useEffect  } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 
 function EditSummary(){
 
 const API_URL = process.env.REACT_APP_BASE_URL;
 const params = useParams();
+const navigate = useNavigate();
+
 
 const [editSummary, setEditSummary]= useState([])
 const [techs, setTechs] = useState([]);
@@ -71,14 +74,15 @@ const formik = useFormik({
     initialValues: {},
   
     onSubmit:(values)=> {
-      console.log("changes", values)
+      // console.log("changes", values);
+     navigate('/userprofile/1')
     }
 });
 
 
     return(
-        <>   
-      <div>Edit your summary here</div>
+        <div className="edit-summary">   
+      <h3>Edit Your Summary</h3>
       <div>
         <form
          onSubmit = {formik.handleSubmit}
@@ -177,10 +181,10 @@ const formik = useFormik({
           </div>
 
 
-          <div className="summary-form__summary">
+          <div className="summary-form__input-set">
             <label className="summary-form__label">Summary</label>
             <textarea
-              className="summary-form__input"
+              className="summary-form__input, summary-form__input--textarea"
               id="summary"
               type="text"
               name="summary"
@@ -194,7 +198,7 @@ const formik = useFormik({
           </form>
           </div>
         
-        </>
+        </div>
     )
 }
 

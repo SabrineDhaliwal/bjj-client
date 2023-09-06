@@ -28,7 +28,7 @@ function App() {
       <Route path='/techs' element = {<TechniquesPage/>}/>
       <Route path ='techs/:id' element= {<TechniquesDetailsPage/>}/>
       <Route path='/edit/:summaryid' element ={<EditSummaryPage/>}/>
-      <Route path='/add' element = {<AddTechPage />}/>
+      <Route path='/add/techs' element = {<AddTechPage />}/>
     </Routes>
     <Footer />
     </BrowserRouter>

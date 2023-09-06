@@ -12,7 +12,7 @@ function TechniquesList() {
 
   const handleAddTechnique = (event) => {
     console.log("clicked")
-    navigate("/add");
+    navigate("/add/techs");
   };
 
   useEffect(() => {

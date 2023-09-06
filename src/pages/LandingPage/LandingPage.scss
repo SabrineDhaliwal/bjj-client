@@ -5,17 +5,42 @@
 .page{
     background-color: $primary-neutral;
     @include page-padding;
+    // width:100vw;
 }
 .logo {
   display: flex;
+  flex-direction: column;
   align-items: center;
   width:100vw;
   justify-content: center;
-  @include page-padding;
 
  
- 
   &__img{
-    width:50%
+    width:50%;
+
+    &--animation{
+        animation:rotate 5s;
+  
+    }
   }
+}
+
+.link{
+    display:flex;
+    justify-content: center;
+    padding-top:1rem;
+
+    a{ 
+        text-decoration: none;
+        color:$primary-dark-color;
+    }
+    
+    &__text{
+        padding-right:1rem
+    }
+}
+
+@keyframes rotate {
+    from{}
+    to{transform: rotate(360deg)}
 }

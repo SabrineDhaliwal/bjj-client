@@ -6,7 +6,7 @@ function AddPosition (){
 <form>
         <div className="add__input-wrapper">
         <div className="add__input-set">
-          <label className="add__label">Technique Name</label>
+          <label className="add__label">Position Name</label>
           <input type="text" id="" name="" className="add__input"/>
         </div>
 
