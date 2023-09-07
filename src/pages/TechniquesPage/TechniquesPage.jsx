@@ -1,4 +1,4 @@
-import TechniquesList from "../../components/TechniquesList/TechniquesList"
+import TechniquesList from "../../components/DatabaseLists/TechniquesList"
 
 function TechniquesPage ()
     {

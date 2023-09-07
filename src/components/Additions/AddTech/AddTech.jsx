@@ -98,7 +98,7 @@ function AddTech() {
                   ? "add__field add__field--error"
                   : "add__field"
               }
-              placeholder="Joint? Strangle? Defense?"
+              placeholder="Joint? Strangle? Sweep? Defense?"
               value={formik.values.type}
               onChange={formik.handleChange}
             />

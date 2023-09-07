@@ -10,6 +10,7 @@ import AddTechPage from './pages/AddPage/AddPage';
 import TechniquesPage from './pages/TechniquesPage/TechniquesPage';
 import TechniquesDetailsPage from './pages/TechniquesDetailPage/TechniquesDetailPage';
 import LandingPage from './pages/LandingPage/LandingPage';
+import PositionsPage from './pages/PositionsPage/PositionsPage';
 
 
 
@@ -29,6 +30,7 @@ function App() {
       <Route path ='techs/:id' element= {<TechniquesDetailsPage/>}/>
       <Route path='/edit/:summaryid' element ={<EditSummaryPage/>}/>
       <Route path='/add/techs' element = {<AddTechPage />}/>
+      <Route path='/positions' element ={<PositionsPage/>}/>
     </Routes>
     <Footer />
     </BrowserRouter>

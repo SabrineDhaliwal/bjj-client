@@ -1,4 +1,4 @@
-import "./TechniquesList.scss";
+import "./ListsStyling.scss";
 import Button from "../Buttons/Buttons";
 
 import axios from "axios";
