@@ -122,21 +122,30 @@ function SummaryInput() {
         <form onSubmit={formik.handleSubmit}>
           <div className="summary-form__input-set">
             <label className="summary-form__label">Title</label>
+            {formik.errors.title ? <div>{formik.errors.title}</div> : null}
             <input
-              className="summary-form__input"
+              className={
+                formik.errors.title
+                  ? "summary-form__field summary-form__field--error"
+                  : "summary-form__field"
+              }
               id="title"
               type="text"
               name="title"
               value={formik.values.title}
               onChange={formik.handleChange}
             />
-            {formik.errors.title ? <div>{formik.errors.title}</div> : null}
           </div>
 
           <div className="summary-form__input-set">
             <label className="summary-form__label">Date:</label>
+            {formik.errors.date ? <div>{formik.errors.date}</div> : null}
             <input
-              className="summary-form__input"
+              className={
+                formik.errors.date
+                  ? "summary-form__field summary-form__field--error"
+                  : "summary-form__field"
+              }
               id="date"
               type="date"
               name="date"
@@ -144,17 +153,21 @@ function SummaryInput() {
               value={formik.values.date}
               onChange={formik.handleChange}
             />
-            {formik.errors.date ? <div>{formik.errors.date}</div> : null}
           </div>
 
           <div className="summary-form__input-set">
             <label className="summary-form__label">
               What technique did you learn?
             </label>
+            {formik.errors.tech ? <div>{formik.errors.tech}</div> : null}
             <select
               id="tech"
               name="tech"
-              className="create-form__input"
+              className={
+                formik.errors.tech
+                  ? "summary-form__field  summary-form__field--error"
+                  : "summary-form__field"
+              }
               value={formik.values.tech}
               onChange={formik.handleChange}
             >
@@ -170,15 +183,19 @@ function SummaryInput() {
                 </option>
               ))}
             </select>
-            {formik.errors.tech ? <div>{formik.errors.tech}</div> : null}
           </div>
 
           <div className="summary-form__input-set">
             <label className="summary-form__label">What was your Target</label>
+            {formik.errors.target ? <div>{formik.errors.target}</div> : null}
             <select
               id="target"
               name="target"
-              className="summary-form__input"
+              className={
+                formik.errors.target
+                  ? "summary-form__field summary-form__field--error"
+                  : "summary-form__field"
+              }
               value={formik.values.target}
               onChange={formik.handleChange}
             >
@@ -194,17 +211,23 @@ function SummaryInput() {
                 </option>
               ))}
             </select>
-            {formik.errors.target ? <div>{formik.errors.target}</div> : null}
           </div>
 
           <div className="summary-form__input-set">
             <label className="summary-form__label">
-              What Position did you implement it from?
+              What Position did you start from?
             </label>
+            {formik.errors.position ? (
+              <div>{formik.errors.position}</div>
+            ) : null}
             <select
               id="position"
               name="position"
-              className="summary-form__input"
+              className={
+                formik.errors.position
+                  ? "summary-form__field summary-form__field--error"
+                  : "summary-form__field"
+              }
               value={formik.values.position}
               onChange={formik.handleChange}
             >
@@ -220,15 +243,12 @@ function SummaryInput() {
                 </option>
               ))}
             </select>
-            {formik.errors.position ? (
-              <div>{formik.errors.position}</div>
-            ) : null}
           </div>
 
           <div className="summary-form__input-set">
             <label className="summary-form__label">Summary</label>
             <textarea
-              className="summary-form__input"
+              className="summary-form__field summary-form__textarea"
               id="summary"
               type="text"
               name="summary"
@@ -241,7 +261,7 @@ function SummaryInput() {
           <div className="summary-form__input-set">
             <label className="summary-form__label">Video Upload</label>
             <input
-              className="summary-form__input summary-form__input--color"
+              className="summary-form__field summary-form__field--color"
               id="video"
               type="file"
               name="video"

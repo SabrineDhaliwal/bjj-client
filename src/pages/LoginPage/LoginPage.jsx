@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom"
+import { useNavigate } from "react-router-dom";
 import Button from "../../components/Buttons/Buttons";
 import logo from "../../assets/logos/vertical_fulllogo.png";
 import "./LoginPage.scss";
@@ -7,47 +7,41 @@ import "./LoginPage.scss";
 function LoginPage() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [formErrors, setFormErrors] = useState({username: "", password: ""});
+  const [formErrors, setFormErrors] = useState({ username: "", password: "" });
   //   const [createAccount, setCreateAccount] = useState("createAccount");
   const navigate = useNavigate();
 
-  
-    function handleCreateAccount(event) {
-        // console.log("Clicked create account");
-        event.preventDefault();
-        navigate('/createaccount')
-      }
+  function handleCreateAccount(event) {
+    // console.log("Clicked create account");
+    event.preventDefault();
+    navigate("/createaccount");
+  }
 
+  const isInputValid = () => {
+    let errors = { username: "", password: "" };
 
-    const isInputValid = () => {
-        let errors = { username: "", password:"" };
-
-        if (!username) {
-            errors.username = "Username is required";
-        }
-
-        if (!password) {
-            errors.password = 'Password is required';
-        }
-
-        setFormErrors(errors);
-        // Return true if no errors, false otherwise
-        return !(errors.username || errors.password);
-
-
+    if (!username) {
+      errors.username = "Username is required";
     }
 
+    if (!password) {
+      errors.password = "Password is required";
+    }
+
+    setFormErrors(errors);
+    // Return true if no errors, false otherwise
+    return !(errors.username || errors.password);
+  };
 
   function handleOnSubmit(event) {
     event.preventDefault();
-    if (isInputValid() ) {
-  
-    navigate("/userprofile/1")
+    if (isInputValid()) {
+      navigate("/userprofile/1");
 
-    //TODO add useNavigate if passes validation to landingPage
-    //validation needs to check information in database users table
-    }else {
-        console.log('Errors on form')
+      //TODO add useNavigate if passes validation to landingPage
+      //validation needs to check information in database users table
+    } else {
+      console.log("Errors on form");
     }
   }
   return (
@@ -56,23 +50,27 @@ function LoginPage() {
 
       <h2>Welcome Back {username}</h2>
       <div className="form__wrapper">
-        <form 
-        className="form__form"
-        onSubmit={handleOnSubmit}>
+        <form className="form__form" onSubmit={handleOnSubmit}>
           <label className="form__label">Username</label>
           <input
             type="text"
-            className="form__field"
+            className={
+              formErrors.username
+                ? "form__field form__field--errors"
+                : "form__field"
+            }
             name="username"
             id="username"
             value={username}
             onChange={(event) => setUsername(event.target.value)}
             placeholder="Username"
           />
-           {formErrors.username && (
-          <div className="form__error-message">{formErrors.username}</div>
-        )}
-          <label className="form__label" id="password">Password</label>
+          {formErrors.username && (
+            <div className="form__error-message">{formErrors.username}</div>
+          )}
+          <label className="form__label" id="password">
+            Password
+          </label>
           <input
             type="password"
             className="form__field"
@@ -81,20 +79,18 @@ function LoginPage() {
             onChange={(event) => setPassword(event.target.value)}
             placeholder="password"
           />
-           {formErrors.password && (
-          <div className="form__error-message">{formErrors.password}</div>
-        )}
+          {formErrors.password && (
+            <div className="form__error-message">{formErrors.password}</div>
+          )}
 
           <div className="btn-container">
-          <Button text= "Login" />
-          
+            <Button text="Login" />
+
             <Button
               text="Create an Account"
               type="button"
-              clickHandler={ handleCreateAccount}
-              
+              clickHandler={handleCreateAccount}
             />
-           
           </div>
         </form>
       </div>

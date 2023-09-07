@@ -31,11 +31,12 @@
         @include form-labels;
         display:flex;
         justify-content: space-between;
-        width:70vw;
+        width:60vw;
 
     }
-    &__input{
+    &__field{
         @include form-fields;
+        width:50%;
         &--color {
             background-color: $primary-neutral;
             padding-left: -2rem,

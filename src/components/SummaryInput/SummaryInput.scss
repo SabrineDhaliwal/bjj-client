@@ -37,6 +37,23 @@
             background-color: $primary-neutral;
         }
     }
+
+    &__field{
+        @include form-fields;
+        &--color{
+            background-color: $primary-neutral;
+        }
+    }
+
+    &__textarea{
+        resize: none; 
+        background-color: $primary-light;
+        padding: 0.25rem 1 rem;
+        width:40vw;
+        height: 30vh;
+        border-radius: $border-radius;
+        font-family: Roboto;
+    }
 &__btn-container{
     display: flex;
     justify-content: right;
