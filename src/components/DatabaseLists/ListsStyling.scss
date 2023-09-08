@@ -1,9 +1,11 @@
 @use '../../styles/partials/mixins' as*;
 @use '../../styles/partials/variables' as *;
 
+
 .list{
     &__wrapper{
         background-color: $primary-neutral;
+        height:70vh;
        
     }
 
@@ -37,4 +39,10 @@
         background-color: $secondary-dark-color-tint;
     
    }
+}
+
+.logo{
+    &__img {
+        padding-top:2rem;
+    }
 }

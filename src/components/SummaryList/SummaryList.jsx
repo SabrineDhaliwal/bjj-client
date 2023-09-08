@@ -25,22 +25,28 @@ function SummaryList() {
           "something went wrong at axios get request summary list"
         );
       });
-  }, [params.id]);
+  }, [API_URL, params.id]);
 
   //
   //handle delete function
   const handleDelete = (event, idToDel) => {
+    console.log("Clicked delete", params.id, idToDel)
     alert("Are you sure you want to delete? This can not be undone");
-
     axios
-      .delete(`${API_URL}/summary/${params.id}/${idToDel}`)
+      .delete(`${API_URL}/summary/edit/${idToDel}`)
       .then((response) => {
         console.log(response);
+        // add axios call to get summaries 
+        return axios.get(`${API_URL}/summary/${params.id}`)
+      })
+      .then((summary) => {
+        setAllSummaries(summary.data.summary);
       })
       .catch((err) => {
-        console.error(err);
+        console.error(err, "if you a can read this, something went wrong in front end handleDelete");
       });
   };
+
 
   //handle edit function
   const handleEdit = (event, idtoEdit) => {

@@ -3,7 +3,8 @@
 
 .edit-summary{
     background-color: $primary-neutral;
-    @include page-padding
+    @include page-padding;
+    height:70vh;
 }
 
 .summary-form{

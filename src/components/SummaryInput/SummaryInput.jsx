@@ -88,6 +88,7 @@ function SummaryInput() {
 
     onSubmit: (values) => {
       console.log("onSubmit formik", values);
+      // window.location.reload();
 
       const formData = new FormData();
       formData.append("video", values.video);

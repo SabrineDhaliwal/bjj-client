@@ -4,6 +4,7 @@
 .details{
     background-color: $primary-neutral;
     @include page-padding;
+    height: 70vh;
 
     .header{
         margin-top:0;

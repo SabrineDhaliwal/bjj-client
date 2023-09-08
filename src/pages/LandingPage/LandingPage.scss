@@ -12,11 +12,12 @@
   flex-direction: column;
   align-items: center;
   width:100vw;
+  max-height: 45vh;
   justify-content: center;
 
  
   &__img{
-    width:50%;
+    width:40%;
 
     &--animation{
         animation:rotate 5s;

@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Button from "../../components/Buttons/Buttons";
-import logo from "../../assets/logos/vertical_fulllogo.png";
+// import logo from "../../assets/logos/vertical_fulllogo.svg";
+import logoicon from "../../assets/icons/icononly_transparent_nobuffer.png";
+import logotext from "../../assets/icons/textonly_nobuffer.png"
 import "./LoginPage.scss";
 
 function LoginPage() {
@@ -46,7 +48,8 @@ function LoginPage() {
   }
   return (
     <div className="body">
-      <img className="logo" src={logo} alt="Roll & Reflect Logo" />
+      <img className="logo--landing" src={logoicon} alt="Roll & Reflect Logo" />
+      <img className="logotext" src={logotext} alt="Roll& Reflect text"/>
 
       <h2>Welcome Back {username}</h2>
       <div className="form__wrapper">
