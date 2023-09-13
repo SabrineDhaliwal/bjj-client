@@ -9,7 +9,7 @@ function SummaryList({summaryList, handleDelete}) {
   const API_URL = process.env.REACT_APP_BASE_URL;
   // const params = useParams();
   const navigate = useNavigate();
-  // const [updatedList, setUpdatedList] = useState([]);
+  // const [summaryList, setSummaryList] = useState([]);
 
   // useEffect(() => {}, [summaryList]);
   //getting all summaries

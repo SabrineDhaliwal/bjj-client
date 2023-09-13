@@ -32,7 +32,7 @@ const updateSummaryList = (newSummary)=> {
         );
       });
   }, [API_URL, params.id]);
-  
+
   useEffect(() => {}, [summaryList]);
 
   const handleDelete = (event, idToDel) => {
@@ -42,13 +42,13 @@ const updateSummaryList = (newSummary)=> {
     axios
       .delete(`${API_URL}/summary/edit/${idToDel}`)
       .then((response) => {
-        console.log(response)
+        console.log(response, "respinse from delete call")
         // add axios call to get summaries 
         return axios.get(`${API_URL}/summary/${params.id}`)
       })
       .then((summary) => {
-        console.log(summary.data, "summary delete response")
-        setSummaryList(summary.data[0]);
+        console.log(summary.data, "response after new get request")
+        setSummaryList(summary.data);
       })
       .catch((err) => {
         console.error(err, "if you a can read this, something went wrong in front end handleDelete");
@@ -59,7 +59,7 @@ const updateSummaryList = (newSummary)=> {
     <>
       <UserProfileDetails />
       {/* center display of video? */}
-      <SummaryInput updateSummaryList={updateSummaryList}/>
+      <SummaryInput updateSummaryList={updateSummaryList} summarylist={summaryList}/>
       <SummaryList handleEdit={handleEdit} summaryList={summaryList} handleDelete={handleDelete}/>
     </>
   );
