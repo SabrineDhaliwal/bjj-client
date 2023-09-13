@@ -32,13 +32,35 @@ const updateSummaryList = (newSummary)=> {
         );
       });
   }, [API_URL, params.id]);
+  
+  useEffect(() => {}, [summaryList]);
+
+  const handleDelete = (event, idToDel) => {
+    console.log("Clicked delete", params.id, idToDel)
+    alert("Are you sure you want to delete? This can not be undone");
+    
+    axios
+      .delete(`${API_URL}/summary/edit/${idToDel}`)
+      .then((response) => {
+        console.log(response)
+        // add axios call to get summaries 
+        return axios.get(`${API_URL}/summary/${params.id}`)
+      })
+      .then((summary) => {
+        console.log(summary.data, "summary delete response")
+        setSummaryList(summary.data[0]);
+      })
+      .catch((err) => {
+        console.error(err, "if you a can read this, something went wrong in front end handleDelete");
+      });
+  };
 
   return (
     <>
       <UserProfileDetails />
       {/* center display of video? */}
       <SummaryInput updateSummaryList={updateSummaryList}/>
-      <SummaryList handleEdit={handleEdit} summaryList={summaryList} />
+      <SummaryList handleEdit={handleEdit} summaryList={summaryList} handleDelete={handleDelete}/>
     </>
   );
 }

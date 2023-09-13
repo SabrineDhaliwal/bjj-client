@@ -90,7 +90,7 @@ function SummaryInput({ updateSummaryList }) {
     validate,
 
     onSubmit: (values) => {
-      console.log("onSubmit formik", values);
+      // console.log("onSubmit formik", values);
 
       const formData = new FormData();
       formData.append("video", values.video);
@@ -109,11 +109,9 @@ function SummaryInput({ updateSummaryList }) {
           },
         })
         .then((response) => {
-          console.log(response, "response from posting new summary")
           return axios.get(`${API_URL}/summary/${params.id}`)
         })
         .then((response)=> {
-          console.log(response.data, "list response data please")
           const newSummary = response.data[0]
           updateSummaryList(newSummary)
          

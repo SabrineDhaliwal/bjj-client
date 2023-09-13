@@ -1,17 +1,16 @@
 import "./SummaryList.scss";
 import editbutton from "../../assets/icons/edit-50.png";
 import deletebutton from "../../assets/icons/delete.svg";
-import axios from "axios";
-// import { useEffect, useState } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+// import axios from "axios";
+// import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
-function SummaryList({summaryList}) {
+function SummaryList({summaryList, handleDelete}) {
   const API_URL = process.env.REACT_APP_BASE_URL;
-  const params = useParams();
+  // const params = useParams();
   const navigate = useNavigate();
-  // const [summaryList, setSummaryList] = useState([]);
+  // const [updatedList, setUpdatedList] = useState([]);
 
-  console.log(summaryList, "props recieved SL compoment")
   // useEffect(() => {}, [summaryList]);
   //getting all summaries
   // useEffect(() => {
@@ -31,28 +30,32 @@ function SummaryList({summaryList}) {
 
   //
   //handle delete function
-  const handleDelete = (event, idToDel) => {
-    console.log("Clicked delete", params.id, idToDel)
-    alert("Are you sure you want to delete? This can not be undone");
-    axios
-      .delete(`${API_URL}/summary/edit/${idToDel}`)
-      .then((response) => {
-        // add axios call to get summaries 
-        return axios.get(`${API_URL}/summary/${params.id}`)
-      })
-      // .then((summary) => {
-      //   setSummaryList(summary.data);
-      // })
-      .catch((err) => {
-        console.error(err, "if you a can read this, something went wrong in front end handleDelete");
-      });
-  };
+  // const handleDelete = (event, idToDel) => {
+  //   console.log("Clicked delete", params.id, idToDel)
+  //   alert("Are you sure you want to delete? This can not be undone");
+
+  //   axios
+  //     .delete(`${API_URL}/summary/edit/${idToDel}`)
+  //     .then((response) => {
+  //       console.log(response)
+  //       // add axios call to get summaries 
+  //       return axios.get(`${API_URL}/summary/${params.id}`)
+  //     })
+  //     .then((summary) => {
+  //       console.log(summary.data, "summary delete response")
+  //       setUpdatedList(summary.data[0]);
+  //     })
+  //     .catch((err) => {
+  //       console.error(err, "if you a can read this, something went wrong in front end handleDelete");
+  //     });
+  // };
 
 
   //handle edit function
   const handleEdit = (event, idtoEdit) => {
     navigate(`/edit/${idtoEdit}`);
   };
+
   return (
     <div className="summary-list">
       {summaryList ? (
