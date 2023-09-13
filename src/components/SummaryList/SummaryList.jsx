@@ -17,7 +17,8 @@ function SummaryList() {
     axios
       .get(`${API_URL}/summary/${params.id}`)
       .then((summary) => {
-        setAllSummaries(summary.data.summary);
+        console.log(summary.data)
+        setAllSummaries(summary.data);
       })
       .catch((err) => {
         console.error(

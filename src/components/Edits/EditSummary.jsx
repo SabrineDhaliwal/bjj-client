@@ -75,7 +75,18 @@ const formik = useFormik({
   
     onSubmit:(values)=> {
       // console.log("changes", values);
-     navigate('/userprofile/1')
+    //  navigate('/userprofile/1')
+
+    axios
+    .put(`${API_URL}/summary/edit/${params.summaryid}`, values)
+    .then((response)=> {
+      console.log(response.data, "response data")
+      alert("Edits saved")
+      navigate('/userprofile/1')
+    })
+    .catch((err)=> {
+      console.log(err, "error at axios put call Edit Summary.jsx")
+    })
     }
 });
 

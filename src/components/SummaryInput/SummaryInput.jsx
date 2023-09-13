@@ -6,13 +6,16 @@ import { useParams } from "react-router-dom";
 import Button from "../Buttons/Buttons";
 import axios from "axios";
 
-function SummaryInput() {
+
+function SummaryInput({ updateSummaryList }) {
   const API_URL = process.env.REACT_APP_BASE_URL;
   const [techs, setTechs] = useState([]);
   const [positions, setPositions] = useState([]);
   const [targets, setTargets] = useState([]);
   const params = useParams();
+  // const [summaryList, setSummaryList]= useState([]);
 
+  
   // importing techniques from database
   useEffect(() => {
     axios
@@ -88,7 +91,6 @@ function SummaryInput() {
 
     onSubmit: (values) => {
       console.log("onSubmit formik", values);
-      // window.location.reload();
 
       const formData = new FormData();
       formData.append("video", values.video);
@@ -107,12 +109,15 @@ function SummaryInput() {
           },
         })
         .then((response) => {
-          console.log(response);
-          // window.location.reload();
+          console.log(response, "response from posting new summary")
+          return axios.get(`${API_URL}/summary/${params.id}`)
         })
+        
         .catch((err) => {
           console.log(err, "error at Front end on submit");
         });
+
+        updateSummaryList();
     },
   });
 
@@ -279,6 +284,7 @@ function SummaryInput() {
           </div>
         </form>
       </div>
+      {/* <SummaryList /> */}
     </div>
   );
 }
