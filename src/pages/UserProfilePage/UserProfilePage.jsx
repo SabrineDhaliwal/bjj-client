@@ -1,13 +1,14 @@
 import UserProfileDetails from "../../components/UserProfileDetails/UserProfileDetails";
 import SummaryList from "../../components/SummaryList/SummaryList";
 import SummaryInput from "../../components/SummaryInput/SummaryInput";
-import { useNavigate } from "react-router-dom";
-import { useState } from "react";
-// import axios from "axios";
+import { useNavigate, useParams } from "react-router-dom";
+import { useState, useEffect } from "react";
+import axios from "axios";
 
 function UserProfilePage() {
-  // const API_URL = process.env.REACT_APP_BASE_URL;
+  const API_URL = process.env.REACT_APP_BASE_URL;
   const navigate = useNavigate();
+  const params = useParams();
   const [summaryList, setSummaryList] = useState([]);
   
 
@@ -17,20 +18,20 @@ function UserProfilePage() {
 const updateSummaryList = (newSummary)=> {
   setSummaryList([...summaryList, newSummary])
 }
-   //getting all summaries
-  //  useEffect((summariesCall) => {
-  //   axios
-  //     .get(`${API_URL}/summary/${params.id}`)
-  //     .then((summary) => {
-  //       setAllSummaries(summary.data.summary);
-  //     })
-  //     .catch((err) => {
-  //       console.error(
-  //         err,
-  //         "something went wrong at axios get request summary list"
-  //       );
-  //     });
-  // }, [API_URL, params.id]);
+   //getting all summaries named: summaryList
+   useEffect(() => {
+    axios
+      .get(`${API_URL}/summary/${params.id}`)
+      .then((summary) => {
+        setSummaryList(summary.data);
+      })
+      .catch((err) => {
+        console.error(
+          err,
+          "something went wrong at axios get request summary list"
+        );
+      });
+  }, [API_URL, params.id]);
 
   return (
     <>

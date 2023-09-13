@@ -112,12 +112,16 @@ function SummaryInput({ updateSummaryList }) {
           console.log(response, "response from posting new summary")
           return axios.get(`${API_URL}/summary/${params.id}`)
         })
-        
+        .then((response)=> {
+          console.log(response.data, "list response data please")
+          const newSummary = response.data[0]
+          updateSummaryList(newSummary)
+         
+        })
         .catch((err) => {
           console.log(err, "error at Front end on submit");
         });
-
-        updateSummaryList();
+    
     },
   });
 
@@ -284,7 +288,7 @@ function SummaryInput({ updateSummaryList }) {
           </div>
         </form>
       </div>
-      {/* <SummaryList /> */}
+    
     </div>
   );
 }

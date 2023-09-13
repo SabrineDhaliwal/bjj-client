@@ -2,31 +2,32 @@ import "./SummaryList.scss";
 import editbutton from "../../assets/icons/edit-50.png";
 import deletebutton from "../../assets/icons/delete.svg";
 import axios from "axios";
-import { useEffect, useState } from "react";
+// import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 
-function SummaryList() {
+function SummaryList({summaryList}) {
   const API_URL = process.env.REACT_APP_BASE_URL;
   const params = useParams();
   const navigate = useNavigate();
-  const [allSummaries, setAllSummaries] = useState([]);
+  // const [summaryList, setSummaryList] = useState([]);
 
-  useEffect(() => {}, [allSummaries]);
+  console.log(summaryList, "props recieved SL compoment")
+  // useEffect(() => {}, [summaryList]);
   //getting all summaries
-  useEffect(() => {
-    axios
-      .get(`${API_URL}/summary/${params.id}`)
-      .then((summary) => {
-        console.log(summary.data)
-        setAllSummaries(summary.data);
-      })
-      .catch((err) => {
-        console.error(
-          err,
-          "something went wrong at axios get request summary list"
-        );
-      });
-  }, [API_URL, params.id]);
+  // useEffect(() => {
+  //   axios
+  //     .get(`${API_URL}/summary/${params.id}`)
+  //     .then((summary) => {
+  //       console.log(summary.data)
+  //       setSummaryList(summary.data);
+  //     })
+  //     .catch((err) => {
+  //       console.error(
+  //         err,
+  //         "something went wrong at axios get request summary list"
+  //       );
+  //     });
+  // }, [API_URL, params.id]);
 
   //
   //handle delete function
@@ -36,13 +37,12 @@ function SummaryList() {
     axios
       .delete(`${API_URL}/summary/edit/${idToDel}`)
       .then((response) => {
-        console.log(response);
         // add axios call to get summaries 
         return axios.get(`${API_URL}/summary/${params.id}`)
       })
-      .then((summary) => {
-        setAllSummaries(summary.data.summary);
-      })
+      // .then((summary) => {
+      //   setSummaryList(summary.data);
+      // })
       .catch((err) => {
         console.error(err, "if you a can read this, something went wrong in front end handleDelete");
       });
@@ -55,16 +55,19 @@ function SummaryList() {
   };
   return (
     <div className="summary-list">
-      {allSummaries ? (
-        allSummaries.map((summary) => (
+      {summaryList ? (
+        summaryList.map((summary) => (
           <div className="summary-list__wrapper" key={`${summary.summary_id}`}>
             <div className="summary-list__left">
+              {summary.video? (
               <video
                 src={`${API_URL}/${summary.video}`}
                 controls
                 className="summary-list__img"
                 type="video/mp4"
-              />{" "}
+              />) : (
+                <p>No video available</p>
+              )}
             </div>
             <div className="summary-list__center">
               <div className="summary-list__center-top">
