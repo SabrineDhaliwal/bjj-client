@@ -7,15 +7,13 @@ import Button from "../Buttons/Buttons";
 import axios from "axios";
 
 
-function SummaryInput({ updateSummaryList, summaryList }) {
+function SummaryInput({ updateSummaryList }) {
   const API_URL = process.env.REACT_APP_BASE_URL;
   const [techs, setTechs] = useState([]);
   const [positions, setPositions] = useState([]);
   const [targets, setTargets] = useState([]);
   const params = useParams();
 
-
-  
   // importing techniques from database
   useEffect(() => {
     axios
@@ -90,8 +88,7 @@ function SummaryInput({ updateSummaryList, summaryList }) {
     validate,
 
     onSubmit: (values) => {
-      console.log("onSubmit formik", values);
-
+ 
       const formData = new FormData();
       formData.append("video", values.video);
       formData.append("position", values.position);
@@ -112,10 +109,9 @@ function SummaryInput({ updateSummaryList, summaryList }) {
           return axios.get(`${API_URL}/summary/${params.id}`)
         })
         .then((response)=> {
-          // console.log(summaryList, "after post API line 115")
           const newSummary = response.data[0]
-          console.log(response.data, "response data line 116")
           updateSummaryList(newSummary)
+
          
         })
         .catch((err) => {

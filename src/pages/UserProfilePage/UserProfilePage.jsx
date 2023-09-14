@@ -16,7 +16,7 @@ function UserProfilePage() {
     navigate("/edit");
   };
 const updateSummaryList = (newSummary)=> {
-  setSummaryList([...summaryList, newSummary])
+  setSummaryList([newSummary, ...summaryList])
 }
    //getting all summaries named: summaryList
    useEffect(() => {
@@ -36,18 +36,16 @@ const updateSummaryList = (newSummary)=> {
   useEffect(() => {}, [summaryList]);
 
   const handleDelete = (event, idToDel) => {
-    console.log("Clicked delete", params.id, idToDel)
+    // console.log("Clicked delete", params.id, idToDel)
     alert("Are you sure you want to delete? This can not be undone");
     
     axios
       .delete(`${API_URL}/summary/edit/${idToDel}`)
       .then((response) => {
-        console.log(response, "respinse from delete call")
         // add axios call to get summaries 
         return axios.get(`${API_URL}/summary/${params.id}`)
       })
       .then((summary) => {
-        console.log(summary.data, "response after new get request")
         setSummaryList(summary.data);
       })
       .catch((err) => {
@@ -59,7 +57,7 @@ const updateSummaryList = (newSummary)=> {
     <>
       <UserProfileDetails />
       {/* center display of video? */}
-      <SummaryInput updateSummaryList={updateSummaryList} summarylist={summaryList}/>
+      <SummaryInput updateSummaryList={updateSummaryList} summaryList={summaryList}/>
       <SummaryList handleEdit={handleEdit} summaryList={summaryList} handleDelete={handleDelete}/>
     </>
   );
