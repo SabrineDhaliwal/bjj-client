@@ -2,12 +2,12 @@
 
 **PROJECT OVERVIEW**
 
-This was my capstone project to complete my Web Development Diploma at BrainStation. This is an ongoing proejct of mine, as it is something I would like to see other users to benefit from, it's just not there, YET. 
+This was my capstone project to complete my Web Development Diploma at BrainStation. This is an ongoing project of mine, as it is something I would like to see other users to benefit from, it's just not there, YET. 
 
 This is a learning tracking app for Brazilian Jiu-Jitsu where users are able to input their learning along with a video of their practice. 
 Being able to watch yourself in motion in sports is important as it allows one to narrow in on focus points. 
 
-There was not dataset or API available that I had the information I wanted to build this application, and with that there are opportunities for the community to add to the database to continue to educate other members. 
+There wasn't a dataset or API available that I had the information I wanted to build this application, and with that, there are opportunities for the community to add to the database to continue to educate other members. 
 
 **LANDING PAGE**
 
