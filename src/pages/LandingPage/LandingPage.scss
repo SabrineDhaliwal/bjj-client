@@ -5,19 +5,19 @@
 .page{
     background-color: $primary-neutral;
     @include page-padding;
-    // width:100vw;
+  
 }
 .logo {
   display: flex;
   flex-direction: column;
   align-items: center;
   width:100vw;
-  max-height: 45vh;
+//   max-height: 25%;
   justify-content: center;
 
  
   &__img{
-    width:40%;
+    width:30%;
 
     &--animation{
         animation:rotate 5s;

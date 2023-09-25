@@ -1,7 +1,22 @@
 import './ListsStyling.scss';
 import TransparentIcon from "../../assets/icons/icononly_transparent_nobuffer.png";
+import axios from axios;
+import { useEffect, useState } from 'react';
+
 
 function PositionsList(){
+  const API_URL = process.env.REACT_APP_BASE_URL;
+  const [allPosition, setAllPosition] = useState();
+  
+  useEffect(()=> {
+    axios
+    .get(`${API_URL}/position`)
+    .then((positions)=>{
+      setAllPosition(positions.data)
+    })
+
+  },[])
+
     return(
            // classNames are written to be reusable styling sheet for future lists
     <div className="list__wrapper">

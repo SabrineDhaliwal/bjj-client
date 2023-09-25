@@ -30,7 +30,7 @@ function UserProfileDetails() {
 
   return (
     <div className="UPD">
-      <div className="UPD__container"></div>
+      
       {userdetailsObject ? (
         <>
           <div className="UPD__img-block">

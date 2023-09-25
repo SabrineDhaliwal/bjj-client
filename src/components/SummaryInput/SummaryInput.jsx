@@ -125,7 +125,7 @@ function SummaryInput({ updateSummaryList }) {
     <div className="summary">
       <div className="summary__title">Enter a new training summary</div>
       <div>
-        <form onSubmit={formik.handleSubmit}>
+        <form onSubmit={formik.handleSubmit} >
           <div className="summary-form__input-set">
             <label className="summary-form__label">Title</label>
             {formik.errors.title ? <div>{formik.errors.title}</div> : null}
