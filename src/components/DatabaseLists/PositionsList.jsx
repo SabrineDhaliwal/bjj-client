@@ -1,21 +1,26 @@
 import './ListsStyling.scss';
+import Button from '../Buttons/Buttons';
 import TransparentIcon from "../../assets/icons/icononly_transparent_nobuffer.png";
-import axios from axios;
+import axios from 'axios';
 import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 
 
 function PositionsList(){
   const API_URL = process.env.REACT_APP_BASE_URL;
-  const [allPosition, setAllPosition] = useState();
+  const [allPositions, setAllPositions] = useState([]);
   
   useEffect(()=> {
     axios
     .get(`${API_URL}/positions`)
     .then((positions)=>{
-      setAllPosition(positions.data)
+      console.log(positions.data)
+      setAllPositions(positions.data)
     })
-
-  },[])
+    .catch((err)=> {
+      console.log(err, "error at axios all positions list")
+    })
+  },[API_URL]);
 
     return(
            // classNames are written to be reusable styling sheet for future lists
@@ -29,23 +34,25 @@ function PositionsList(){
         <p>Keep on Rolling & Reflecting</p>
 
       </div>
-      {/* {allTechs
+      {allPositions
       .slice()
-      .sort((a,b)=>a.tech_name.localeCompare(b.tech_name))
-      .map((singletech) => (
+      .sort((a,b)=>a.position_name.localeCompare(b.position_name))
+      .map((singlePosition) => 
+      (
         <Link
-          to={`/techs/${singletech.tech_id}`}
-          key={`${singletech.tech_id}`}
+          to={`/positions/${singlePosition.position_id}`}
+          key={`${singlePosition.position_id}`}
         >
-          <div className="list__item">{`${singletech.tech_name}`}</div>
+          <div className="list__item">{`${singlePosition.position_name}`}</div>
         </Link>
-      ))} */}
+      ))
+      }
     </ul>
-    {/* <Button
-      text="Add Technique"
+    <Button
+      text="Add Position"
       type="button"
-      clickHandler={handleAddTechnique}
-    /> */}
+      // clickHandler={handleAddTechnique}
+    />
   </div>
     )
 }
