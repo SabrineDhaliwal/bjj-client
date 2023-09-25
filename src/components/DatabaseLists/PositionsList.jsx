@@ -10,7 +10,7 @@ function PositionsList(){
   
   useEffect(()=> {
     axios
-    .get(`${API_URL}/position`)
+    .get(`${API_URL}/positions`)
     .then((positions)=>{
       setAllPosition(positions.data)
     })
