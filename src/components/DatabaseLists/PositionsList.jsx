@@ -26,14 +26,14 @@ function PositionsList(){
            // classNames are written to be reusable styling sheet for future lists
     <div className="list__wrapper">
     <h3 className="list__title">
-    We still working on this page, we appreaciate your patiences. Opportunity to add to our database coming soon  </h3>
+    Select a position below to learn more  </h3>
     <ul className="list__list">
       
-      <div className="logo">
+      {/* <div className="logo">
         <img src={TransparentIcon} alt="logo" className="logo__img logo__img--animation"/>
         <p>Keep on Rolling & Reflecting</p>
 
-      </div>
+      </div> */}
       {allPositions
       .slice()
       .sort((a,b)=>a.position_name.localeCompare(b.position_name))
