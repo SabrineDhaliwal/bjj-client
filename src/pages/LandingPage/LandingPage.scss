@@ -4,7 +4,7 @@
 
 .page{
     background-color: $primary-neutral;
-    @include page-padding;
+    @include page__padding--tablet;
   
 }
 .logo {

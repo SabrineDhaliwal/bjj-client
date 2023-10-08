@@ -3,12 +3,12 @@
 
 .details{
     background-color: $primary-neutral;
-    @include page-padding;
+    @include page__padding--tablet;
     height: 70vh;
 
     .header{
         margin-top:0;
-        @include page-padding;
+        // @include page-padding;
         padding-top: 2rem;
         font-size: 1.5rem;
         font-weight: 400;

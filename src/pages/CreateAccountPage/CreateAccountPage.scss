@@ -3,7 +3,7 @@
 
 .create-page{
     background-color: $primary-neutral;
-    @include page-padding; 
+    @include page__padding--tablet; 
     display: flex;
     flex-direction: column;
     // justify-content: center;

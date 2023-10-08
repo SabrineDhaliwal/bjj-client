@@ -1,6 +1,6 @@
 import "./Navbar.scss";
 import logoHorizontal from "../../assets/logos/horizontal_fulllogo_nobuffer.png";
-import {Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 function Navbar() {
   // const navigate = useNavigate();

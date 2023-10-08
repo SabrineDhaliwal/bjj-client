@@ -41,17 +41,47 @@
   
 
 }
+@mixin page__padding--mobile{
+padding: 0.5rem;
 
-@mixin page-padding {
-    padding-top: 0.5rem;
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
-    padding-bottom: 0.5rem;
+}
+@mixin page__padding--tablet {
+    padding: 0.5rem 1.5rem;
+    // padding-top: 0.5rem;
+    // padding-left: 1.5rem;
+    // padding-right: 1.5rem;
+    // padding-bottom: 0.5rem;
 }
 
-@mixin page-margin {
+@mixin page-margin--tablet {
     margin-top: 0.5rem;
     margin-left:0.75rem;
     margin-right:0.75rem;
     margin-bottom: 0.75rem;
+}
+
+@mixin logo-navSm {
+    width: 6rem;
+}
+
+@mixin logo-navMed{
+    width:12rem;
+    padding-top: 0.5rem;
+}
+
+@mixin logo-navLg{
+    width: 16rem;
+}
+
+@mixin font__size--mobile{
+    font-size: 0.625rem;
+}
+
+@mixin font__size--tablet{
+    font-size: 0.875rem;
+    padding-left:0.5rem;
+}
+
+@mixin font__size--desktop{
+    font-size: 0.875rem;
 }

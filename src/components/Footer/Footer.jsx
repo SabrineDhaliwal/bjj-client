@@ -18,16 +18,18 @@ function Footer (){
                 <p>info@rollandreflect.com</p>
             </div>
             <div className="footer__pages">
+                {/* to do add links to other pages */}
                 <p>Home</p>
                 <p>About</p>
                 <p>Back to Top</p>
-                <p>Calendar</p>
+                {/* <p>Calendar</p> */}
 
             </div>
+            {/* to do add links to social media sites  */}
             <div className="footer__social">
-                <img src={facebook} alt="facebook link"/>
-                <img src={instagram} alt="instagram link"/>
-                <img src={twitter} alt="twitter link"/> 
+                <img src={facebook} className="social__icon" alt="facebook link"/>
+                <img src={instagram} className="social__icon" alt="instagram link"/>
+                <img src={twitter}  className="social__icon" alt="twitter link"/> 
             </div> 
 
         </div>

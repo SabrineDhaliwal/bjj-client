@@ -5,7 +5,7 @@
     background-color: $primary-neutral;
     display:flex;
     flex-direction: column;
-    @include page-padding;
+    @include page__padding--tablet;
 
     @include desktop{
         align-items: left;

@@ -4,7 +4,7 @@
 .UPD{
     background-color: $primary-neutral;
     display:flex;
-    @include page-padding;
+    @include page__padding--tablet;
     justify-content: center;
 
     // @include desktop{
