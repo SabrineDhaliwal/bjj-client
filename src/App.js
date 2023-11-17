@@ -11,6 +11,7 @@ import TechniquesPage from './pages/TechniquesPage/TechniquesPage';
 import TechniquesDetailsPage from './pages/TechniquesDetailPage/TechniquesDetailPage';
 import LandingPage from './pages/LandingPage/LandingPage';
 import PositionsPage from './pages/PositionsPage/PositionsPage';
+import PositionsDetailsPage from './pages/PositionsDetailsPage/PositionsDetailsPage';
 
 
 
@@ -31,6 +32,7 @@ function App() {
       <Route path='/edit/:summaryid' element ={<EditSummaryPage/>}/>
       <Route path='/add/techs' element = {<AddTechPage />}/>
       <Route path='/positions' element ={<PositionsPage/>}/>
+      <Route path= '/positions/:id' element ={<PositionsDetailsPage/>}/>
     </Routes>
     <Footer />
     </BrowserRouter>
