@@ -8,7 +8,8 @@ import axios from "axios";
 
 
 function SummaryInput({ updateSummaryList }) {
-  const API_URL = process.env.REACT_APP_BASE_URL;
+  const API_URL = import.meta.env.VITE_BASE_URL;
+
   const [techs, setTechs] = useState([]);
   const [positions, setPositions] = useState([]);
   const [targets, setTargets] = useState([]);
@@ -25,6 +26,7 @@ function SummaryInput({ updateSummaryList }) {
         console.error(err);
       });
   }, [API_URL]);
+
 
   //importing targets from data base
   useEffect(() => {

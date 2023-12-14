@@ -1,12 +1,13 @@
 import "./UserProfileDetails.scss";
-import profilePic from "../../assets/images/sabrine_bb_8895.JPG"
+// import profilePic from "../../assets/images/sabrine_bb_8895.JPG"
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 
 function UserProfileDetails() {
   //UPS-> short for UserProfile Details
-  const API_URL = process.env.REACT_APP_BASE_URL;
+  const API_URL = import.meta.env.VITE_BASE_URL;
+
 
   const { id } = useParams();
   const [userdetailsObject, setUserDetailsObject] = useState([]);
@@ -35,7 +36,7 @@ function UserProfileDetails() {
         <>
           <div className="UPD__img-block">
             <img
-              src={profilePic}
+              // src={profilePic}
               // {`${userdetailsObject.image}`}
               alt="profile picture"
               className="UPD__image"

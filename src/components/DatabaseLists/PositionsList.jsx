@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 
 
 function PositionsList(){
-  const API_URL = process.env.REACT_APP_BASE_URL;
+  const API_URL = import.meta.env.VITE_BASE_URL;
   const [allPositions, setAllPositions] = useState([]);
   
   useEffect(()=> {

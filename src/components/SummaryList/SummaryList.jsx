@@ -4,7 +4,7 @@ import deletebutton from "../../assets/icons/delete.svg";
 import { useNavigate } from "react-router-dom";
 
 function SummaryList({summaryList, handleDelete}) {
-  const API_URL = process.env.REACT_APP_BASE_URL;
+  const API_URL = import.meta.env.VITE_BASE_URL;
   const navigate = useNavigate();
 
 
