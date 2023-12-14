@@ -1,40 +1,46 @@
-@use "../../styles/partials/mixins" as*;
+@use "../../styles/partials/mixins" as *;
 @use "../../styles/partials/variables" as *;
 
 .nav {
-    background-color: $primary-neutral;
-    margin:0;
-    @include page-padding;
-   
+  background-color: $primary-neutral;
+  margin: 0;
+  @include page__padding--mobile;
 
-    &__wrapper{
-        display:flex;
-        justify-content: space-between;
-        align-items: center;
-        @include page-padding;
+  &__wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
 
+  &__logo {
+    @include logo-navSm;
+
+    @include tablet {
+      @include logo-navMed;
     }
+      @include desktop {
+        @include logo-navLg;
+      }
+    
+  }
+  &__link-container {
+    display: flex;
+  }
 
-    &__logo{
-        width:30vw;
-        height: auto;
+  &__link {
+    text-decoration: none;
+    margin: 0 0.25rem;
+    color: $secondary-dark-color-shade;
+    @include font__size--mobile;
 
+    @include tablet {
+      @include font__size--tablet;
     }
-    &__link-container{
-        display:flex;
-        margin: 0 1rem
-    }
+  }
 
-    &__link{
-        text-decoration: none;
-        margin:0 0.5rem;
-        color: $secondary-dark-color-shade;
-    }
-
-    &__link:hover{
-        background-color: $secondary-dark-color-tint;
-        padding:0.5rem;
-        border-radius: 10px;
-    }
-
+  &__link:hover {
+    background-color: $secondary-dark-color-tint;
+    padding: 0.5rem;
+    border-radius: 10px;
+  }
 }

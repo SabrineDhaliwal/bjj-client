@@ -6,7 +6,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 
 function UserProfilePage() {
-  const API_URL = process.env.REACT_APP_BASE_URL;
+  const API_URL = import.meta.env.VITE_BASE_URL;
   const navigate = useNavigate();
   const params = useParams();
   const [summaryList, setSummaryList] = useState([]);

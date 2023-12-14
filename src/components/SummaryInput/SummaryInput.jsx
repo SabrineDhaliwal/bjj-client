@@ -8,7 +8,8 @@ import axios from "axios";
 
 
 function SummaryInput({ updateSummaryList }) {
-  const API_URL = process.env.REACT_APP_BASE_URL;
+  const API_URL = import.meta.env.VITE_BASE_URL;
+
   const [techs, setTechs] = useState([]);
   const [positions, setPositions] = useState([]);
   const [targets, setTargets] = useState([]);
@@ -25,6 +26,7 @@ function SummaryInput({ updateSummaryList }) {
         console.error(err);
       });
   }, [API_URL]);
+
 
   //importing targets from data base
   useEffect(() => {
@@ -125,7 +127,7 @@ function SummaryInput({ updateSummaryList }) {
     <div className="summary">
       <div className="summary__title">Enter a new training summary</div>
       <div>
-        <form onSubmit={formik.handleSubmit}>
+        <form onSubmit={formik.handleSubmit} >
           <div className="summary-form__input-set">
             <label className="summary-form__label">Title</label>
             {formik.errors.title ? <div>{formik.errors.title}</div> : null}

@@ -1,12 +1,12 @@
 import "./ListsStyling.scss";
 import Button from "../Buttons/Buttons";
-
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
+
 function TechniquesList() {
-  const API_URL = process.env.REACT_APP_BASE_URL;
+  const API_URL = import.meta.env.VITE_BASE_URL;
   const navigate = useNavigate();
   const [allTechs, setAllTechs] = useState([]);
 
@@ -20,9 +20,10 @@ function TechniquesList() {
       .get(`${API_URL}/techs`)
       .then((alltechs) => {
         setAllTechs(alltechs.data);
+        console.log(alltechs.data)
       })
       .catch((err) => {
-        console.log(err, "error at axios call Techniques List");
+        console.log(err, "FE: error at axios call Techniques List");
       });
   }, [API_URL]);
 

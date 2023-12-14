@@ -11,7 +11,7 @@
 
     &__title{
         margin-top:0;
-        @include page-padding;
+        @include page__padding--tablet;
         padding-top: 2rem;
         font-size: 1.5rem;
         font-weight: 400;

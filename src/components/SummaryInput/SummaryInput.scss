@@ -5,7 +5,12 @@
     background-color: $primary-neutral;
     display:flex;
     flex-direction: column;
-    @include page-padding;
+    @include page__padding--tablet;
+
+    @include desktop{
+        align-items: left;
+        padding:0.5rem 10rem;
+    }
     
     &__title{
         font-weight: 600;
@@ -15,11 +20,18 @@
 }
 
 .summary-form{
+
     &__input-set{
         margin:0.5rem 0;
         display:flex;
         justify-content: space-between;
         width:100%;
+
+        @include desktop{
+            justify-content: space-between;
+           
+            
+        }
 
     }
     &__input-set select{
@@ -29,6 +41,7 @@
     &__label{
         padding-right: 0.25rem;
         font-weight: 600;
+        
     }
 
     &__input{

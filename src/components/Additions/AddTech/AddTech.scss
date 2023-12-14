@@ -3,7 +3,7 @@
 
 .add{
     background-color: $primary-neutral;
-    @include page-padding;
+    @include page__padding--tablet;
     
     &__input-wrapper{
         width: 65vw;

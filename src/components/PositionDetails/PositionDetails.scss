@@ -1,6 +1,8 @@
 @use "../../styles/partials/mixins" as*;
 @use "../../styles/partials/variables" as*;
 
+
+
 .details{
     background-color: $primary-neutral;
     @include page__padding--tablet;
