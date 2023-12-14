@@ -1,0 +1,21 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as*;
+
+.edit-summary{
+    background-color: $primary-neutral;
+    @include page__padding--mobile;
+    height:70vh;
+}
+
+.summary-form{
+    display:flex;
+
+    &__input{
+        &--textarea{
+            resize: none;
+            width:40vw;
+            height: 20vh;
+
+        }
+    }
+}

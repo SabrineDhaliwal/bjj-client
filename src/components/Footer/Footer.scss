@@ -1,0 +1,46 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+
+.footer {
+  background-color: $primary-neutral;
+  @include page__padding--tablet;
+
+  &__wrapper {
+    display: flex;
+    flex-direction: column;
+
+    @include tablet {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+    }
+  }
+
+  &__logo {
+    width: 25vw;
+    height: auto;
+    overflow: hidden;
+    white-space: nowrap;
+
+    &--img {
+      object-fit: contain;
+      max-width: 100%;
+      height: auto;
+    }
+  }
+
+  &__social {
+    width: 45vw;
+    display: flex;
+    justify-content: space-between;
+
+    @include tablet {
+      width: 25vw;
+    }
+  }
+}
+.social__icon {
+  @include tablet {
+    width: 50px;
+  }
+}

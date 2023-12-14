@@ -1,0 +1,53 @@
+@use '../../styles/partials/mixins' as *;
+@use "../../styles/partials/variables" as *;
+
+.create-page{
+    background-color: $primary-neutral;
+    @include page__padding--tablet; 
+    display: flex;
+    flex-direction: column;
+    // justify-content: center;
+    align-items: center;
+
+    &__wrapper{
+        width:90vw;
+        display:flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+    }
+}
+.create-form{
+    &__wrapper{
+        width:80vw;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center
+        
+    }
+    &__input-set{
+        @include form-labels;
+        display:flex;
+        justify-content: space-between;
+        width:60vw;
+
+    }
+    &__field{
+        @include form-fields;
+        width:50%;
+        &--color {
+            background-color: $primary-neutral;
+            padding-left: -2rem,
+        }
+    }
+}
+.btn-container{
+    display:flex;
+    flex-direction: row;
+
+}
+.btn-main{
+    flex-grow: 2;
+}

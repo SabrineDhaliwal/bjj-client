@@ -1,0 +1,64 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+
+.summary-list {
+  background-color: $primary-neutral;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  @include page__padding--tablet;
+
+  &__wrapper {
+    border: 1px solid $secondary-dark-color-shade;
+    background-color: $secondary-neutral-tint;
+    display: flex;
+    margin:0.5rem 0;
+    padding:0.25rem;
+  }
+  &__text{
+    font-weight: 600;
+
+    &--light {
+      font-weight: 400;
+    }
+  }
+  &__left {
+    width: 10rem;
+    display:flex;
+    align-items: center;
+    
+  }
+
+  &__img {
+    width:8rem;
+    height:8rem;
+    border-radius: 15px;
+    background-color: $secondary-dark-color-shade;
+  }
+  &__center {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+  &__center-top {
+    display: flex;
+    justify-content: space-between;
+  }
+  &__center-bottom {
+    display: flex;
+    flex-direction: column;
+  }
+  &__right{
+    display:flex;
+    flex-direction: column;
+    width:2.5rem;
+    padding-top: 0.5rem;
+    padding-left: 0.25rem;
+    margin-left:0.75rem;
+  }
+}
+.icon {
+  width: 30px;
+  height: 30px;
+  margin-bottom:1rem;
+}
