@@ -14,7 +14,6 @@ function TechniquesDetails() {
     axios
       .get(`${API_URL}/techs/${params.id}`)
       .then((response) => {
-        console.log(response)
         setTechbyId(response.data[0]);
       })
       .catch((err) => {

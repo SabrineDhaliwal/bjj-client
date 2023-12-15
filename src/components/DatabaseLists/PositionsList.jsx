@@ -14,7 +14,6 @@ function PositionsList(){
     axios
     .get(`${API_URL}/positions`)
     .then((positions)=>{
-      console.log(positions.data)
       setAllPositions(positions.data)
     })
     .catch((err)=> {
