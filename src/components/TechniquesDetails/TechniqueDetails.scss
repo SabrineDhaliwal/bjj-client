@@ -3,8 +3,10 @@
 
 .details{
     background-color: $primary-neutral;
+    height: auto;
+
     @include page__padding--tablet;
-    height: 70vh;
+    
 
     .header{
         margin-top:0;

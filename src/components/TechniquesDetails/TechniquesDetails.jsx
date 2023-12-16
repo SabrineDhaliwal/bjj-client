@@ -1,29 +1,8 @@
 import "./TechniqueDetails.scss";
-import BackButton from "../../assets/icons/left-arrow.png"
-import axios from "axios";
-import { useState, useEffect } from "react";
-import { useParams, Link } from "react-router-dom";
 
-function TechniquesDetails() {
-  const params = useParams();
-  const [techById, setTechbyId] = useState([]);
 
-  const API_URL = import.meta.env.VITE_BASE_URL;
-
-  useEffect(() => {
-    axios
-      .get(`${API_URL}/techs/${params.id}`)
-      .then((response) => {
-        setTechbyId(response.data[0]);
-      })
-      .catch((err) => {
-        console.error(
-          err,
-          "if you can read this, you made another mistake :( "
-        );
-      });
-  }, [params.id]);
-
+function TechniquesDetails({techById}) {
+  
   return (
     <>
     <div className="details">
@@ -34,10 +13,6 @@ function TechniquesDetails() {
         <p className="details__subheader">Level<span className="details__text"><br />{`${techById.level}`}</span></p>
         <p className="details__subheader">What is it?<span className="details__text"><br />{`${techById.description}`}</span></p>
       </div>
-     <Link 
-     to='/techs'>
-     <img src={BackButton} alt='back-button'/>
-     </Link>
       </div>
     </>
   );

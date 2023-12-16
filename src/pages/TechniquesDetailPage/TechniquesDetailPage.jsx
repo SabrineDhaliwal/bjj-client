@@ -5,7 +5,7 @@ function TechniquesDetailsPage() {
 
   return (
     <>
-      <TechniquesDetails />
+      {/* <TechniquesDetails /> */}
     </>
   );
 }

@@ -1,10 +1,12 @@
 @use "../src/styles/partials/mixins" as *;
 @use "../src/styles/partials/variables" as *;
 
-.body {
+ body {
     background-color:$primary-neutral;
     color: $primary-dark;
     font-family: 'Roboto';
     width:100vw;
+    margin:0;
+
 }
 
