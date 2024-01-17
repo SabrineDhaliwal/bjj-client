@@ -61,7 +61,8 @@ padding: 0.5rem;
 }
 
 @mixin logo-navSm {
-    width: 6rem;
+    width: 10rem;
+    padding-top: 0.5rem;
 }
 
 @mixin logo-navMed{
@@ -74,7 +75,7 @@ padding: 0.5rem;
 }
 
 @mixin font__size--mobile{
-    font-size: 0.625rem;
+    font-size: 0.75rem;
 }
 
 @mixin font__size--tablet{

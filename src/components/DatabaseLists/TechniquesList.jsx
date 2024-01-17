@@ -8,7 +8,8 @@ function TechniquesList({ allTechs }) {
 
     // classNames are written to be reusable styling sheet for future lists
     <div className="list__wrapper">
-      <h3 className="list__title"> Select a technique below to learn more </h3>
+      <h3 className="list__title"> Techniques </h3>
+      <p>Select a technique below to learn more</p>
       <ul className="list__list">
         {/* rending list of all techniques in database */}
         {allTechs

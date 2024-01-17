@@ -2,7 +2,7 @@ import './App.scss';
 // import {  } from ;
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import LoginPage from "../src/pages/LoginPage/LoginPage"
-import Navbar from './components/Navbar/Navbar';
+import Header from './components/Header/Header';
 import CreateAccountPage from './pages/CreateAccountPage/CreateAccountPage';
 import UserProfilePage from "./pages/UserProfilePage/UserProfilePage";
 import Footer from './components/Footer/Footer';
@@ -14,6 +14,7 @@ import LandingPage from './pages/LandingPage/LandingPage';
 import PositionsPage from './pages/PositionsPage/PositionsPage';
 import PositionsDetailsPage from './pages/PositionsDetailsPage/PositionsDetailsPage';
 import EditTechsPage from './pages/EditPages/EditTechsPage';
+import HamburgerMenu from './components/Hamburger/Hamburger';
 
 
 
@@ -23,10 +24,11 @@ function App() {
 
   return (
     <BrowserRouter>
-    <Navbar />
+    <Header />
+    {/* <HamburgerMenu/> */}
     <Routes>
-      <Route path='/' element={<LandingPage />}/>
-      <Route path='/login' element = {<LoginPage />} />
+      /* <Route path='/' element={<LandingPage />}/>
+      {/* <Route path='/login' element = {<LoginPage />} /> */}
       <Route path='/createaccount' element = {<CreateAccountPage/>} />
       <Route path='/userprofile/:id' element = {<UserProfilePage/>}/>
       <Route path='/techs' element = {<TechniquesPage/>}/>
@@ -35,9 +37,9 @@ function App() {
       <Route path='/edit/:summaryid' element ={<EditSummaryPage/>}/>
       <Route path='/add/techs' element = {<AddTechPage />}/>
       <Route path='/positions' element ={<PositionsPage/>}/>
-      <Route path= '/positions/:id' element ={<PositionsDetailsPage/>}/>
+      <Route path= '/positions/:id' element ={<PositionsDetailsPage/>}/> */ 
     </Routes>
-    <Footer />
+    {/* <Footer /> */}
     </BrowserRouter>
   );
 }

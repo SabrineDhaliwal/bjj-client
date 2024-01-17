@@ -1,6 +1,5 @@
 import './ListsStyling.scss';
 import Button from '../Buttons/Buttons';
-import TransparentIcon from "../../assets/icons/icononly_transparent_nobuffer.png";
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';

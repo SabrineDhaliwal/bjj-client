@@ -48,10 +48,10 @@ function TechniquesPage() {
 
   return (
     <>
-      {techById ? <TechniquesDetails techById={techById} />: null}
       <TechniquesList
         allTechs={allTechs}
       />
+      {techById ? <TechniquesDetails techById={techById} />: null}
         <Button
         text="Add Technique"
         type="button"

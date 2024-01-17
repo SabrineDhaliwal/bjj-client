@@ -1,0 +1,75 @@
+@use "../../styles/partials/mixins" as *;
+@use "../src/styles/partials/variables" as *;
+
+.hamburger {
+  &__wrapper {
+    width: 100vw;
+    height: 4rem;
+    display:grid;
+    justify-content: right;
+    justify-items: end;
+  }
+
+  &__bar{
+    height: 100%;
+    width:4rem;
+    display:flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: right;
+    cursor: pointer;
+  }
+}
+
+.burger {
+  display: flex;
+  flex-direction: column;
+}
+
+.burger-bar{
+    width:4rem;
+    height: 0.5rem;
+    margin: 6px 0;
+    background-color: $primary-dark;
+    border-radius: 0.5rem;
+    display:flex;
+    justify-items: end;
+  
+    
+}
+
+.menu{
+    // width:25vw;
+    height: 100vh;
+    flex-direction: column;
+    justify-items: end;
+    border: 1px red solid;
+
+    &__link{
+      text-align: end;
+    }
+}
+
+.hidden{
+    display:none;
+}
+
+.visable {
+    display:flex;
+}
+// animation- making the menu turn into an X
+//clicked
+.burger-bar.clicked:nth-child(1){
+  transform: rotate(45deg) translate(0.75em, 1.25em);
+  transition: ease-out 0.25s;
+}
+
+.burger-bar.clicked:nth-child(2){
+  transform: scale(0.1);
+  transition: ease-out 0.25s;
+}
+
+.burger-bar.clicked:nth-child(3){
+  transform: rotate(135deg) translate(-0.5em, 1em);
+  transition: ease-out 0.25s;
+}
