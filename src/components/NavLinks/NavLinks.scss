@@ -1,35 +1,33 @@
 @use "../../styles/partials/mixins" as *;
 @use "../../styles/partials/variables" as *;
 
-
 .active {
-    background-color: $primary-dark-color;
-}
-.navLinks{
-    &__container{
+  background-color: $primary-light;
 
-    // width:40vw;
-    height: 100vh;
-    display:flex;
+}
+.navLinks {
+  &__container {
+    display: flex;
     flex-direction: column;
     justify-items: end;
-    border: 2px solid green;
-    }
 
-    &__link{
-      text-align: end;
-      text-decoration: none;
-      margin: 0 0.25rem;
-      color: $secondary-dark-color-shade;
-      @include font__size--mobile;
-  
-      @include tablet {
-        @include font__size--tablet;
-      }
+    @include tablet {
+      flex-direction: row;
     }
-    // &__link:hover {
-    //     background-color: $secondary-dark-color-tint;
-    //     padding: 0.5rem;
-    //     border-radius: 10px;
-    //   }
+  }
+
+  &__link {
+    text-align: end;
+    text-decoration: none;
+    margin: 0 0.25rem;
+    padding:0.5rem;
+    border-radius: $border-radius;
+    color: $primary-dark-color;
+    @include font__size--mobile;
+
+    @include tablet {
+      @include font__size--tablet;
+    }
+  }
+
 }

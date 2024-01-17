@@ -18,6 +18,10 @@
     align-items: flex-start;
     justify-content: right;
     cursor: pointer;
+
+    @include tablet {
+      display: none;
+    }
   }
 }
 
@@ -33,17 +37,17 @@
     background-color: $primary-dark;
     border-radius: 0.5rem;
     display:flex;
-    justify-items: end;
-  
-    
+    justify-items: end;  
 }
 
 .menu{
-    // width:25vw;
-    height: 100vh;
     flex-direction: column;
     justify-items: end;
-    border: 1px red solid;
+    z-index: 1;
+
+    @include tablet{
+      display:flex;
+    }
 
     &__link{
       text-align: end;
@@ -52,11 +56,16 @@
 
 .hidden{
     display:none;
+
+    @include tablet{
+      display: flex;
+    }
 }
 
 .visable {
     display:flex;
 }
+
 // animation- making the menu turn into an X
 //clicked
 .burger-bar.clicked:nth-child(1){

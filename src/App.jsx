@@ -1,5 +1,4 @@
 import './App.scss';
-// import {  } from ;
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import LoginPage from "../src/pages/LoginPage/LoginPage"
 import Header from './components/Header/Header';
@@ -14,20 +13,18 @@ import LandingPage from './pages/LandingPage/LandingPage';
 import PositionsPage from './pages/PositionsPage/PositionsPage';
 import PositionsDetailsPage from './pages/PositionsDetailsPage/PositionsDetailsPage';
 import EditTechsPage from './pages/EditPages/EditTechsPage';
-import HamburgerMenu from './components/Hamburger/Hamburger';
+
 
 
 
 function App() {
   
-  
 
   return (
     <BrowserRouter>
     <Header />
-    {/* <HamburgerMenu/> */}
     <Routes>
-      /* <Route path='/' element={<LandingPage />}/>
+      <Route path='/' element={<LandingPage />}/>
       {/* <Route path='/login' element = {<LoginPage />} /> */}
       <Route path='/createaccount' element = {<CreateAccountPage/>} />
       <Route path='/userprofile/:id' element = {<UserProfilePage/>}/>
