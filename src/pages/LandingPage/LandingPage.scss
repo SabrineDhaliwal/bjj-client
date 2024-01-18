@@ -1,47 +1,48 @@
 @use "../../styles/partials/mixins" as *;
 @use "../../styles/partials/variables" as *;
 
+.landingPage {
+  @include page__padding--tablet;
 
-.page{
-    background-color: $primary-neutral;
-    @include page__padding--tablet;
+  &__logo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
   
-}
-.logo {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width:100vw;
-//   max-height: 25%;
-  justify-content: center;
+  }
+    &__img {
+      width:30%;
+      padding: 0.5rem 0;
 
- 
-  &__img{
-    width:30%;
+      &--animation {
+        animation: rotate 5s;
+      }
+    
+  }
 
-    &--animation{
-        animation:rotate 5s;
-  
+  &__link {
+    display: flex;
+    justify-content: center;
+    gap: 0.75rem;
+    padding: 0.25rem 0;
+
+    @include tablet {
+      padding-top: 0.5rem;
+    }
+
+
+
+    a {
+      text-decoration: none;
+      color: $primary-dark-color;
     }
   }
 }
-
-.link{
-    display:flex;
-    justify-content: center;
-    padding-top:1rem;
-
-    a{ 
-        text-decoration: none;
-        color:$primary-dark-color;
-    }
-    
-    &__text{
-        padding-right:1rem
-    }
-}
-
 @keyframes rotate {
-    from{}
-    to{transform: rotate(360deg)}
+  from {
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
