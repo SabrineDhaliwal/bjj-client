@@ -1,6 +1,6 @@
 import PositionsList from "../../components/DatabaseLists/PositionsList"
 
-function PositionsPage() {
+export function PositionsPage() {
   return (
     <div className="list_wrapper">
       
@@ -11,4 +11,4 @@ function PositionsPage() {
   );
 }
 
-export default PositionsPage;
+// export default PositionsPage;

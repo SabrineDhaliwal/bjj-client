@@ -44,6 +44,9 @@
     flex-direction: column;
     justify-items: end;
     z-index: 1;
+    background-color: $secondary-dark-color-tint;
+    border-radius: $border-radius;
+
 
     @include tablet{
       display:flex;

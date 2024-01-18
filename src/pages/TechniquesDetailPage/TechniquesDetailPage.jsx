@@ -1,6 +1,6 @@
 import TechniquesDetails from "../../components/TechniquesDetails/TechniquesDetails";
 
-function TechniquesDetailsPage() {
+export function TechniquesDetailsPage() {
 
 
   return (
@@ -10,4 +10,4 @@ function TechniquesDetailsPage() {
   );
 }
 
-export default TechniquesDetailsPage;
+// export default TechniquesDetailsPage;

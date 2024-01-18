@@ -10,7 +10,6 @@ function Header() {
   //   navigate("/userprofile/1");
   // };
 
-
   return (
     <header className="header">
       <div className="header__left">
@@ -22,22 +21,7 @@ function Header() {
           />
         </Link>
       </div>
-
-<HamburgerMenu />
-      {/* <div className="nav__link-container">
-      <Link to={"/"} className="nav__link">
-            <p className="nav__link--text">Home</p>{" "}
-          </Link>
-      <Link to={"/userprofile/1"} className="nav__link">
-            <p className="nav__link--text">My Profile</p>
-          </Link>
-      <Link to={"/techs"} className="nav__link">
-            <p className="nav__link--text">Techniques</p>{" "}
-          </Link>
-      <Link to={"/positions"} className="nav__link">
-            <p className="nav__link--text">Positons</p>
-          </Link>
-      </div> */}
+      <HamburgerMenu />
     </header>
   );
 }

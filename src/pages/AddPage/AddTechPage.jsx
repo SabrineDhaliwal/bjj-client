@@ -1,7 +1,7 @@
 // import AddPosition from "../../components/Additions/AddPosition/AddPosition"
 import AddTech from "../../components/Additions/AddTech/AddTech"
 
-function AddTechPage (){
+export function AddTechPage (){
 
     return(
         <>
@@ -11,4 +11,3 @@ function AddTechPage (){
         </>
     )
 }
-export default AddTechPage

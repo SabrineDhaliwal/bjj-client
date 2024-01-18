@@ -1,18 +1,8 @@
 import './App.scss';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import LoginPage from "../src/pages/LoginPage/LoginPage"
 import Header from './components/Header/Header';
-import CreateAccountPage from './pages/CreateAccountPage/CreateAccountPage';
-import UserProfilePage from "./pages/UserProfilePage/UserProfilePage";
 import Footer from './components/Footer/Footer';
-import EditSummaryPage from './pages/EditPages/EditSummaryPage';
-import AddTechPage from './pages/AddPage/AddPage';
-import TechniquesPage from './pages/TechniquesPage/TechniquesPage';
-import TechniquesDetailsPage from './pages/TechniquesDetailPage/TechniquesDetailPage';
-import LandingPage from './pages/LandingPage/LandingPage';
-import PositionsPage from './pages/PositionsPage/PositionsPage';
-import PositionsDetailsPage from './pages/PositionsDetailsPage/PositionsDetailsPage';
-import EditTechsPage from './pages/EditPages/EditTechsPage';
+import { AddTechPage, CreateAccountPage, EditSummaryPage, EditTechsPage, LandingPage, LoginPage, PositionsDetailsPage, PositionsPage, TechniquesDetailsPage, TechniquesPage, UserProfilePage } from "./pages/index"
 
 
 
@@ -25,7 +15,7 @@ function App() {
     <Header />
     <Routes>
       <Route path='/' element={<LandingPage />}/>
-      {/* <Route path='/login' element = {<LoginPage />} /> */}
+      <Route path='/login' element = {<LoginPage />} />
       <Route path='/createaccount' element = {<CreateAccountPage/>} />
       <Route path='/userprofile/:id' element = {<UserProfilePage/>}/>
       <Route path='/techs' element = {<TechniquesPage/>}/>

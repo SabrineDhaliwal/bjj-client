@@ -5,7 +5,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
 
-function UserProfilePage() {
+export function UserProfilePage() {
   const API_URL = import.meta.env.VITE_BASE_URL;
   const navigate = useNavigate();
   const params = useParams();
@@ -63,4 +63,4 @@ const updateSummaryList = (newSummary)=> {
   );
 }
 
-export default UserProfilePage;
+// export default UserProfilePage;

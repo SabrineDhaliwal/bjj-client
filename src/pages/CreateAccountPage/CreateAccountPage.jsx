@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
 
-function CreateAccountPage() {
+export function CreateAccountPage() {
   const API_URL = import.meta.env.VITE_BASE_URL;
   const navigate = useNavigate();
   const [belts, setBelts] = useState([]); //used for belts dropdown
@@ -363,4 +363,4 @@ function CreateAccountPage() {
   );
 }
 
-export default CreateAccountPage;
+// export default CreateAccountPage;

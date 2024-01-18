@@ -3,7 +3,7 @@ import TransparentIcon from "../../assets/icons/icononly_transparent_nobuffer.pn
 import LogoText from "../../assets/icons/textonly_nobuffer.png"
 import { Link } from "react-router-dom";
 
-function LandingPage() {
+export function LandingPage() {
   return (
     <div className="page">
       <div className="logo">
@@ -34,4 +34,4 @@ With every training session, you can upload a video so that you are better able 
   );
 }
 
-export default LandingPage;
+

@@ -1,5 +1,5 @@
 
-function EditTechsPage(){
+export function EditTechsPage(){
 
     return (
         <>
@@ -8,4 +8,3 @@ function EditTechsPage(){
     )
 };
 
-export default EditTechsPage;

@@ -1,7 +1,7 @@
 import PositionDetails from "../../components/PositionDetails/PositionDetails";
 // import Button from "../../components/Buttons/Buttons";
 
-function PositionsDetailsPage ()
+export function PositionsDetailsPage ()
     {
         return (
             <>
@@ -12,4 +12,4 @@ function PositionsDetailsPage ()
         )
     }
 
-    export default PositionsDetailsPage;
+    // export default PositionsDetailsPage;

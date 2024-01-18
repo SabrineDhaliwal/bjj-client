@@ -6,7 +6,7 @@ import { useNavigate, useParams, Link } from "react-router-dom";
 import BackButton from "../../assets/icons/left-arrow.png";
 import Button from "../../components/Buttons/Buttons";
 
-function TechniquesPage() {
+export function TechniquesPage() {
   const API_URL = import.meta.env.VITE_BASE_URL;
   const navigate = useNavigate();
   const params = useParams();
@@ -41,7 +41,7 @@ function TechniquesPage() {
       .catch((err) => {
         console.error(
           err,
-          "if you can read this, you made another mistake :( "
+          "axios error at techs by ID"
         );
       });
   }, [params.id]);
@@ -64,4 +64,4 @@ function TechniquesPage() {
     </>
   );
 }
-export default TechniquesPage;
+// export default TechniquesPage;

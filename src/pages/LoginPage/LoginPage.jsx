@@ -6,7 +6,7 @@ import logoicon from "../../assets/icons/icononly_transparent_nobuffer.png";
 import logotext from "../../assets/icons/textonly_nobuffer.png"
 import "./LoginPage.scss";
 
-function LoginPage() {
+export function LoginPage() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [formErrors, setFormErrors] = useState({ username: "", password: "" });
@@ -107,4 +107,4 @@ function LoginPage() {
   );
 }
 
-export default LoginPage;
+// export default LoginPage;
