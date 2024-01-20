@@ -2,12 +2,28 @@
 @use "../src/styles/partials/mixins" as *;
 @use "../src/styles/partials/variables" as *;
 
- body {
+* {
+    // box-sizing: border-box;
     background-color:$primary-neutral;
+
+}
+
+ body {
     color: $primary-dark;
     font-family: 'Roboto';
     width:100vw;
     margin:0;
+    @include page__padding--mobile;
+
+    @include tablet{
+        width:100vw;
+    }
+    @include desktop{
+        max-width: 1280px;
+        display: flex;
+        justify-content: center;
+    
+    }
 
 }
 

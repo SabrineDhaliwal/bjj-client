@@ -4,6 +4,8 @@
 .add{
     background-color: $primary-neutral;
     @include page__padding--tablet;
+    display:flex;
+    flex-direction: column;
     
     &__input-wrapper{
         width: 65vw;
@@ -42,4 +44,9 @@
     
         }
     }
+    &__btn-container{
+        display:flex;
+        
+    }
 }
+

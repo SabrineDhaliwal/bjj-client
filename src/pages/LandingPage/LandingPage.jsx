@@ -15,7 +15,7 @@ export function LandingPage() {
         <img
           src={LogoText}
           alt="Roll & Reflect text"
-          className="landingPage__img"
+          className="landingPage__img--text landingPage__img"
         />
       </div>
       <div className="landingPage__link">

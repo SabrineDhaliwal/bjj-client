@@ -141,8 +141,8 @@ function AddTech() {
             ></textarea>
           </div>
         </div>
-        <div className="btn-container">
-          <Button text="Add Technique" type="submit" />
+        <div className="add__btn-container">
+          <Button text="Add Technique" type="submit" modifer="__err"/>
           <Button text="Cancel" type="button" clickHandler={handleCancel} />
           <Button
             text="View Techniques List"

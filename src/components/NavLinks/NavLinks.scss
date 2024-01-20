@@ -10,9 +10,11 @@
     display: flex;
     flex-direction: column;
     justify-items: end;
+    background-color: $secondary-dark-color-tint;
 
     @include tablet {
       flex-direction: row;
+      background-color: $primary-neutral;
     }
   }
 
@@ -23,10 +25,12 @@
     padding:0.5rem;
     border-radius: $border-radius;
     color: $primary-dark-color;
+    background-color: $secondary-dark-color-tint;
     @include font__size--mobile;
 
     @include tablet {
       @include font__size--tablet;
+      background-color: $primary-neutral;
     }
   }
 
