@@ -5,6 +5,7 @@
   margin: 0;
   display: flex;
   justify-content: space-between;
+  @include page__padding--mobile;
   
   @include desktop{
     max-width: 1280px;

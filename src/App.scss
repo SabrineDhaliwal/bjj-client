@@ -3,9 +3,9 @@
 @use "../src/styles/partials/variables" as *;
 
 * {
-    // box-sizing: border-box;
     background-color:$primary-neutral;
-
+    margin:0;
+    padding:0;
 }
 
  body {

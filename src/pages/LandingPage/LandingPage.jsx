@@ -26,9 +26,8 @@ export function LandingPage() {
           Create Account
         </Link>
       </div>
-
-      <h3>Welcome to Roll & Reflect!</h3>
-      <div>
+      <div className="landingPage__text">
+        <h3>Welcome to Roll & Reflect!</h3>
         <h4>What are we?</h4>
         <p>
           We are a tool you can use to help you keep track of your learning
