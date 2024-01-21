@@ -44,6 +44,10 @@
       @include page__padding--tablet;
     }
 
+    @include desktop{
+      margin: 0.5rem 6rem;
+    }
+
   }
 }
 

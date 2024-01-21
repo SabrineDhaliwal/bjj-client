@@ -26,7 +26,7 @@ function App() {
       <Route path='/positions' element ={<PositionsPage/>}/>
       <Route path= '/positions/:id' element ={<PositionsDetailsPage/>}/> */ 
     </Routes>
-    {/* <Footer /> */}
+    <Footer />
     </BrowserRouter>
   );
 }

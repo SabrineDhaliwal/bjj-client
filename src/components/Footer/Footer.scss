@@ -2,45 +2,55 @@
 @use "../../styles/partials/variables" as *;
 
 .footer {
-  background-color: $primary-neutral;
-  @include page__padding--tablet;
+margin-top: 1.5rem;
+display: flex;
+flex-direction: column;
+  @include page__padding--mobile;
 
-  &__wrapper {
-    display: flex;
-    flex-direction: column;
 
-    @include tablet {
-      display: flex;
-      flex-direction: row;
-      justify-content: space-between;
-    }
-  }
-
-  &__logo {
-    width: 25vw;
-    height: auto;
-    overflow: hidden;
-    white-space: nowrap;
-
-    &--img {
-      object-fit: contain;
-      max-width: 100%;
-      height: auto;
-    }
-  }
-
-  &__social {
-    width: 45vw;
+  @include tablet {
     display: flex;
     justify-content: space-between;
+  }
 
-    @include tablet {
-      width: 25vw;
+
+  &__top {
+   display: flex;
+  justify-content: center;
+  align-items: center;
+    // white-space: nowrap;
+  }
+
+  &__img{
+    width:6rem;
+  }
+
+  &__text{
+    margin-left: 0.5rem;
+  }
+
+  &__sabrine{
+    text-decoration: none;
+    font-weight: 700;
+    color: $primary-dark;
     }
+  &__sabrine:hover{
+      background-color: $secondary-neutral-tint; 
+      font-size: 1.25rem;
+      border-radius: $border-radius;
+      padding: 0.5rem;
   }
-}
-.social__icon {
-  @include tablet {
-    width: 50px;
+
+  &__backTop {
+    padding: 1rem;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    color: $primary-dark-color;
+    font-weight: 500;
+    font-size: 1rem;;
   }
+
 }
+
