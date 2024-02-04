@@ -82,10 +82,10 @@ export function CreateAccountPage() {
       errors.confirmPassword = "Passwords do not match";
     }
 
-    if (!values.belt_rank) {
-      errors.belt_rank = "Please select a belt";
-    }
-    return errors;
+    // if (!values.belt_rank) {
+    //   errors.belt_rank = "Please select a belt";
+    // }
+    // return errors;
   };
 
   const formik = useFormik({
@@ -123,11 +123,11 @@ export function CreateAccountPage() {
     <div className="create-page">
       <div className="create-page__wrapper">
         <h1>Create an Account</h1>
-        <p>We have a few questions, please fill out the form</p>
+        
 
         <form onSubmit={formik.handleSubmit}>
           <div className="create-form__wrapper">
-            <div className="create-form__input-set">
+            {/* <div className="create-form__input-set">
               <label className="create-form__label">First Name: </label>
               {formik.errors.first_name ? (
                 <div>{formik.errors.first_name}</div>
@@ -145,8 +145,8 @@ export function CreateAccountPage() {
                 onChange={formik.handleChange}
                 value={formik.values.first_name}
               />
-            </div>
-            <div className="create-form__input-set">
+            </div> */}
+            {/* <div className="create-form__input-set">
               <label className="create-form__label">Last Name: </label>
               {formik.errors.last_name ? (
                 <div>{formik.errors.last_name}</div>
@@ -164,7 +164,7 @@ export function CreateAccountPage() {
                 onChange={formik.handleChange}
                 value={formik.values.last_name}
               />
-            </div>
+            </div> */}
 
             <div className="create-form__input-set">
               <label className="create-form__label">E-mail: </label>
@@ -184,7 +184,7 @@ export function CreateAccountPage() {
               />
             </div>
 
-            <div className="create-form__input-set">
+            {/* <div className="create-form__input-set">
               <label className="create-form__label">Username: </label>
               {formik.errors.username ? (
                 <div>{formik.errors.username}</div>
@@ -203,7 +203,7 @@ export function CreateAccountPage() {
                 value={formik.values.username}
               />
              
-            </div>
+            </div> */}
             <div className="create-form__input-set">
               <label className="create-form__label">Password </label>
               {formik.errors.password ? (
@@ -246,7 +246,7 @@ export function CreateAccountPage() {
               />
             </div>
 
-            <div className="create-form__input-set">
+            {/* <div className="create-form__input-set">
               <label className="create-form__label">
                 What Belt Rank are you?
               </label>
@@ -265,7 +265,7 @@ export function CreateAccountPage() {
                 value={formik.values.belt_rank}
               >
                 {/* create table of belts in database */}
-                <option value="" disabled="disabled">
+                {/* <option value="" disabled="disabled">
                   Select a Belt
                 </option>
                 {belts.map((belt) => (
@@ -276,11 +276,11 @@ export function CreateAccountPage() {
                     {belt.belt_rank}
                   </option>
                 ))}
-              </select>
+              </select> */}
              
-            </div>
+            {/* </div> */}
 
-            <div className="create-form__input-set">
+            {/* <div className="create-form__input-set">
               <label className="create-form__label">Where do you train?</label>
               {formik.errors.club_name ? (
                 <div>{formik.errors.club_name}</div>
@@ -307,9 +307,9 @@ export function CreateAccountPage() {
                 ))}
               </select>
              
-            </div>
+            </div> */}
 
-            <div className="create-form__input-set">
+            {/* <div className="create-form__input-set">
               <label className="create-form__label">
                 Tell Us About Yourself (optional):
               </label>
@@ -322,8 +322,8 @@ export function CreateAccountPage() {
                 onChange={formik.handleChange}
                 value={formik.values.bio}
               ></textarea>
-            </div>
-            <div className="create-form__input-set">
+            </div> */}
+            {/* <div className="create-form__input-set">
               <label className="create-form__label">
                 Upload a photo (optional)
               </label>
@@ -337,7 +337,7 @@ export function CreateAccountPage() {
                 onChange={formik.handleChange}
                 value={formik.values.image}
               />
-            </div>
+            </div> */}
 
             <div className="btn-container">
               <Button
