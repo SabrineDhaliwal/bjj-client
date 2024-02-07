@@ -82,7 +82,7 @@ const formik = useFormik({
     .then((response)=> {
       console.log(response.data, "response data")
       alert("Edits saved")
-      navigate('/userprofile/1')
+      // navigate('/userprofile/1')
     })
     .catch((err)=> {
       console.log(err, "error at axios put call Edit Summary.jsx")

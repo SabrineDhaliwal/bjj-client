@@ -38,17 +38,17 @@ export function CreateAccountPage() {
   //form validations
   const validate = (values) => {
     const errors = {};
-    if (!values.first_name) {
-      errors.first_name = "Required Field";
-    } else if (values.first_name.length > 20) {
-      errors.first_name = "Name must be less than 20 characters";
-    }
+    // if (!values.first_name) {
+    //   errors.first_name = "Required Field";
+    // } else if (values.first_name.length > 20) {
+    //   errors.first_name = "Name must be less than 20 characters";
+    // }
 
-    if (!values.last_name) {
-      errors.last_name = "Required Field";
-    } else if (values.last_name.length > 20) {
-      errors.last_name = "Must be less than 20 characters";
-    }
+    // if (!values.last_name) {
+    //   errors.last_name = "Required Field";
+    // } else if (values.last_name.length > 20) {
+    //   errors.last_name = "Must be less than 20 characters";
+    // }
 
     if (!values.email) {
       errors.email = "Email is required";
@@ -59,11 +59,12 @@ export function CreateAccountPage() {
     }
     // add validation that checks emails against database of user
 
-    if (!values.username) {
-      errors.username = "Username required";
-    } else if (values.username.length < 1) {
-      errors.username = "Username too short";
-    }
+    // if (!values.username) {
+    //   errors.username = "Username required";
+    // } else if (values.username.length < 1) {
+    //   errors.username = "Username too short";
+    // }
+
     // add validation that checks username against database of user
     if (!values.password) {
       errors.password = "Password required";
@@ -90,13 +91,13 @@ export function CreateAccountPage() {
 
   const formik = useFormik({
     initialValues: {
-      first_name: "",
-      last_name: "",
+      // first_name: "",
+      // last_name: "",
       email: "",
-      username: "",
-      belt_rank: "",
-      bio: "",
-      club_name: "",
+      // username: "",
+      // belt_rank: "",
+      // bio: "",
+      // club_name: "",
       password: "",
       confirmPassword: "",
     },
@@ -107,7 +108,7 @@ export function CreateAccountPage() {
     onSubmit: (values) => {
       console.log("onSubmit formik", values);
       //posting new user to database
-      navigate("/useraccount/1");
+      // navigate("/useraccount/1");
     },
   });
 

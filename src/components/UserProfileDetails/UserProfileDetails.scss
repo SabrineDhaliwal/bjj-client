@@ -14,7 +14,9 @@
     // }
 
     &__img-block{
-        width:45vw;
+        width:15rem;
+        background-color: $secondary-dark-color-tint;
+        
 
         @include desktop{
             width: 30%;
@@ -24,9 +26,10 @@
     }
 
     &__image{
-        background-color: $secondary-dark-color-tint;
-        width:20rem;
+        // background-color: $secondary-dark-color-tint;
+        width:10rem;
         height:auto;
+        border:1px solid red;
 
         @include desktop{
             justify-content: right;

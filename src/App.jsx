@@ -17,14 +17,14 @@ function App() {
       <Route path='/' element={<LandingPage />}/>
       <Route path='/login' element = {<LoginPage />} />
       <Route path='/createaccount' element = {<CreateAccountPage/>} />
-      <Route path='/userprofile/:id' element = {<UserProfilePage/>}/>
+      <Route path='/profile/:id' element = {<UserProfilePage/>}/>
       <Route path='/techs' element = {<TechniquesPage/>}/>
       <Route path='techs/:id' element= {<TechniquesPage/>}/>
       <Route path='techs/:id/edit' element= {<EditTechsPage/> }/>
       <Route path='/edit/:summaryid' element ={<EditSummaryPage/>}/>
       <Route path='/add/techs' element = {<AddTechPage />}/>
       <Route path='/positions' element ={<PositionsPage/>}/>
-      <Route path= '/positions/:id' element ={<PositionsDetailsPage/>}/> */ 
+      <Route path= '/positions/:id' element ={<PositionsDetailsPage/>}/> 
     </Routes>
     <Footer />
     </BrowserRouter>

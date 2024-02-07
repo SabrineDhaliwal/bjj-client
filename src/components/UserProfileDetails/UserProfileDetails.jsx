@@ -13,12 +13,13 @@ function UserProfileDetails() {
   const [userdetailsObject, setUserDetailsObject] = useState([]);
 
   //make axios call to get information for user detail compoment
+
+  // this is erroringout because it is making a call to a table that had been changed. need to make the call to a different table 'profile' 
   useEffect(() => {
     axios
-      .get(`${API_URL}/useraccount/${id}`)
+      .get(`${API_URL}/profile/${id}`)
       .then((userdetails) => {
         const userdetailsObject = userdetails.data;
-        // console.log("user details;", userdetailsObject)
         setUserDetailsObject(userdetailsObject[0]);
       })
       .catch((err) => {
@@ -52,7 +53,7 @@ function UserProfileDetails() {
               <span className="UPD__text--light">{`${userdetailsObject.belt_rank}`}</span>
             </p>
             <p className="UPD__text">
-              Training at:{" "}
+              Training Club:{" "}
               <span className="UPD__text--light">
                 {`${userdetailsObject.club_name}`}{" "}
               </span>

@@ -38,7 +38,7 @@ export function LoginPage() {
   function handleOnSubmit(event) {
     event.preventDefault();
     if (isInputValid()) {
-      navigate("/userprofile/1");
+      // navigate("/userprofile/1");
 
       //TODO add useNavigate if passes validation to landingPage
       //validation needs to check information in database users table
