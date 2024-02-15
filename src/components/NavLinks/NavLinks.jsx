@@ -8,7 +8,7 @@ function NavLinks(){
       <Link to={"/"} className="navLinks__link">
             Home
           </Link>
-      <NavLink to={"/userprofile/1"} className="navLinks__link">
+      <NavLink to={"/"} className="navLinks__link">
            My Profile
           </NavLink>
       <NavLink to={"/techs"} className="navLinks__link">

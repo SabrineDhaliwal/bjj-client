@@ -5,12 +5,16 @@ import Button from "../../components/Buttons/Buttons";
 import logoicon from "../../assets/icons/icononly_transparent_nobuffer.png";
 import logotext from "../../assets/icons/textonly_nobuffer.png"
 import "./LoginPage.scss";
+import axios from "axios";
 
-export function LoginPage() {
-  const [username, setUsername] = useState("");
+export function LoginPage({setLoggedIn}) {
+  // console.log(setLoggedIn)
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [formErrors, setFormErrors] = useState({ username: "", password: "" });
+  const [formErrors, setFormErrors] = useState({ email: "", password: "" });
   //   const [createAccount, setCreateAccount] = useState("createAccount");
+
+  const API_URL = import.meta.env.VITE_BASE_URL;
   const navigate = useNavigate();
 
   function handleCreateAccount(event) {
@@ -20,10 +24,10 @@ export function LoginPage() {
   }
 
   const isInputValid = () => {
-    let errors = { username: "", password: "" };
+    let errors = { email: "", password: "" };
 
-    if (!username) {
-      errors.username = "Username is required";
+    if (!email) {
+      errors.email = "Email is required";
     }
 
     if (!password) {
@@ -32,44 +36,58 @@ export function LoginPage() {
 
     setFormErrors(errors);
     // Return true if no errors, false otherwise
-    return !(errors.username || errors.password);
+    return !(errors.email || errors.password);
   };
 
   function handleOnSubmit(event) {
     event.preventDefault();
     if (isInputValid()) {
       // navigate("/userprofile/1");
-
-      //TODO add useNavigate if passes validation to landingPage
-      //validation needs to check information in database users table
+      console.log(email)
+      console.log(password)
     } else {
       console.log("Errors on form");
     }
+    axios
+    .post(`${API_URL}/login/user`,{
+    email: email, 
+    password: password
+    })
+    .then((response)=> {
+      console.log("response", response)
+      sessionStorage.setItem('token', response.data.accessToken);
+      sessionStorage.setItem('user_id', response.data.user_id);
+      setLoggedIn(true)
+      navigate(`/profile/${response.data.user_id}`)
+    })
+    .catch((err)=> {
+      console.error(err)
+    })
   }
   return (
     <div className="body">
       <img className="logo--landing" src={logoicon} alt="Roll & Reflect Logo" />
       <img className="logotext" src={logotext} alt="Roll& Reflect text"/>
 
-      <h2>Welcome Back {username}</h2>
+      <h2>Welcome Back {email}</h2>
       <div className="form__wrapper">
         <form className="form__form" onSubmit={handleOnSubmit}>
-          <label className="form__label">Username</label>
+          <label className="form__label">E-mail</label>
           <input
             type="text"
             className={
-              formErrors.username
+              formErrors.email
                 ? "form__field form__field--errors"
                 : "form__field"
             }
-            name="username"
-            id="username"
-            value={username}
-            onChange={(event) => setUsername(event.target.value)}
-            placeholder="Username"
+            name="email"
+            id="email"
+            value={email}
+            onChange={(event) => setEmail(event.target.value)}
+            placeholder="Email"
           />
-          {formErrors.username && (
-            <div className="form__error-message">{formErrors.username}</div>
+          {formErrors.email && (
+            <div className="form__error-message">{formErrors.email}</div>
           )}
           <label className="form__label" id="password">
             Password
