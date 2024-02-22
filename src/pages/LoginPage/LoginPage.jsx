@@ -12,6 +12,7 @@ export function LoginPage({setLoggedIn}) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [formErrors, setFormErrors] = useState({ email: "", password: "" });
+  const [invalidPW, setInvalidPW] = useState()
   //   const [createAccount, setCreateAccount] = useState("createAccount");
 
   const API_URL = import.meta.env.VITE_BASE_URL;
@@ -42,11 +43,8 @@ export function LoginPage({setLoggedIn}) {
   function handleOnSubmit(event) {
     event.preventDefault();
     if (isInputValid()) {
-      // navigate("/userprofile/1");
-      console.log(email)
-      console.log(password)
     } else {
-      console.log("Errors on form");
+      console.error("Errors on form");
     }
     axios
     .post(`${API_URL}/login/user`,{
@@ -54,13 +52,15 @@ export function LoginPage({setLoggedIn}) {
     password: password
     })
     .then((response)=> {
-      console.log("response", response)
       sessionStorage.setItem('token', response.data.accessToken);
       sessionStorage.setItem('user_id', response.data.user_id);
       setLoggedIn(true)
       navigate(`/profile/${response.data.user_id}`)
     })
     .catch((err)=> {
+      if(err.response && err.response.status ===401){
+        setInvalidPW(err.response.data)
+      }
       console.error(err)
     })
   }
@@ -102,6 +102,9 @@ export function LoginPage({setLoggedIn}) {
           />
           {formErrors.password && (
             <div className="form__error-message">{formErrors.password}</div>
+          )}
+          {invalidPW && (
+            <div className="form__error-message">{invalidPW}</div>
           )}
 
           <div className="btn-container">

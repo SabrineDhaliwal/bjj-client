@@ -4,36 +4,42 @@ import axios from "axios";
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 
-function UserProfileDetails() {
+function UserProfileDetails({ loggedIn, setLoggedIn }) {
   //UPS-> short for UserProfile Details
   const API_URL = import.meta.env.VITE_BASE_URL;
 
-
   const { id } = useParams();
   const [userdetailsObject, setUserDetailsObject] = useState([]);
+  const token = sessionStorage.getItem("token");
+  const user_id = sessionStorage.getItem("user_id");
 
   //make axios call to get information for user detail compoment
 
-  // this is erroringout because it is making a call to a table that had been changed. need to make the call to a different table 'profile' 
   useEffect(() => {
-    axios
-      .get(`${API_URL}/profile/${id}`)
-      .then((userdetails) => {
-        const userdetailsObject = userdetails.data;
-        setUserDetailsObject(userdetailsObject[0]);
-      })
-      .catch((err) => {
-        console.error(
-          err,
-          "error in axios call useraccount on UserProfilePage"
-        );
-      });
-  }, [API_URL, id]);
+    const getUser = async () => {
+      try {
+        if (token && user_id) {
+          const userResponse = await axios.get(
+            `${API_URL}/profile/${user_id}`,
+            {
+              headers: {
+                Authorization: `Bearer ${token}`,
+              },
+            }
+          );
+          console.log("response", userResponse);
+          setUserDetailsObject(userResponse.data[0]);
+        }
+      } catch (err) {
+        console.error("error at getUser UPD", err);
+      }
+    };
+    getUser();
+  }, [API_URL, token, user_id, setLoggedIn]);
 
   return (
     <div className="UPD">
-      
-      {userdetailsObject ? (
+      {token ? (
         <>
           <div className="UPD__img-block">
             <img
@@ -46,7 +52,8 @@ function UserProfileDetails() {
 
           <div className="UPD__details-block">
             <p className="UPD__text">
-              {`${userdetailsObject.first_name} ${userdetailsObject.last_name}`}{""}
+              {`${userdetailsObject.first_name} ${userdetailsObject.last_name}`}
+              {""}
             </p>
             <p className="UPD__text">
               Belt:{" "}
@@ -68,7 +75,10 @@ function UserProfileDetails() {
           </div>
         </>
       ) : (
-        <div>LOADING</div>
+        <div>
+          <p>OOPS! Something went wrong</p>
+          <p>Please return to home page and try loggin again</p>
+        </div>
       )}
     </div>
   );
