@@ -18,7 +18,7 @@ function App() {
       <Route path='/' element={<LandingPage />}/>
       <Route path='/login' element = {<LoginPage  setLoggedIn={setLoggedIn}/>} />
       <Route path='/createaccount' element = {<CreateAccountPage/>} />
-      <Route path='/profile/:id' element = {<UserProfilePage loggedIn={loggedIn} setLoggedIn={setLoggedIn}/>}/>
+      <Route path='/profile/:id' element = {<UserProfilePage loggedIn={loggedIn}/>} />
       <Route path='/techs' element = {<TechniquesPage/>}/>
       <Route path='techs/:id' element= {<TechniquesPage/>}/>
       <Route path='techs/:id/edit' element= {<EditTechsPage/> }/>

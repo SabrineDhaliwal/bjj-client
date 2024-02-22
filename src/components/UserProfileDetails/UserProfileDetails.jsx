@@ -1,33 +1,35 @@
 import "./UserProfileDetails.scss";
 // import profilePic from "../../assets/images/sabrine_bb_8895.JPG"
 import axios from "axios";
-import { useParams } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useParams, useNavigate } from "react-router-dom";
+import { useState, useEffect,} from "react";
+import editImg from "../../assets/icons/edit-50.png";
 
-function UserProfileDetails({ loggedIn, setLoggedIn }) {
+function UserProfileDetails({ }) {
   //UPS-> short for UserProfile Details
   const API_URL = import.meta.env.VITE_BASE_URL;
 
   const { id } = useParams();
+  const navigate = useNavigate();
   const [userdetailsObject, setUserDetailsObject] = useState([]);
+  const [profileExists, setProfileExists] = useState(true)
   const token = sessionStorage.getItem("token");
   const user_id = sessionStorage.getItem("user_id");
 
   //make axios call to get information for user detail compoment
 
+  const handleEdit = (event, id) => {
+    navigate(`/profile/edit/${id}`);
+  };
   useEffect(() => {
     const getUser = async () => {
+// create an if statement that if userprofile exists it sets updateprofile state and loads form
+
       try {
-        if (token && user_id) {
+        if (token && user_id==id) {
           const userResponse = await axios.get(
-            `${API_URL}/profile/${user_id}`,
-            {
-              headers: {
-                Authorization: `Bearer ${token}`,
-              },
-            }
+            `${API_URL}/profile/${id}`,
           );
-          console.log("response", userResponse);
           setUserDetailsObject(userResponse.data[0]);
         }
       } catch (err) {
@@ -35,10 +37,11 @@ function UserProfileDetails({ loggedIn, setLoggedIn }) {
       }
     };
     getUser();
-  }, [API_URL, token, user_id, setLoggedIn]);
+  }, [API_URL, token, user_id]);
 
   return (
     <div className="UPD">
+
       {token ? (
         <>
           <div className="UPD__img-block">
@@ -80,6 +83,10 @@ function UserProfileDetails({ loggedIn, setLoggedIn }) {
           <p>Please return to home page and try loggin again</p>
         </div>
       )}
+      <div>
+        <img src={editImg} alt="edit" className="icon"
+                onClick={(event) => handleEdit(event, userdetailsObject.id)}/>
+      </div>
     </div>
   );
 }

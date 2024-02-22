@@ -6,6 +6,7 @@
     display:flex;
     @include page__padding--tablet;
     justify-content: center;
+    border: 1px red solid;
 
     // @include desktop{
     //     display: flex;

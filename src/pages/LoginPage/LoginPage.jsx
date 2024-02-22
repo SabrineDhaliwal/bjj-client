@@ -62,7 +62,8 @@ export function LoginPage({setLoggedIn}) {
         setInvalidPW(err.response.data)
       }
       console.error(err)
-    })
+    });
+    
   }
   return (
     <div className="body">

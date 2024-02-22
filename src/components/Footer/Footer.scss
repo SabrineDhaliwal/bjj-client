@@ -5,6 +5,8 @@
   margin-top: 1.5rem;
   display: flex;
   flex-direction: column;
+  background-color: $primary-neutral;
+  margin-top:0;
   @include page__padding--mobile;
 
   @include tablet {

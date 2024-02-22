@@ -23,9 +23,10 @@
 @mixin form-fields{
     line-height: 1.5rem;
     background-color: $primary-light;
-    padding: 0.25rem 1 rem;
+    padding-left:0.5rem;
     width:40vw;
     border-radius: $border-radius;
+    border-color: red;
 
     &--error{
         outline: 2px solid $error-state;

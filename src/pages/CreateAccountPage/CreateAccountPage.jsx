@@ -8,32 +8,30 @@ import axios from "axios";
 export function CreateAccountPage() {
   const API_URL = import.meta.env.VITE_BASE_URL;
   const navigate = useNavigate();
-  const [belts, setBelts] = useState([]); //used for belts dropdown
-  const [clubs, setClubs] = useState([]); // used for clubs dropdown
 
   //loading belts on mount
-  useEffect(() => {
-    axios
-      .get(`${API_URL}/utils/belts`)
-      .then((belts) => {
-        setBelts(belts.data);
-      })
-      .catch((err) => {
-        console.error(err);
-      });
-  }, [API_URL]);
+  // useEffect(() => {
+  //   axios
+  //     .get(`${API_URL}/utils/belts`)
+  //     .then((belts) => {
+  //       setBelts(belts.data);
+  //     })
+  //     .catch((err) => {
+  //       console.error(err);
+  //     });
+  // }, [API_URL]);
 
   // loading clubs on mount
-  useEffect(() => {
-    axios
-      .get(`${API_URL}/utils/clubs`)
-      .then((clubs) => {
-        setClubs(clubs.data);
-      })
-      .catch((err) => {
-        console.error(err);
-      });
-  }, [API_URL]);
+  // useEffect(() => {
+  //   axios
+  //     .get(`${API_URL}/utils/clubs`)
+  //     .then((clubs) => {
+  //       setClubs(clubs.data);
+  //     })
+  //     .catch((err) => {
+  //       console.error(err);
+  //     });
+  // }, [API_URL]);
 
   //form validations
   const validate = (values) => {
@@ -108,7 +106,14 @@ export function CreateAccountPage() {
     onSubmit: (values) => {
       console.log("onSubmit formik", values);
       //posting new user to database
-      // navigate("/useraccount/1");
+      axios
+      .post(`${API_URL}/login/newuser`, values)
+      .then((response)=> {
+        console.log("response", response)
+      })
+      .catch((err)=> {
+        console.error("error posting new user FE", err)
+      })
     },
   });
 
