@@ -3,15 +3,15 @@ import editbutton from "../../assets/icons/edit-50.png";
 import deletebutton from "../../assets/icons/delete.svg";
 import { useNavigate } from "react-router-dom";
 
-function SummaryList({summaryList, handleDelete}) {
+function SummaryList({summaryList, handleDelete, handleSummaryEdit}) {
   const API_URL = import.meta.env.VITE_BASE_URL;
   const navigate = useNavigate();
 
 
   //handle edit function
-  const handleEdit = (event, idtoEdit) => {
-    navigate(`/edit/${idtoEdit}`);
-  };
+  // const handleEdit = (event, idtoEdit) => {
+  //   navigate(`/edit/${idtoEdit}`);
+  // };
 
   return (
     <div className="summary-list">
@@ -53,7 +53,7 @@ function SummaryList({summaryList, handleDelete}) {
                 src={editbutton}
                 alt="edit"
                 className="icon"
-                onClick={(event) => handleEdit(event, summary.summary_id)}
+                onClick={(event) => handleSummaryEdit(event, summary.summary_id)}
               />
 
               <img

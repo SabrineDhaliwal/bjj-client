@@ -9,29 +9,6 @@ export function CreateAccountPage() {
   const API_URL = import.meta.env.VITE_BASE_URL;
   const navigate = useNavigate();
 
-  //loading belts on mount
-  // useEffect(() => {
-  //   axios
-  //     .get(`${API_URL}/utils/belts`)
-  //     .then((belts) => {
-  //       setBelts(belts.data);
-  //     })
-  //     .catch((err) => {
-  //       console.error(err);
-  //     });
-  // }, [API_URL]);
-
-  // loading clubs on mount
-  // useEffect(() => {
-  //   axios
-  //     .get(`${API_URL}/utils/clubs`)
-  //     .then((clubs) => {
-  //       setClubs(clubs.data);
-  //     })
-  //     .catch((err) => {
-  //       console.error(err);
-  //     });
-  // }, [API_URL]);
 
   //form validations
   const validate = (values) => {
@@ -89,13 +66,8 @@ export function CreateAccountPage() {
 
   const formik = useFormik({
     initialValues: {
-      // first_name: "",
-      // last_name: "",
       email: "",
       // username: "",
-      // belt_rank: "",
-      // bio: "",
-      // club_name: "",
       password: "",
       confirmPassword: "",
     },
@@ -133,45 +105,6 @@ export function CreateAccountPage() {
 
         <form onSubmit={formik.handleSubmit}>
           <div className="create-form__wrapper">
-            {/* <div className="create-form__input-set">
-              <label className="create-form__label">First Name: </label>
-              {formik.errors.first_name ? (
-                <div>{formik.errors.first_name}</div>
-              ) : null}
-              <input
-                id="first_name"
-                type="text"
-                name="first_name"
-                placeholder="Jane"
-                className={
-                  formik.errors.first_name
-                    ? "create-form__field create-form__field--error"
-                    : "create-form__field"
-                }
-                onChange={formik.handleChange}
-                value={formik.values.first_name}
-              />
-            </div> */}
-            {/* <div className="create-form__input-set">
-              <label className="create-form__label">Last Name: </label>
-              {formik.errors.last_name ? (
-                <div>{formik.errors.last_name}</div>
-              ) : null}
-              <input
-                id="last_name"
-                type="text"
-                name="last_name"
-                placeholder="Doe"
-                className={
-                  formik.errors.last_name
-                    ? "create-form__field create-form__field--error"
-                    : "create-form__field"
-                }
-                onChange={formik.handleChange}
-                value={formik.values.last_name}
-              />
-            </div> */}
-
             <div className="create-form__input-set">
               <label className="create-form__label">E-mail: </label>
               {formik.errors.email ? <div>{formik.errors.email}</div> : null}
@@ -251,99 +184,6 @@ export function CreateAccountPage() {
                 value={formik.values.confirmPassword}
               />
             </div>
-
-            {/* <div className="create-form__input-set">
-              <label className="create-form__label">
-                What Belt Rank are you?
-              </label>
-              {formik.errors.belt_rank ? (
-                <div>{formik.errors.belt_rank}</div>
-              ) : null}
-              <select
-                id="belt_rank"
-                name="belt_rank"
-                className={
-                  formik.errors.belt_rank
-                    ? "create-form__field create-form__field--error"
-                    : "create-form__field"
-                }
-                onChange={formik.handleChange}
-                value={formik.values.belt_rank}
-              >
-                {/* create table of belts in database */}
-                {/* <option value="" disabled="disabled">
-                  Select a Belt
-                </option>
-                {belts.map((belt) => (
-                  <option
-                    value={`${belt.belt_rank_id}, ${belt.belt_rank}`}
-                    key={belt.belt_rank_id}
-                  >
-                    {belt.belt_rank}
-                  </option>
-                ))}
-              </select> */}
-             
-            {/* </div> */}
-
-            {/* <div className="create-form__input-set">
-              <label className="create-form__label">Where do you train?</label>
-              {formik.errors.club_name ? (
-                <div>{formik.errors.club_name}</div>
-              ) : null}
-              <select
-                id="club_name"
-                name="club_name"
-                className={
-                  formik.errors.club_name
-                    ? "create-form__field create-form__field--error"
-                    : "create-form__field"
-                }
-                onChange={formik.handleChange}
-                value={formik.values.club_name}
-              >
-                <option>Select Club</option>
-                {clubs.map((club) => (
-                  <option
-                    value={`${club.club_id},${club.club_name}`}
-                    key={club.club_id}
-                  >
-                    {club.club_name}
-                  </option>
-                ))}
-              </select>
-             
-            </div> */}
-
-            {/* <div className="create-form__input-set">
-              <label className="create-form__label">
-                Tell Us About Yourself (optional):
-              </label>
-              <textarea
-                id="bio"
-                type="text"
-                name="bio"
-                placeholder="Tell us something"
-                className="create-form__field"
-                onChange={formik.handleChange}
-                value={formik.values.bio}
-              ></textarea>
-            </div> */}
-            {/* <div className="create-form__input-set">
-              <label className="create-form__label">
-                Upload a photo (optional)
-              </label>
-              <input
-                id="image"
-                type="file"
-                name="image"
-                multiple
-                accept="image/*"
-                className="create-form__input create-form__input--color"
-                onChange={formik.handleChange}
-                value={formik.values.image}
-              />
-            </div> */}
 
             <div className="btn-container">
               <Button

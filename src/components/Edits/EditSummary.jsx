@@ -11,6 +11,8 @@ const API_URL = import.meta.env.VITE_BASE_URL;
 const params = useParams();
 const navigate = useNavigate();
 
+const user_id = sessionStorage.getItem("user_id")
+
 
 const [editSummary, setEditSummary]= useState([])
 const [techs, setTechs] = useState([]);
@@ -75,12 +77,11 @@ const formik = useFormik({
   
     onSubmit:(values)=> {
       // console.log("changes", values);
-    //  navigate('/userprofile/1')
+     navigate(`../profile/${user_id}`)
 
     axios
     .put(`${API_URL}/summary/edit/${params.summaryid}`, values)
     .then((response)=> {
-      console.log(response.data, "response data")
       alert("Edits saved")
       // navigate('/userprofile/1')
     })

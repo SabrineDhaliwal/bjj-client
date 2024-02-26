@@ -10,17 +10,42 @@ export function UserProfilePage({ loggedIn, setLoggedIn }) {
   const navigate = useNavigate();
   const { id } = useParams();
   const [summaryList, setSummaryList] = useState([]);
+  const [userdetailsObject, setUserDetailsObject] = useState([]);
  
   
   const token = sessionStorage.getItem("token");
   const user_id = sessionStorage.getItem("user_id");
 
-  const handleEdit = (event) => {
-    navigate("/edit");
+  const handleSummaryEdit = (event, idtoEdit) => {
+    navigate(`/edit/${idtoEdit}`);
   };
+
+  const handleProfileEdit = (event, id)=> {
+  console.log("idtoEdit:", user_id, "params id:", id)
+  navigate(`../profile/${id}/edit`)
+  }
+
   const updateSummaryList = (newSummary) => {
     setSummaryList([newSummary, ...summaryList]);
   };
+
+  //Getting user details
+  useEffect(() => {
+    const getUser = async () => {
+
+      try {
+        if (token && user_id==id) {
+          const userResponse = await axios.get(
+            `${API_URL}/profile/${id}`,
+          );
+          setUserDetailsObject(userResponse.data[0]);
+        }
+      } catch (err) {
+        console.error("error at getUser UPD", err);
+      }
+    };
+    getUser();
+  }, [API_URL, token, user_id]);
   //getting all summaries named: summaryList
 
   useEffect(() => {
@@ -29,6 +54,7 @@ export function UserProfilePage({ loggedIn, setLoggedIn }) {
         if (token && user_id == id) {
           const response = await axios.get(
             `${API_URL}/summary/${id}`
+
           );
           
           setSummaryList(response.data);
@@ -67,13 +93,13 @@ export function UserProfilePage({ loggedIn, setLoggedIn }) {
     <>
       {token && user_id? (
         <>
-          <UserProfileDetails />
+          <UserProfileDetails userdetailsObject = {userdetailsObject} handleProfileEdit={handleProfileEdit}/>
           <SummaryInput
             updateSummaryList={updateSummaryList}
             summaryList={summaryList}
           />
           <SummaryList
-            handleEdit={handleEdit}
+            handleSummaryEdit={handleSummaryEdit}
             summaryList={summaryList}
             handleDelete={handleDelete}
           />
