@@ -19,24 +19,28 @@ function UserProfileForm({ belts, clubs }) {
   }, [API_URL, id]);
 
   const formik = useFormik({
-    initialValues: {
-      // user_id: profileObj?.user_id,
-      // first_name: profileObj?.first_name,
-      // last_name: profileObj?.last_name,
-      // club_name: profileObj?.clubName,
-      // belt_rank: profileObj?.belt_rank,
-      // bio: profileObj?.bio,
-      // image: profileObj?.image
-    },
+    initialValues: {},
 
-    // profile? formik.setValues(profile): null;
+    onSubmit: (values)=> {
+        console.log("new values", values)
+
+        axios
+        .patch(`${API_URL}/profile/edit/${id}`, values)
+        .then((response)=> {
+            console.log(response)
+        })
+        .catch((err)=> {
+            console.error(err, "error at patch FE")
+        })
+    
+    }
   });
 
   return (
     <>
       <h1>Update your Profile</h1>
 
-      <form>
+      <form onSubmit={formik.handleSubmit}>
         <div className="create-form__input-set">
           <label className="create-form__label">First Name: </label>
 
@@ -98,7 +102,7 @@ function UserProfileForm({ belts, clubs }) {
                 value={`${belt.belt_rank_id}, ${belt.belt_rank}`}
                 key={belt.belt_rank_id}
               >
-                {formik.values.belt_rank}
+                {belt.belt_rank}
               </option>
             ))}
           </select>
