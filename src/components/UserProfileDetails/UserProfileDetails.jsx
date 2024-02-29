@@ -8,6 +8,7 @@ import editImg from "../../assets/icons/edit-50.png";
 function UserProfileDetails({userDetailsObject, handleProfileEdit }) {
   //UPS-> short for UserProfile Details
   const API_URL = import.meta.env.VITE_BASE_URL;
+  console.log(userDetailsObject)
 
   const { id } = useParams();
  
@@ -15,7 +16,7 @@ function UserProfileDetails({userDetailsObject, handleProfileEdit }) {
     <div className="UPD">
           <div className="UPD__img-block">
             <img
-              src={`${userDetailsObject.image}`}
+              src={`${API_URL}/${userDetailsObject.image}`}
               alt="profile picture"
               className="UPD__image"
             />

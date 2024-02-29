@@ -7,10 +7,10 @@ import axios from "axios";
 function UserProfileForm({ belts, clubs }) {
   const API_URL = import.meta.env.VITE_BASE_URL;
   const { id } = useParams();
-  const [profile, setProfile] = useState();
+  const [profile, setProfile] = useState(); //user details
   const [formErr, setFormErr] = useState({});
-  const [profileImg, setProfileImg] = useState();
-  const [file, setFile]= useState();
+  const [profileImg, setProfileImg] = useState(); //new profile picture
+  const [file, setFile]= useState(); //existing profile photo in BE
   const [formValues, setFormValues]= useState({
     first_name: "",
       last_name: "",
@@ -45,52 +45,84 @@ function UserProfileForm({ belts, clubs }) {
     },[API_URL, id])
      
 
-  //       axios
-  //       .patch(`${API_URL}/profile/edit/${id}`, values, {
-  
-  //       })
-  //       .then((response)=> {
-  //           console.log("Ihope this works", response)
-  //           navigate(`../profile/${id}`)
-  //       })
-  //       .catch((err)=> {
-  //           console.error(err, "error at patch FE")
-  //       })
-    
-  //   }
-  // });
-  const handleChange = (e)=> {
-    e.preventDefault();
-    const { name, value } =e.target;
-    setFile(formValues.image);
-    if (name === 'image' && e.target.files[0]){
-      setFile(e.target.files[0]);
-    }
-     setFormValues({
-      ...formValues, [name]:value,
-     });
-     if(e.target.value){
-      setFormErr({
-        ...formErr, [name]: false,
+    const handleChange = (e)=> {
+      e.preventDefault();
+      const { name, value } =e.target;
+
+      setFormValues((prevValues)=> ({
+        ...prevValues, 
+        [name]:value,
+      }))
+
+      setFormErr((prevErrors)=> ({
+        ...prevErrors,
+        [name]: !!value,
+      }))
+
+      setFile(formValues.image);
+      if (name === 'image' && e.target.files[0]){
+        setFile(e.target.files[0]);
+      }
+      setFormValues({
+        ...formValues, [name]:value,
       });
-     } else {
-      setFormErr({
-        ...formErr, [name]:true,
-      })
-     }
-     console.log(name, value)
-  }
+      if(e.target.value){
+        setFormErr({
+          ...formErr, [name]: false,
+        });
+      } else {
+        setFormErr({
+          ...formErr, [name]:true,
+        })
+      }
+      // console.log(name, value)
+    }
+    
+    const handleUpdate = async (e) => {
+      e.preventDefault();
+      
+      try {
+        // uploading without adding an image 
+         if(profileImg === file ){
+          const response = await axios
+            .patch(`${API_URL}/profile/edit/${id}`, formValues);
+            alert("profile updated");
+            navigate(`../profile/${id}`)
+        } 
+        else {
+          // uploading WITH image file
+          const formData = new FormData();
+          formData.append("image", file)
+          
+          for (const key in formValues){
+            if (Object.prototype.hasOwnProperty.call(formValues, key)){
+              formData.set(key, formValues[key]);
+            }
+          }
+          formData.set('image', file);
 
-  const handleUpdate = (e) => {
-    e.preventDefault();
-    console.log('clicked update')
-  }
+          const response = await axios
+          .patch(`${API_URL}/profile/edit/${id}`, formData, {
+            headers: {
+              "Content-Type": "multipart/form-data"
+            }
+          });
+          alert("profile updated");
+          navigate(`../profile/${id}`)
+          console.log("I hope this works", response)
+        }
+      } catch(err){
+        console.error(err)
+      }
+      
 
+    }
+    
   return (
     <>
       <h1>Update your Profile</h1>
 
-      <form encType="multipart/form-data">
+      <form encType="multipart/form-data" onSubmit={handleUpdate}>
         <div className="create-form__input-set">
           <label className="create-form__label" htmlFor="first_name">First Name: </label>
 
@@ -215,7 +247,7 @@ function UserProfileForm({ belts, clubs }) {
             onChange={handleChange}
           />
         </div>
-        <Button text={"Update Profile"} type="submit" onClick={handleUpdate}/>
+        <Button text={"Update Profile"} type="submit" />
       </form>
     </>
   );

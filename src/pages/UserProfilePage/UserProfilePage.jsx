@@ -38,7 +38,7 @@ export function UserProfilePage({ loggedIn, setLoggedIn }) {
             `${API_URL}/profile/${id}`,
           );
           setUserDetailsObject(userResponse.data[0]);
-          console.log(userDetailsObject)
+          console.log(userDetailsObject.image)
         }
       } catch (err) {
         console.error("error at getUser UPD", err);
