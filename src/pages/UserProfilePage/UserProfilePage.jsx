@@ -10,7 +10,7 @@ export function UserProfilePage({ loggedIn, setLoggedIn }) {
   const navigate = useNavigate();
   const { id } = useParams();
   const [summaryList, setSummaryList] = useState([]);
-  const [userdetailsObject, setUserDetailsObject] = useState([]);
+  const [userDetailsObject, setUserDetailsObject] = useState([]);
  
   
   const token = sessionStorage.getItem("token");
@@ -21,7 +21,7 @@ export function UserProfilePage({ loggedIn, setLoggedIn }) {
   };
 
   const handleProfileEdit = (event, id)=> {
-  console.log("idtoEdit:", user_id, "params id:", id)
+  // console.log("idtoEdit:", user_id, "params id:", id)
   navigate(`../profile/${id}/edit`)
   }
 
@@ -32,13 +32,13 @@ export function UserProfilePage({ loggedIn, setLoggedIn }) {
   //Getting user details
   useEffect(() => {
     const getUser = async () => {
-
       try {
         if (token && user_id==id) {
           const userResponse = await axios.get(
             `${API_URL}/profile/${id}`,
           );
           setUserDetailsObject(userResponse.data[0]);
+          console.log(userDetailsObject)
         }
       } catch (err) {
         console.error("error at getUser UPD", err);
@@ -54,9 +54,7 @@ export function UserProfilePage({ loggedIn, setLoggedIn }) {
         if (token && user_id == id) {
           const response = await axios.get(
             `${API_URL}/summary/${id}`
-
           );
-          
           setSummaryList(response.data);
         }
       } catch (err) {
@@ -93,7 +91,7 @@ export function UserProfilePage({ loggedIn, setLoggedIn }) {
     <>
       {token && user_id? (
         <>
-          <UserProfileDetails userdetailsObject = {userdetailsObject} handleProfileEdit={handleProfileEdit}/>
+          <UserProfileDetails userDetailsObject = {userDetailsObject} handleProfileEdit={handleProfileEdit}/>
           <SummaryInput
             updateSummaryList={updateSummaryList}
             summaryList={summaryList}

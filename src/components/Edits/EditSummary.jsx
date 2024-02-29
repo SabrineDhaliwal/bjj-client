@@ -83,7 +83,7 @@ const formik = useFormik({
     .put(`${API_URL}/summary/edit/${params.summaryid}`, values)
     .then((response)=> {
       alert("Edits saved")
-      // navigate('/userprofile/1')
+      // navigate(`/profile/${user_id}`)
     })
     .catch((err)=> {
       console.log(err, "error at axios put call Edit Summary.jsx")

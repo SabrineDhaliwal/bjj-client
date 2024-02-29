@@ -5,18 +5,17 @@ import { useParams, useNavigate } from "react-router-dom";
 import { useState, useEffect,} from "react";
 import editImg from "../../assets/icons/edit-50.png";
 
-function UserProfileDetails({userdetailsObject, handleProfileEdit }) {
+function UserProfileDetails({userDetailsObject, handleProfileEdit }) {
   //UPS-> short for UserProfile Details
   const API_URL = import.meta.env.VITE_BASE_URL;
 
   const { id } = useParams();
-
+ 
   return (
     <div className="UPD">
           <div className="UPD__img-block">
             <img
-              // src={profilePic}
-              // {`${userdetailsObject.image}`}
+              src={`${userDetailsObject.image}`}
               alt="profile picture"
               className="UPD__image"
             />
@@ -24,24 +23,24 @@ function UserProfileDetails({userdetailsObject, handleProfileEdit }) {
 
           <div className="UPD__details-block">
             <p className="UPD__text">
-              {`${userdetailsObject.first_name} ${userdetailsObject.last_name}`}
+              {`${userDetailsObject.first_name} ${userDetailsObject.last_name}`}
               {""}
             </p>
             <p className="UPD__text">
               Belt:{" "}
-              <span className="UPD__text--light">{`${userdetailsObject.belt_rank}`}</span>
+              <span className="UPD__text--light">{`${userDetailsObject.belt_rank}`}</span>
             </p>
             <p className="UPD__text">
               Training Club:{" "}
               <span className="UPD__text--light">
-                {`${userdetailsObject.club_name}`}{" "}
+                {`${userDetailsObject.club_name}`}{" "}
               </span>
             </p>
             <p className="UPD__text">
               Bio:
               <span className="UPD__text--light">
                 {" "}
-                {`${userdetailsObject.bio}`}
+                {`${userDetailsObject.bio}`}
               </span>{" "}
             </p>
           </div>

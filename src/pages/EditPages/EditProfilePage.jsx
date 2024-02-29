@@ -1,4 +1,4 @@
-import UserProfileForm from "../../components/UserProfileForm/UserProfileForm";
+import UserProfileForm from "../../components/UserProfileForm/UpdateProfileForm";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
