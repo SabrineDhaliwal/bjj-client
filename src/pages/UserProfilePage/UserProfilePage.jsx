@@ -4,6 +4,8 @@ import SummaryInput from "../../components/SummaryInput/SummaryInput";
 import { useNavigate, useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import UserProfileForm from "../../components/UserProfileForm/UpdateProfileForm";
+import { EditProfilePage } from "../EditPages/EditProfilePage";
 
 export function UserProfilePage({ loggedIn, setLoggedIn }) {
   const API_URL = import.meta.env.VITE_BASE_URL;
@@ -11,6 +13,7 @@ export function UserProfilePage({ loggedIn, setLoggedIn }) {
   const { id } = useParams();
   const [summaryList, setSummaryList] = useState([]);
   const [userDetailsObject, setUserDetailsObject] = useState([]);
+  const [newProfile, setNewProfile] = useState()
  
   
   const token = sessionStorage.getItem("token");
@@ -38,7 +41,7 @@ export function UserProfilePage({ loggedIn, setLoggedIn }) {
             `${API_URL}/profile/${id}`,
           );
           setUserDetailsObject(userResponse.data[0]);
-          console.log(userDetailsObject.image)
+          setNewProfile(!userResponse.data[0])
         }
       } catch (err) {
         console.error("error at getUser UPD", err);
@@ -89,7 +92,10 @@ export function UserProfilePage({ loggedIn, setLoggedIn }) {
 
   return (
     <>
-      {token && user_id? (
+    {newProfile ? (navigate(`../profile/${id}/edit`))
+      : null
+    }
+      {token && user_id && !newProfile? (
         <>
           <UserProfileDetails userDetailsObject = {userDetailsObject} handleProfileEdit={handleProfileEdit}/>
           <SummaryInput
@@ -103,7 +109,7 @@ export function UserProfilePage({ loggedIn, setLoggedIn }) {
           />
         </>
       ) : (
-        <div>Login or create an account to start tracking your training</div>
+      null
       )}
     </>
   );

@@ -18,7 +18,7 @@ function App() {
     <Routes>
       <Route path='/' element={<LandingPage />}/>
       <Route path='/login' element = {<LoginPage  setLoggedIn={setLoggedIn}/>} />
-      <Route path='/createaccount' element = {<CreateAccountPage/>} />
+      <Route path='/createaccount' element = {<CreateAccountPage setLoggedIn={setLoggedIn}/>} />
 
       <Route path='/profile/:id' element = {<UserProfilePage loggedIn={loggedIn}/>} />
       <Route path='profile/:id/edit' element ={<EditProfilePage />} /> 

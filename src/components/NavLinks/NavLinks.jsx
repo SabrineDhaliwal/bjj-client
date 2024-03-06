@@ -1,38 +1,44 @@
-import './NavLinks.scss'; 
-import { NavLink, Link } from 'react-router-dom';
+import "./NavLinks.scss";
+import { NavLink, Link, useNavigate } from "react-router-dom";
 
-function NavLinks(){
-
+function NavLinks() {
+  const navigate = useNavigate()
   const user_id = sessionStorage.getItem("user_id");
-  const token = sessionStorage.getItem("token")
+  const token = sessionStorage.getItem("token");
 
+  const handleLogout =(e) =>{
+    sessionStorage.removeItem("user_id");
+    sessionStorage.removeItem('token');
+    navigate('/');
 
-    return(
-        <section>
-              <div className="navLinks__container">
-      <Link to={"/"} className="navLinks__link">
-            Home
-          </Link>
-          {token && user_id ? (
-            <NavLink to={`/profile/${user_id}`} className="navLinks__link">
-           My Profile
+  }
+
+  return (
+    <section>
+      <div className="navLinks__container">
+        <Link to={"/"} className="navLinks__link">
+          Home
+        </Link>
+        {token && user_id ? (
+          <NavLink to={`/profile/${user_id}`} className="navLinks__link">
+            My Profile
           </NavLink>
-              ): (
-                <NavLink to={"/login"} className="navLinks__link">
-                  My Profile 
-                </NavLink>
-              )
-      }
-          
-      <NavLink to={"/techs"} className="navLinks__link">
-            Techniques
+        ) : (
+          <NavLink to={"/login"} className="navLinks__link">
+            My Profile
           </NavLink>
-      <NavLink to={"/positions"} className="navLinks__link">
-            Positons
-          </NavLink>
+        )}
+
+        <NavLink to={"/techs"} className="navLinks__link">
+          Techniques
+        </NavLink>
+        <NavLink to={"/positions"} className="navLinks__link">
+          Positons
+        </NavLink>
+        <button onClick={handleLogout}>Logout</button>
       </div>
-        </section>
-    )
+    </section>
+  );
 }
 
-export default NavLinks
+export default NavLinks;

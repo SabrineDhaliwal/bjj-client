@@ -34,9 +34,10 @@ function UserProfileForm({ belts, clubs }) {
       try{
         const response = await 
         axios.get(`${API_URL}/profile/${id}`)
-        console.log(response.data)
+        console.log('get req', response.data)
         setProfile(response.data[0]);
         setProfileImg(response.data[0].image)
+        // setFormValues(response.data[0])
       } catch(err) {
         console.error(err);
       }
@@ -52,20 +53,20 @@ function UserProfileForm({ belts, clubs }) {
       setFormValues((prevValues)=> ({
         ...prevValues, 
         [name]:value,
-      }))
+      }));
+      console.log("prev form value", formValues)
 
       setFormErr((prevErrors)=> ({
         ...prevErrors,
         [name]: !!value,
-      }))
-
+      }));
+  
       setFile(formValues.image);
       if (name === 'image' && e.target.files[0]){
         setFile(e.target.files[0]);
       }
-      setFormValues({
-        ...formValues, [name]:value,
-      });
+
+      // clears erros for current field if there is a value
       if(e.target.value){
         setFormErr({
           ...formErr, [name]: false,
@@ -75,7 +76,7 @@ function UserProfileForm({ belts, clubs }) {
           ...formErr, [name]:true,
         })
       }
-      // console.log(name, value)
+      console.log("fe FV", formValues)
     }
     
     const handleUpdate = async (e) => {
@@ -83,13 +84,12 @@ function UserProfileForm({ belts, clubs }) {
       
       try {
         // uploading without adding an image 
-         if(profileImg === file ){
+         if(!file ){
           const response = await axios
             .patch(`${API_URL}/profile/edit/${id}`, formValues);
-            alert("profile updated");
+            alert("profile updated WITHOUT image");
             navigate(`../profile/${id}`)
-        } 
-        else {
+        } else {
           // uploading WITH image file
           const formData = new FormData();
           formData.append("image", file)
@@ -107,9 +107,9 @@ function UserProfileForm({ belts, clubs }) {
               "Content-Type": "multipart/form-data"
             }
           });
-          alert("profile updated");
           navigate(`../profile/${id}`)
-          console.log("I hope this works", response)
+          alert("profile updated with image");
+          console.log("updated WITH image", response)
         }
       } catch(err){
         console.error(err)

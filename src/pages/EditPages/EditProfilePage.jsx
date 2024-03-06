@@ -11,15 +11,6 @@ export function EditProfilePage(){
    
     const { id } = useParams();
 
-    // //getting current profile information 
-    // useEffect(()=> {
-    //     axios.get(`${API_URL}/profile/${id}`)
-    //     .then((response)=> {
-    //         console.log(response.data)
-    //         setProfile(response.data[0])
-    //     })
-    // },[API_URL, id])
-
     //loading belts on mount
   useEffect(() => {
     axios

@@ -5,8 +5,9 @@ import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
 
-export function CreateAccountPage() {
+export function CreateAccountPage({setLoggedIn}) {
   const API_URL = import.meta.env.VITE_BASE_URL;
+
   const navigate = useNavigate();
 
 
@@ -81,7 +82,9 @@ export function CreateAccountPage() {
       axios
       .post(`${API_URL}/login/newuser`, values)
       .then((response)=> {
-        console.log("response", response)
+        console.log("response", response) 
+        alert("You account is create, login to get started!")
+        navigate('../login')
       })
       .catch((err)=> {
         console.error("error posting new user FE", err)
@@ -209,4 +212,3 @@ export function CreateAccountPage() {
   );
 }
 
-// export default CreateAccountPage;

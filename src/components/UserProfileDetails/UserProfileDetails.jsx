@@ -2,18 +2,20 @@ import "./UserProfileDetails.scss";
 // import profilePic from "../../assets/images/sabrine_bb_8895.JPG"
 import axios from "axios";
 import { useParams, useNavigate } from "react-router-dom";
-import { useState, useEffect,} from "react";
+import { useState, useEffect } from "react";
 import editImg from "../../assets/icons/edit-50.png";
 
-function UserProfileDetails({userDetailsObject, handleProfileEdit }) {
+function UserProfileDetails({ userDetailsObject, handleProfileEdit }) {
   //UPS-> short for UserProfile Details
   const API_URL = import.meta.env.VITE_BASE_URL;
-  console.log(userDetailsObject)
+
+
 
   const { id } = useParams();
- 
+
   return (
-    <div className="UPD">
+    <>
+        <div className="UPD">
           <div className="UPD__img-block">
             <img
               src={`${API_URL}/${userDetailsObject.image}`}
@@ -45,13 +47,17 @@ function UserProfileDetails({userDetailsObject, handleProfileEdit }) {
               </span>{" "}
             </p>
           </div>
-    
-      <div>
-        <img src={editImg} alt="edit" className="icon"
-                onClick={(event) => handleProfileEdit(event, id)}
-                />
-      </div>
-    </div>
+
+          <div>
+            <img
+              src={editImg}
+              alt="edit"
+              className="icon"
+              onClick={(event) => handleProfileEdit(event, id)}
+            />
+          </div>
+        </div>
+    </>
   );
 }
 
