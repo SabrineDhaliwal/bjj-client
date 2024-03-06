@@ -77,7 +77,6 @@ export function CreateAccountPage({setLoggedIn}) {
     validate,
 
     onSubmit: (values) => {
-      console.log("onSubmit formik", values);
       //posting new user to database
       axios
       .post(`${API_URL}/login/newuser`, values)
