@@ -8,7 +8,7 @@ function UserProfileForm({ belts, clubs }) {
   const API_URL = import.meta.env.VITE_BASE_URL;
   const { id } = useParams();
   const [profile, setProfile] = useState([]); //user details
-  const [newProfile, setNewProfile]= useState(false)
+  const [newProfile, setNewProfile] = useState(true);
   const [formErr, setFormErr] = useState({});
   const [profileImg, setProfileImg] = useState([]); //new profile picture
   const [file, setFile] = useState(); //existing profile photo in BE
@@ -27,18 +27,15 @@ function UserProfileForm({ belts, clubs }) {
   //getting current profile information
   useEffect(() => {
     const getProfile = async () => {
-      if (id === undefined) {
-        return;
-      }
-
       try {
         const response = await axios.get(`${API_URL}/profile/${id}`);
         console.log("get req", response.data);
         const profileData = response.data[0];
         setProfile(profileData);
         setProfileImg(profileData.image);
-        if(profileData.length == 0){
-          setNewProfile(true)
+        setFormValues(profileData);
+        if (profileData.length !== 0) {
+          setNewProfile(false);
         }
 
         // if (profileData) {
@@ -53,7 +50,6 @@ function UserProfileForm({ belts, clubs }) {
         //     user_id: profileData.user_id || sessionStorage.getItem("user_id"),
         //   });
         // }
-        // setFormValues(response.data[0])
       } catch (err) {
         console.error(err);
       }
@@ -79,56 +75,89 @@ function UserProfileForm({ belts, clubs }) {
       ...prevErrors,
       [name]: !!value,
     }));
-    if(value){
-        setFormErr({
-          ...formErr, [name]: false,
-        });
-      } else {
-        setFormErr({
-          ...formErr, [name]:true,
-        })
-      }
+    if (value) {
+      setFormErr({
+        ...formErr,
+        [name]: false,
+      });
+    } else {
+      setFormErr({
+        ...formErr,
+        [name]: true,
+      });
+    }
   };
 
   const handleUpdate = async (e) => {
     e.preventDefault();
-    
-      try {
-        //new profile 
-        const formData = new FormData();
-            for (const key in formValues){
-              if (Object.prototype.hasOwnProperty.call(formValues, key)){
-                formData.set(key, formValues[key]);
-              }
-            }
-            formData.set('image', file);
 
+    try {
+      //new profile
+      if (newProfile == true) {
+        const formData = new FormData();
+        for (const key in formValues) {
+          if (Object.prototype.hasOwnProperty.call(formValues, key)) {
+            formData.set(key, formValues[key]);
+          }
+        }
+        formData.set("image", file);
+
+        const response = await axios.post(
+          `${API_URL}/profile/edit/${id}`,
+          formData,
+          {
+            headers: {
+              "Content-Type": "multipart/form-data",
+            },
+          }
+        );
+        navigate(`../profile/${id}`);
+      } else if (newProfile == false && profileImg == file) {
+        // editting a profile
+        const formData = new FormData();
+        for (const key in formValues) {
+          if (Object.prototype.hasOwnProperty.call(formValues, key)) {
+            formData.set(key, formValues[key]);
+          }
+        }
+        const response = await axios.patch(
+          `${API_URL}/profile/edit/${id}`,
+          formValues
+        );
+        alert("profile updated WITHOUT image");
+        navigate(`../profile/${id}`);
+      } 
+      
+      // update with image change
+      else {
+        const formData = new FormData();
+        formData.append("image", file);
+
+        for (const key in formValues) {
+          if (Object.prototype.hasOwnProperty.call(formValues, key)) {
+            formData.set(key, formValues[key]);
+          }
+        }
+        formData.set('image', file);
         const response = await axios
-        .post(`${API_URL}/profile/edit/${id}`, formData, {
+        .patch(`${API_URL}/profile/edit/${id}`, formData, {
           headers: {
             "Content-Type": "multipart/form-data"
           }
-        })
+        });
         navigate(`../profile/${id}`)
-
-
-      }catch(err){
-        console.error(err)
+        alert("profile updated with image");
+        console.log("updated WITH image", response)
       }
-    
+      
+    } catch (err) {
+      console.error(err);
+    }
+    console.log("form Values UPF", formValues);
     // try {
     //   // uploading without adding an image
     //    if(!file ){
-    //     const formData = new FormData();
-    //     for (const key in formValues){
-    //       if (Object.prototype.hasOwnProperty.call(formValues, key)){
-    //         formData.set(key, formValues[key]);
-    //       }
-    //     }
-    //     const response = await axios
-    //       .patch(`${API_URL}/profile/edit/${id}`, formValues);
-    //       alert("profile updated WITHOUT image");
-    //       navigate(`../profile/${id}`)
+    //
     //   } else {
     //     // uploading WITH image file
     //     const formData = new FormData();
@@ -158,15 +187,14 @@ function UserProfileForm({ belts, clubs }) {
 
   return (
     <>
-    {!profile? 
-    (
-    <>
-    <h2>Welcome to Roll & Reflect</h2>
-    <h3>Start by creating your profile</h3>
-    </>
-    ): 
-      <h2>Update your Profile</h2>
-    }
+      {!profile ? (
+        <>
+          <h2>Welcome to Roll & Reflect</h2>
+          <h3>Start by creating your profile</h3>
+        </>
+      ) : (
+        <h2>Update your Profile</h2>
+      )}
 
       <form encType="multipart/form-data" onSubmit={handleUpdate}>
         <div className="create-form__input-set">
@@ -234,7 +262,7 @@ function UserProfileForm({ belts, clubs }) {
               ?.filter((belt) => belt.belt_rank !== formValues.belt_rank)
               .map((belt) => (
                 <option
-                  value={`${belt.belt_rank_id}, ${belt.belt_rank}`}
+                  value={`${belt.belt_rank_id},${belt.belt_rank}`}
                   key={`${belt.belt_rank_id}`}
                 >
                   {belt.belt_rank}

@@ -81,7 +81,6 @@ export function CreateAccountPage({setLoggedIn}) {
       axios
       .post(`${API_URL}/login/newuser`, values)
       .then((response)=> {
-        console.log("response", response) 
         alert("You account is create, login to get started!")
         navigate('../login')
       })
@@ -92,7 +91,6 @@ export function CreateAccountPage({setLoggedIn}) {
   });
 
   const handleCancelClick = () => {
-    // console.log("click");
     navigate("/");
   };
 

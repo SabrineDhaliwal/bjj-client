@@ -40,7 +40,7 @@ export function UserProfilePage({ loggedIn, setLoggedIn }) {
           const userResponse = await axios.get(
             `${API_URL}/profile/${id}`,
           );
-          console.log('response, user profile page', userResponse)
+          // console.log('response, user profile page', userResponse)
           setUserDetailsObject(userResponse.data[0]);
           setNewProfile(!userResponse.data[0])
         }
