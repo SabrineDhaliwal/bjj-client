@@ -26,6 +26,7 @@
     width: 10rem;
     display:flex;
     align-items: center;
+    // justify-content: center;
     
   }
 
@@ -33,7 +34,7 @@
     width:8rem;
     height:8rem;
     border-radius: 15px;
-    background-color: $secondary-dark-color-shade;
+    // background-color: $secondary-dark-color-shade;
   }
   &__center {
     display: flex;

@@ -42,10 +42,6 @@ function SummaryList({summaryList, handleDelete, handleSummaryEdit}) {
                   Summary<br></br>
                   <span className="summary-list__text--light">{`${summary.summary}`}</span>
                 </p>
-                <p className="summary-list__text">
-                  Tags<br></br>
-                  <span className="summary-list__text--light">{`Tech: ${summary.tech_name}; Target: ${summary.target_name}; Position: ${summary.position_name}`}</span>
-                </p>
               </div>
             </div>
             <div className="summary-list__right">
