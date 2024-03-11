@@ -15,7 +15,6 @@ export function TechniquesPage() {
   const [techById, setTechbyId] = useState([]);
   
   const handleAddTechnique = (event) => {
-    console.log("clicked");
     navigate("/add/techs");
   };
 

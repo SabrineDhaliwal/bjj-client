@@ -34,7 +34,6 @@ function UserProfileForm({ belts, clubs }) {
     const getProfile = async () => {
       try {
         const response = await axios.get(`${API_URL}/profile/${id}`);
-        console.log("get req", response.data);
         const profileData = response.data[0];
         setProfile(profileData);
         setProfileImg(profileData.image);
@@ -116,7 +115,6 @@ function UserProfileForm({ belts, clubs }) {
           `${API_URL}/profile/edit/${id}`,
           formValues
         );
-        alert("profile updated WITHOUT image");
         navigate(`../profile/${id}`);
       } 
       
@@ -138,14 +136,12 @@ function UserProfileForm({ belts, clubs }) {
           }
         });
         navigate(`../profile/${id}`)
-        alert("profile updated with image");
-        console.log("updated WITH image", response)
       }
       
     } catch (err) {
       console.error(err);
     }
-    console.log("form Values UPF", formValues);  
+    
   };
 
   return (

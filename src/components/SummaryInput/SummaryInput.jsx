@@ -12,7 +12,6 @@ function SummaryInput({ updateSummaryList }) {
 
   const [techs, setTechs] = useState([]);
   const [positions, setPositions] = useState([]);
-  const [targets, setTargets] = useState([]);
   const params = useParams();
 
   // importing techniques from database
@@ -24,19 +23,6 @@ function SummaryInput({ updateSummaryList }) {
       })
       .catch((err) => {
         console.error(err);
-      });
-  }, [API_URL]);
-
-
-  //importing targets from data base
-  useEffect(() => {
-    axios
-      .get(`${API_URL}/targets`)
-      .then((targets) => {
-        setTargets(targets.data);
-      })
-      .catch((err) => {
-        console.log(err);
       });
   }, [API_URL]);
 
@@ -66,10 +52,6 @@ function SummaryInput({ updateSummaryList }) {
       errors.tech = "Please select technique";
     }
 
-    if (!values.target) {
-      errors.target = "Please select a target joint";
-    }
-
     if (!values.position) {
       errors.position = "Please select a position";
     }
@@ -81,7 +63,7 @@ function SummaryInput({ updateSummaryList }) {
       title: "",
       date: "",
       tech: "",
-      target: "",
+    
       position: "",
       summary: "",
       video: "",
@@ -89,15 +71,23 @@ function SummaryInput({ updateSummaryList }) {
 
     validate,
 
-    onSubmit: (values) => {
- 
+    onSubmit: (values, { resetForm }) => {
+      // check if a file/ video has been uploaded
+      if(!values.video){
+        axios
+        .post(`${API_URL}/summary`, values)
+        .then((response)=> {
+        })
+        .catch((err)=> {
+          console.log(err, "error at posting summary without video")
+        })
+      }
       const formData = new FormData();
       formData.append("video", values.video);
       formData.append("position", values.position);
       formData.append("summary", values.summary);
       formData.append("date", values.date);
       formData.append("tech", values.tech);
-      formData.append("target", values.target);
       formData.append("title", values.title);
       formData.append("id", params.id);
 
@@ -112,14 +102,13 @@ function SummaryInput({ updateSummaryList }) {
         })
         .then((response)=> {
           const newSummary = response.data[0]
-          updateSummaryList(newSummary)
-
-         
+          updateSummaryList(newSummary)         
         })
         .catch((err) => {
           console.log(err, "error at Front end on submit");
         });
     
+        resetForm();
     },
   });
 
@@ -193,33 +182,8 @@ function SummaryInput({ updateSummaryList }) {
           </div>
               {formik.errors.tech ? <div>{formik.errors.tech}</div> : null}
 
-          <div className="summary-form__input-set">
-            <label className="summary-form__label">What was your Target</label>
-            <select
-              id="target"
-              name="target"
-              className={
-                formik.errors.target
-                ? "summary-form__field summary-form__field--error"
-                : "summary-form__field"
-              }
-              value={formik.values.target}
-              onChange={formik.handleChange}
-              >
-              <option value="" disabled="disabled">
-                Select a Target
-              </option>
-              {targets.map((target) => (
-                <option
-                value={`${target.target_id}, ${target.target_name}`}
-                key={target.target_id}
-                >
-                  {target.target_name}
-                </option>
-              ))}
-            </select>
-          </div>
-              {formik.errors.target ? <div>{formik.errors.target}</div> : null}
+         
+            
 
           <div className="summary-form__input-set">
             <label className="summary-form__label">

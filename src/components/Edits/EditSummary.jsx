@@ -17,21 +17,10 @@ const user_id = sessionStorage.getItem("user_id")
 const [editSummary, setEditSummary]= useState([])
 const [techs, setTechs] = useState([]);
 const [positions, setPositions] = useState([]);
-const [targets, setTargets] = useState([]);
+
 
 //loading dropdown menus
-//targets
-useEffect(()=> {
-  axios
-  .get(`${API_URL}/targets`)
-  .then((targets)=> {
-    setTargets(targets.data)
-  })
-  .catch((err)=>{
-    console.log(err)
-  })
 
-},[])
 //positions
 useEffect(()=>{
   axios
@@ -76,19 +65,19 @@ const formik = useFormik({
     initialValues: {},
   
     onSubmit:(values)=> {
-      // console.log("changes", values);
-     navigate(`../profile/${user_id}`)
+    
+      axios
+      .put(`${API_URL}/summary/edit/${params.summaryid}`, values)
+      .then((response)=> {
+        console.log("response after put,", response)
+        alert("Edits saved")  
+        navigate(`/profile/${user_id}`)
+      })
+      .catch((err)=> {
+        console.log(err, "error at axios put call Edit Summary.jsx")
+      })
 
-    axios
-    .put(`${API_URL}/summary/edit/${params.summaryid}`, values)
-    .then((response)=> {
-      alert("Edits saved")
-      // navigate(`/profile/${user_id}`)
-    })
-    .catch((err)=> {
-      console.log(err, "error at axios put call Edit Summary.jsx")
-    })
-    }
+    } 
 });
 
 
@@ -109,9 +98,7 @@ const formik = useFormik({
               value={formik.values.title}
               onChange={formik.handleChange}
             />
-            {/* {formik.errors.title ? (
-                <div>{formik.errors.title}</div>
-              ) : null} */}
+           
           </div>
 
           <div className="summary-form__input-set">
@@ -125,9 +112,7 @@ const formik = useFormik({
               value={formik.values.date}
               onChange={formik.handleChange}
             />
-            {/* {formik.errors.date ? (
-              <div>{formik.errors.date}</div>
-            ): null} */}
+           
           </div>
 
           <div className="summary-form__input-set">
@@ -145,31 +130,9 @@ const formik = useFormik({
                   <option value = {`${tech.tech_id}, ${tech.tech_name}`} key={tech.tech_id}>{tech.tech_name}</option>
                 ))}
             </select>
-            {/* {formik.errors.tech ? (
-          <div>{formik.errors.tech}</div>
-        ): null} */}
+          
           </div>
 
-          <div className="summary-form__input-set">
-            <label>What was your Target</label>
-            <select
-            id="target_name"
-            name="target_name"
-            className="summary-form__input"
-            onChange={formik.handleChange}
-            >
-              
-              <option value={formik.values.target_name}>
-                {formik.values.target_name}
-              </option>
-              {targets.filter((target)=> target.target_name!==formik.values.target_name).map((target)=> (
-                <option value = {`${target.target_id}, ${target.target_name}`} key={target.target_id}>{target.target_name}</option>
-              ))}
-            </select>
-            {/* {formik.errors.target ? (
-          <div>{formik.errors.target}</div>
-        ): null} */}
-          </div>
 
           <div className="summary-form__input-set">
             <label>What Position did you implement it from?</label>
@@ -187,9 +150,7 @@ const formik = useFormik({
                 <option value = {`${position.position_id}, ${position.position_name}`}key ={position.position_id}>{position.position_name}</option>
               ))}
             </select>
-            {/* {formik.errors.position? ( */}
-        {/* //   <div>{formik.errors.position}</div>
-        ): null} */}
+  
           </div>
 
 
@@ -205,6 +166,21 @@ const formik = useFormik({
               onChange={formik.handleChange}
             ></textarea>
           </div>
+
+<h5>Updating the video feature will be coming soon</h5>
+          {/* <div className="summary-form__input-set">
+            <label className="summary-form__label">Video Upload</label>
+            <input
+              className="summary-form__field summary-form__field--color"
+              id="video"
+              type="file"
+              name="video"
+              accept="video/*"
+              onChange={(e) =>
+                formik.setFieldValue("video", e.currentTarget.files[0])
+              }
+            />
+          </div> */}
 
           <Button text='Add Change' type="submit"/>
           </form>
