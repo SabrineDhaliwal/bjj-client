@@ -34,15 +34,18 @@
 
   &__field {
     @include form-fields;
-  }
+    &--error {
+      outline: 2px solid red;
+    }
 
- 
+   
+  }
 }
-.btn-container{
+.btn-containerLogin{
     margin: 1rem 0;
     display:flex;
-    flex-direction: column;
     justify-content: center;
+    align-items: center;
   }
 
   .quote{

@@ -29,8 +29,6 @@
 
         @include desktop{
             justify-content: space-between;
-           
-            
         }
 
     }
@@ -44,18 +42,12 @@
         
     }
 
-    &__input{
-        @include form-fields;
-        &--color{
-            background-color: $primary-neutral;
-        }
-    }
-
     &__field{
         @include form-fields;
         &--color{
             background-color: $primary-neutral;
         }
+      
     }
 
     &__textarea{

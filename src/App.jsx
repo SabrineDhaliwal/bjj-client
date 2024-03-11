@@ -2,7 +2,7 @@ import './App.scss';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
-import { AddTechPage, CreateAccountPage, EditSummaryPage, EditTechsPage, EditProfilePage ,LandingPage, LoginPage, PositionsDetailsPage, PositionsPage, TechniquesDetailsPage, TechniquesPage, UserProfilePage } from "./pages/index"
+import { AddPositionPage, AddTechPage, CreateAccountPage, EditSummaryPage, EditTechsPage, EditProfilePage ,LandingPage, LoginPage,  PositionsPage, TechniquesPage, UserProfilePage } from "./pages/index"
 import { useState } from 'react';
 
 
@@ -31,7 +31,8 @@ function App() {
       <Route path='/add/techs' element = {<AddTechPage />}/>
 
       <Route path='/positions' element ={<PositionsPage/>}/>
-      <Route path= '/positions/:id' element ={<PositionsDetailsPage/>}/> 
+      <Route path= '/positions/:id' element ={<PositionsPage/>}/> 
+      <Route path='/add/postion' element ={<AddPositionPage/>}/>
     </Routes>
     <Footer />
     </BrowserRouter>

@@ -24,6 +24,11 @@ function UserProfileForm({ belts, clubs }) {
   });
   const navigate = useNavigate();
 
+  const handleCancel = (e) => {
+    console.log("cancel clicked")
+    navigate(-1);
+  };
+
   //getting current profile information
   useEffect(() => {
     const getProfile = async () => {
@@ -37,19 +42,6 @@ function UserProfileForm({ belts, clubs }) {
         if (profileData.length !== 0) {
           setNewProfile(false);
         }
-
-        // if (profileData) {
-        //   setFormValues({
-        //     first_name: profileData.first_name || "",
-        //     last_name: profileData.last_name || "",
-        //     belt_rank: profileData.belt_rank || "",
-        //     belt_rank_id: profileData.belt_rank_id || "",
-        //     club_name: profileData.club_name || "",
-        //     club_id: profileData.club_id || "",
-        //     bio: profileData.bio || "",
-        //     user_id: profileData.user_id || sessionStorage.getItem("user_id"),
-        //   });
-        // }
       } catch (err) {
         console.error(err);
       }
@@ -153,36 +145,7 @@ function UserProfileForm({ belts, clubs }) {
     } catch (err) {
       console.error(err);
     }
-    console.log("form Values UPF", formValues);
-    // try {
-    //   // uploading without adding an image
-    //    if(!file ){
-    //
-    //   } else {
-    //     // uploading WITH image file
-    //     const formData = new FormData();
-    //     formData.append("image", file)
-
-    //     for (const key in formValues){
-    //       if (Object.prototype.hasOwnProperty.call(formValues, key)){
-    //         formData.set(key, formValues[key]);
-    //       }
-    //     }
-    //     formData.set('image', file);
-
-    //     const response = await axios
-    //     .patch(`${API_URL}/profile/edit/${id}`, formData, {
-    //       headers: {
-    //         "Content-Type": "multipart/form-data"
-    //       }
-    //     });
-    //     navigate(`../profile/${id}`)
-    //     alert("profile updated with image");
-    //     console.log("updated WITH image", response)
-    //   }
-    // } catch(err){
-    //   console.error(err)
-    // }
+    console.log("form Values UPF", formValues);  
   };
 
   return (
@@ -335,6 +298,7 @@ function UserProfileForm({ belts, clubs }) {
           />
         </div>
         <Button text={"Update Profile"} type="submit" />
+        <Button text={"Cancel"} type="reset" clickHandler={handleCancel}/> 
       </form>
     </>
   );

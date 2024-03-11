@@ -9,16 +9,25 @@ import Button from "../../components/Buttons/Buttons";
 export function TechniquesPage() {
   const API_URL = import.meta.env.VITE_BASE_URL;
   const navigate = useNavigate();
-  const params = useParams();
+  const {id} = useParams();
 
   const [allTechs, setAllTechs] = useState([]);
   const [techById, setTechbyId] = useState([]);
-
+  
   const handleAddTechnique = (event) => {
     console.log("clicked");
     navigate("/add/techs");
   };
 
+  const handleEditTechnique = (event) => {
+    if (!id){
+     alert('you need to select a technique')
+     console.log('clicked')
+    } else {
+    console.log('tech selected')
+    navigate(`/techs/${id}/edit`)
+    }
+  }
   // call to get full list of techniques
   useEffect(() => {
     axios
@@ -34,7 +43,7 @@ export function TechniquesPage() {
   // axios call to get tech by id
   useEffect(() => {
     axios
-      .get(`${API_URL}/techs/${params.id}`)
+      .get(`${API_URL}/techs/${id}`)
       .then((response) => {
         setTechbyId(response.data[0]);
       })
@@ -44,7 +53,7 @@ export function TechniquesPage() {
           "axios error at techs by ID"
         );
       });
-  }, [params.id]);
+  }, [id]);
 
   return (
     <>
@@ -57,11 +66,9 @@ export function TechniquesPage() {
         type="button"
         clickHandler={handleAddTechnique}
       />
-      <Button text="Edit Technique" type="button" />
-      {/* <Link to="/techs">
-        <img src={BackButton} alt="back-button" />
-      </Link> */}
+      <Button text="Edit Technique" type="button" clickHandler={handleEditTechnique}/>
+    
     </>
   );
 }
-// export default TechniquesPage;
+

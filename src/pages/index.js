@@ -1,4 +1,5 @@
 export {AddTechPage} from "./AddPage/AddTechPage";
+export * from "./AddPage/AddPositionPage";
 export * from "./CreateAccountPage/CreateAccountPage";
 export * from "./EditPages/EditSummaryPage";
 export * from "./EditPages/EditTechsPage/";

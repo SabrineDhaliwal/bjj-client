@@ -20,7 +20,7 @@
 }
 .create-form{
     &__wrapper{
-        width:80vw;
+        width:90vw;
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -31,21 +31,35 @@
         @include form-labels;
         display:flex;
         justify-content: space-between;
-        width:60vw;
+        width:80vw;
+
+        @include tablet{
+           max-width: 760px;
+           
+        }
 
     }
     &__field{
         @include form-fields;
-        width:50%;
+     
+        &--error{
+            outline: 2px solid red;
+        }
+        
         &--color {
             background-color: $primary-neutral;
             padding-left: -2rem,
         }
+
+        @include tablet {
+            width: 500px;
+        }
     }
 }
-.btn-container{
+.btn-containerCA{
     display:flex;
     flex-direction: row;
+    margin-top: 1rem;
 
 }
 .btn-main{

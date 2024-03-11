@@ -5,7 +5,7 @@ export function PositionsDetailsPage ()
     {
         return (
             <>
-            <PositionDetails />
+            {/* <PositionDetails /> */}
             {/* <Button text= "Back to Positions list"/> */}
         
             </>

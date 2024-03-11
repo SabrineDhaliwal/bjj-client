@@ -130,29 +130,28 @@ function SummaryInput({ updateSummaryList }) {
         <form onSubmit={formik.handleSubmit} >
           <div className="summary-form__input-set">
             <label className="summary-form__label">Title</label>
-            {formik.errors.title ? <div>{formik.errors.title}</div> : null}
             <input
               className={
                 formik.errors.title
-                  ? "summary-form__field summary-form__field--error"
-                  : "summary-form__field"
+                ? "summary-form__field summary-form__field--error"
+                : "summary-form__field"
               }
               id="title"
               type="text"
               name="title"
               value={formik.values.title}
               onChange={formik.handleChange}
-            />
+              />
           </div>
+              {formik.errors.title ? <div>{formik.errors.title}</div> : null}
 
           <div className="summary-form__input-set">
             <label className="summary-form__label">Date:</label>
-            {formik.errors.date ? <div>{formik.errors.date}</div> : null}
             <input
               className={
                 formik.errors.date
-                  ? "summary-form__field summary-form__field--error"
-                  : "summary-form__field"
+                ? "summary-form__field summary-form__field--error"
+                : "summary-form__field"
               }
               id="date"
               type="date"
@@ -160,98 +159,99 @@ function SummaryInput({ updateSummaryList }) {
               placeholder=""
               value={formik.values.date}
               onChange={formik.handleChange}
-            />
+              />
           </div>
+              {formik.errors.date ? <div>{formik.errors.date}</div> : null}
 
           <div className="summary-form__input-set">
             <label className="summary-form__label">
               What technique did you learn?
             </label>
-            {formik.errors.tech ? <div>{formik.errors.tech}</div> : null}
             <select
               id="tech"
               name="tech"
               className={
                 formik.errors.tech
-                  ? "summary-form__field  summary-form__field--error"
-                  : "summary-form__field"
+                ? "summary-form__field  summary-form__field--error"
+                : "summary-form__field"
               }
               value={formik.values.tech}
               onChange={formik.handleChange}
-            >
+              >
               <option value="" disabled="disabled">
                 Select a Technique
               </option>
               {techs.map((tech) => (
                 <option
-                  value={`${tech.tech_id}, ${tech.tech_name}`}
-                  key={tech.tech_id}
+                value={`${tech.tech_id}, ${tech.tech_name}`}
+                key={tech.tech_id}
                 >
                   {tech.tech_name}
                 </option>
               ))}
             </select>
           </div>
+              {formik.errors.tech ? <div>{formik.errors.tech}</div> : null}
 
           <div className="summary-form__input-set">
             <label className="summary-form__label">What was your Target</label>
-            {formik.errors.target ? <div>{formik.errors.target}</div> : null}
             <select
               id="target"
               name="target"
               className={
                 formik.errors.target
-                  ? "summary-form__field summary-form__field--error"
-                  : "summary-form__field"
+                ? "summary-form__field summary-form__field--error"
+                : "summary-form__field"
               }
               value={formik.values.target}
               onChange={formik.handleChange}
-            >
+              >
               <option value="" disabled="disabled">
                 Select a Target
               </option>
               {targets.map((target) => (
                 <option
-                  value={`${target.target_id}, ${target.target_name}`}
-                  key={target.target_id}
+                value={`${target.target_id}, ${target.target_name}`}
+                key={target.target_id}
                 >
                   {target.target_name}
                 </option>
               ))}
             </select>
           </div>
+              {formik.errors.target ? <div>{formik.errors.target}</div> : null}
 
           <div className="summary-form__input-set">
             <label className="summary-form__label">
               What Position did you start from?
             </label>
-            {formik.errors.position ? (
-              <div>{formik.errors.position}</div>
-            ) : null}
             <select
               id="position"
               name="position"
               className={
                 formik.errors.position
-                  ? "summary-form__field summary-form__field--error"
-                  : "summary-form__field"
+                ? "summary-form__field summary-form__field--error"
+                : "summary-form__field"
               }
               value={formik.values.position}
               onChange={formik.handleChange}
-            >
+              >
               <option value="" disabled="disabled">
                 Select a Position
               </option>
               {positions.map((position) => (
                 <option
-                  value={`${position.position_id}, ${position.position_name}`}
-                  key={position.position_id}
+                value={`${position.position_id}, ${position.position_name}`}
+                key={position.position_id}
                 >
                   {position.position_name}
                 </option>
               ))}
             </select>
           </div>
+              {formik.errors.position ? (
+                <div>{formik.errors.position}</div>
+              ) : null}
 
           <div className="summary-form__input-set">
             <label className="summary-form__label">Summary</label>

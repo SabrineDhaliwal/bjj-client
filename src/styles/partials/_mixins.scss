@@ -24,13 +24,16 @@
     line-height: 1.5rem;
     background-color: $primary-light;
     padding-left:0.5rem;
-    width:40vw;
+    width:50vw;
     border-radius: $border-radius;
-    border-color: red;
-
+    
     &--error{
         outline: 2px solid $error-state;
 
+    }
+    @include tablet {
+        max-width: 760px;
+        
     }
 }
 

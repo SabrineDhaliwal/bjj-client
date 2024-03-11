@@ -6,9 +6,17 @@
     background-color: $secondary-dark-color-tint;
     line-height: 1.5rem;
     font-weight: 500;
+    padding: 0.15rem 0.25rem;
+    max-width: 6rem;
+  
 
-// &__err{
-//     background-color: $error-state;
+    @include tablet{
+        max-width: 10rem;
+
+    }
+
+//  &__err{
+//    background-color: $error-state;
 // }
 
 }

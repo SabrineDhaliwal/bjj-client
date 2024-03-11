@@ -13,7 +13,8 @@ export function LoginPage({setLoggedIn}) {
   const [password, setPassword] = useState("");
   const [formErrors, setFormErrors] = useState({ email: "", password: "" });
   const [invalidPW, setInvalidPW] = useState()
-  //   const [createAccount, setCreateAccount] = useState("createAccount");
+  const [invalidEmail, setInvalidEmail]= useState()
+
 
   const API_URL = import.meta.env.VITE_BASE_URL;
   const navigate = useNavigate();
@@ -39,11 +40,12 @@ export function LoginPage({setLoggedIn}) {
     return !(errors.email || errors.password);
   };
 
+
   function handleOnSubmit(event) {
     event.preventDefault();
     if (isInputValid()) {
     } else {
-      console.error("Errors on form");
+      
     }
     axios
     .post(`${API_URL}/login/user`,{
@@ -60,6 +62,9 @@ export function LoginPage({setLoggedIn}) {
       if(err.response && err.response.status ===401){
         setInvalidPW(err.response.data)
       }
+      if(err.response && err.response.status ===404){
+        setInvalidEmail(err.response.data)
+      }
       console.error(err)
     });
     
@@ -69,32 +74,40 @@ export function LoginPage({setLoggedIn}) {
       <img className="logo--landing" src={logoicon} alt="Roll & Reflect Logo" />
       <img className="logotext" src={logotext} alt="Roll& Reflect text"/>
 
-      <h2>Welcome Back {email}</h2>
+      <h2>Welcome Back </h2>
       <div className="form__wrapper">
         <form className="form__form" onSubmit={handleOnSubmit}>
+
           <label className="form__label">E-mail</label>
           <input
             type="text"
             className={
               formErrors.email
-                ? "form__field form__field--errors"
-                : "form__field"
+              ? "form__field form__field--error"
+              : "form__field"
             }
             name="email"
             id="email"
             value={email}
             onChange={(event) => setEmail(event.target.value)}
             placeholder="Email"
-          />
+            />
           {formErrors.email && (
             <div className="form__error-message">{formErrors.email}</div>
-          )}
+            )}
+            {invalidEmail && (
+                <div className="form__error-message">{invalidEmail}</div>
+              )}
           <label className="form__label" id="password">
             Password
           </label>
           <input
             type="password"
-            className="form__field"
+            className={
+              formErrors.password
+              ? "form__field form__field--error"
+              : "form__field"
+            }
             id="password"
             value={password}
             onChange={(event) => setPassword(event.target.value)}
@@ -107,11 +120,11 @@ export function LoginPage({setLoggedIn}) {
             <div className="form__error-message">{invalidPW}</div>
           )}
 
-          <div className="btn-container">
+          <div className="btn-containerLogin">
             <Button text="Login" />
 
             <Button
-              text="Create an Account"
+              text="Sign Up"
               type="button"
               clickHandler={handleCreateAccount}
             />

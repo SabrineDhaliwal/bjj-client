@@ -12,6 +12,7 @@
     font-family: 'Roboto';
     width:100vw;
     margin:0;
+    background-color: $primary-neutral;
     @include page__padding--mobile;
 
     @include tablet{

@@ -4,8 +4,8 @@ import SummaryInput from "../../components/SummaryInput/SummaryInput";
 import { useNavigate, useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
-import UserProfileForm from "../../components/UserProfileForm/UpdateProfileForm";
-import { EditProfilePage } from "../EditPages/EditProfilePage";
+
+
 
 export function UserProfilePage({ loggedIn, setLoggedIn }) {
   const API_URL = import.meta.env.VITE_BASE_URL;
@@ -24,13 +24,13 @@ export function UserProfilePage({ loggedIn, setLoggedIn }) {
   };
 
   const handleProfileEdit = (event, id)=> {
-  // console.log("idtoEdit:", user_id, "params id:", id)
   navigate(`../profile/${id}/edit`)
   }
 
   const updateSummaryList = (newSummary) => {
     setSummaryList([newSummary, ...summaryList]);
   };
+
 
   //Getting user details
   useEffect(() => {
