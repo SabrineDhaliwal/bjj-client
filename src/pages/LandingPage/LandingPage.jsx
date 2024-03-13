@@ -31,11 +31,11 @@ export function LandingPage() {
         <h4>What are we?</h4>
         <p>
           We are a tool you can use to help you keep track of your learning
-          throughout your Jiu-Jitsu Journey. This new app is social media meets
-          learning tracker. Create a profile, join your club and its existing
-          members and start logging your training sessions. With every training
+          throughout your Jiu-Jitsu Journey. Create a profile and start logging your training sessions. With every training
           session, you can upload a video so that you are better able to review
           it and reflect on your learnings.
+
+          <p>More features are being developed.</p>
         </p>
       </div>
     </section>
