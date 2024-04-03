@@ -8,7 +8,7 @@ export * from "./LandingPage/LandingPage";
 export * from "./LoginPage/LoginPage";
 export * from "./PositionsDetailsPage/PositionsDetailsPage";
 export * from "./PositionsPage/PositionsPage";
-export * from "./TechniquesDetailPage/TechniquesDetailPage";
+
 export * from "./TechniquesPage/TechniquesPage";
 export * from "./UserProfilePage/UserProfilePage";
 

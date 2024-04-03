@@ -2,6 +2,7 @@ import "./ListsStyling.scss";
 import { Link } from "react-router-dom";
 
 
+
 function TechniquesList({ allTechs }) {
 
   return (
