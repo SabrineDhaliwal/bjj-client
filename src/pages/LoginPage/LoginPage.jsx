@@ -6,6 +6,7 @@ import logoicon from "../../assets/icons/icononly_transparent_nobuffer.png";
 import logotext from "../../assets/icons/textonly_nobuffer.png"
 import "./LoginPage.scss";
 import axios from "axios";
+import { Triangle } from "react-loader-spinner";
 
 export function LoginPage({setLoggedIn}) {
   // console.log(setLoggedIn)
@@ -14,6 +15,7 @@ export function LoginPage({setLoggedIn}) {
   const [formErrors, setFormErrors] = useState({ email: "", password: "" });
   const [invalidPW, setInvalidPW] = useState()
   const [invalidEmail, setInvalidEmail]= useState()
+  const [spinner, setSpinner]= useState(false)
 
 
   const API_URL = import.meta.env.VITE_BASE_URL;
@@ -43,10 +45,13 @@ export function LoginPage({setLoggedIn}) {
 
   function handleOnSubmit(event) {
     event.preventDefault();
+    setSpinner(true);
+
     if (isInputValid()) {
     } else {
       
     }
+
     axios
     .post(`${API_URL}/login/user`,{
     email: email, 
@@ -56,6 +61,7 @@ export function LoginPage({setLoggedIn}) {
       sessionStorage.setItem('token', response.data.accessToken);
       sessionStorage.setItem('user_id', response.data.user_id);
       setLoggedIn(true)
+      setSpinner(false)
       navigate(`/profile/${response.data.user_id}`)
     })
     .catch((err)=> {
@@ -75,6 +81,13 @@ export function LoginPage({setLoggedIn}) {
       <img className="logotext" src={logotext} alt="Roll& Reflect text"/>
 
       <h2>Welcome Back </h2>
+      {spinner === true? (
+      <>
+      <Triangle/> 
+      <h3>Please Wait while we find your account</h3>
+      </>
+      ) 
+    : null}
       <div className="form__wrapper">
         <form className="form__form" onSubmit={handleOnSubmit}>
 
@@ -111,7 +124,7 @@ export function LoginPage({setLoggedIn}) {
             id="password"
             value={password}
             onChange={(event) => setPassword(event.target.value)}
-            placeholder="password"
+            placeholder="Password"
           />
           {formErrors.password && (
             <div className="form__error-message">{formErrors.password}</div>
@@ -121,6 +134,7 @@ export function LoginPage({setLoggedIn}) {
           )}
 
           <div className="btn-containerLogin">
+
             <Button text="Login" />
 
             <Button
