@@ -60,7 +60,7 @@ export function TechniquesPage() {
    {allTechs.length === 0 ? (
     <>
       <Triangle visible={true}/> 
-      <h3>Please wait while we fetch the list. If the page does reload, please refresh your page <br></br> </h3>
+      <h3>Please wait while we fetch the list. If the page doesn't reload, please refresh your page </h3>
       </>
     ) : (
       <>

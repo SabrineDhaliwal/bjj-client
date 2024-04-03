@@ -4,6 +4,7 @@ import PositionDetails from "../../components/PositionDetails/PositionDetails";
 import Button from '../../components/Buttons/Buttons';
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
+import { Triangle } from "react-loader-spinner";
 
 
 export function PositionsPage() {
@@ -46,11 +47,19 @@ export function PositionsPage() {
   return (
   <>
     <div className="list_wrapper">
-      
-      <PositionsList allPositions={allPositions}/>
+      {allPositions.length === 0 ? (
+        <>
+        <Triangle visible={true}/>
+        <h3>Please wait while we fetch the list. If the page doesn't reload, please refresh your page </h3>
+        </>
+      ):( 
+        <>
+        <PositionsList allPositions={allPositions}/>
     {posById ? 
-     <PositionDetails posById={posById} />
-     : null}
+      <PositionDetails posById={posById} />
+      : null}
+       </>
+      )}
 
     </div>
      <div className='btn__container'>
@@ -66,8 +75,9 @@ export function PositionsPage() {
        // clickHandler={handleAddTechnique}
        />
        </div>
+     
        </>
-  );
+       );
 }
 
 
